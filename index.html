@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Book</title>
+
+
+        <style>
+            html { 
+                height: 100vh;
+                width: 100vw;
+                overflow: hidden
+            }
+            p, h1 {
+                margin:0px;
+            }
+            body {
+                display: grid;
+                place-content: center;
+                height: 100vh;
+                width: 100vw;
+	            background: #E3D4B3;
+            }
+            html, body {
+                margin: 0px;
+            }
+
+            div#book-container {
+                background-color: #402621;
+                border-radius: 4px;
+                padding:15px 25px 15px 25px;
+            }
+            #base-pages {
+                background-color: white;
+                height:700px;
+                width:1200px;
+                border: 2px solid #D9D9D9;
+            }
+            div#book-frame {
+                height:700px;
+                width:100%;
+            }
+            #book-frame .turn-page {
+                background-color: white;
+            }
+            .page-content-container {
+                border-left: 3px solid #D9D9D9;
+                border-right: 3px solid #D9D9D9;
+                height: 700px;
+                width: 594px;
+            }
+            .page-content {
+                padding: 50px;
+            }
+            .tab {
+                text-align: center;
+                position: absolute;
+                width: 100px;
+                height: 90px;
+                background-color: #EDEBDA;
+                margin: -70px 0px 0px 15px;
+                padding: 15px 0px 0px 0px;
+                border-top-right-radius: 5px;
+                border-top-left-radius: 5px;
+                border: 2px solid #ADA895;
+            }
+            .tab h1 {
+                font-size: 17px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="book-container">
+            <div class="tab">
+                <h1>tab</h1>
+            </div>
+            <div id="base-pages">
+                <div id="book-frame">
+                    <div>
+                        <div class="page-content-container">
+
+                            <div class="page-content">
+                                <h1>title 1</h1>
+                                <p>content</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="page-content-container">
+                            <div class="page-content">
+                                <h1>title 2</h1>
+                                <p>content</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="page-content-container">
+                            <div class="page-content">
+                                <h1>title 3</h1>
+                                <p>content</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="page-content-container">
+                            <div class="page-content">
+                                <h1>title 4</h1>
+                                <p>content</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="page-content-container">
+                            <div class="page-content">
+                                <h1>title 5</h1>
+                                <p>content</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="js/jquery-3.7.1.min.js"></script>
+        <script type="text/javascript" src="js/turn.js"></script>
+        <!-- Place this is its own file as well later -->
+        <script type="text/javascript">
+	        $("#book-frame").turn();
+        </script>
+    </body>
+
+</html>
