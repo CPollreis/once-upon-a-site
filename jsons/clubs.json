@@ -1,0 +1,67 @@
+{
+	"clubs": [
+		{
+			"name": ".devClub",
+			"description": "A community of passionate developers focusing on web, mobile, and AI applications. Weekly coding jams, guest lectures from alumni in tech, and hands-on workshops in modern frameworks like React, Spring Boot, and Flutter.",
+			"startTime": ["3", "PM"],
+			"endTime": ["5", "PM"],
+			"events": [
+				"\"Hack in a Day\" mini-hackathons",
+				"Peer code review sessions"
+			],
+			"location": "CSSA Lounge",
+			"rating": "4",
+			"joined": true
+		},
+		{
+			"name": "Linux Fans",
+			"description": "For anyone fascinated by Linux, open-source culture, and tinkering with kernels. Share dotfiles, customize shells, and learn how to automate your system. Join us now for a numerous Linux-related activities",
+			"startTime": ["1", "PM"],
+			"endTime": ["6", "PM"],
+			"events": [
+				"Linux installation fest",
+				"\"Customize Your Distro\" challenge"
+			],
+			"location": "CSSA Lounge",
+			"rating": "4",
+			"joined": false
+		}, 
+		{
+			"name": "Anime lovers",
+			"description": "A welcoming space for anime fans to discuss shows, plan movie nights, and share creative fanworks. Expect lively debates, cosplay tips, and screenings of seasonal anime.",
+			"startTime": ["11", "AM"],
+			"endTime": ["11", "PM"],
+			"events": [
+				"Cosplay fests",
+				"Isekai anime night show",
+				"Games and animes discussion meeting"
+			],
+			"location": "261 Niakwa Place, RV 32",
+			"rating": "5",
+			"joined": true
+		},
+		{
+			"name": "Board Games Society",
+			"description": "Join us for some fun with variety of games, from simple games like Uno, Cribbage to more multiplayer-based games",
+			"startTime": ["11", "AM"],
+			"endTIme": ["11", "PM"],
+			"location": "222 Kenaston Blvd, RV 32",
+			"rating": "4",
+			"joined": "false"
+		},
+		{
+			"name": "Chess Club",
+			"description": "Fancying playing chess? Or wanting to become a chess-mastermind? Look no further to our clubs. Join us for more information on chess matches with training sessions on playing chess or generating strategies.",
+			"startTime": ["5", "PM"],
+			"endTime": ["9", "PM"],
+			"events": [
+				"Weekly tournament",
+				"Guide to chessmaster"
+			],
+			"location": "SSA Lounge",
+			"rating": "4.5",
+			"joined": false
+		}
+	]
+
+}
