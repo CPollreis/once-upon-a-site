@@ -131,54 +131,56 @@
             // Start initialization after the html has fully loaded in.
             window.addEventListener('load', function () {
                 console.log("Webpage has loaded");
+
                 setupListeners();
+
+                // Activate the home tab
                 activeTab = null;
                 activateTab("home-tab");
             })
 
-            // Startup event listeners.
+            // Initialization of event listeners.
             function setupListeners() {
                 console.log("Setting up startup listeners");
+
                 // Tab click listeners.
                 let tabs = document.getElementsByClassName("tab");
                 for(let i = 0; i < tabs.length; i++) {
                     tabs[i].addEventListener("click", function(){ tabClick(tabs[i].classList[1]) });
                 }
+
                 // Listener on page turning event.
-                $('#book-frame').on('page', turnEvent);
+                $('#book-frame').on('turned', turnEvent);
             }
 
             // A page turn event has been triggered.
             function turnEvent() {
                 console.log("Turn event triggered");
-                // Turning a page takes a bit to complete, wait so that we can check the new active page.
-                setTimeout(function (){
-                    var pages = $('#book-frame').turn('view'); // pages will show as [page1, page2]
-                    console.log("The two pages visible are: " + pages);
-                    // Sequentially compare the active page to the next section until we've a match.
-                    if (pages[0] < TOC_START) {
-                        activateTab("home-tab");
-                    }
-                    else if (pages[0] < SAVED_CLUBS_START) {
-                        activateTab("toc-tab");
-                    }
-                    else if (pages[0] < CATEGORY_1_START) {
-                        activateTab("saved-clubs-tab");
-                    }
-                    else if (pages[0] < CATEGORY_2_START) {
-                        activateTab("category-1-tab");
-                    }
-                    else if (pages[0] < CATEGORY_3_START) {
-                        activateTab("category-2-tab");
-                    }
-                    else if (pages[0] < SEARCH_START) {
-                        activateTab("category-3-tab");
-                    }
-                    else {
-                        activateTab("search-tab");
-                    }
-                }, 110);
+                var pages = $('#book-frame').turn('view'); // pages will show as [page1, page2]
+                console.log("The two pages visible are: " + pages);
 
+                // Sequentially compare the active page to the next section until we've a match.
+                if (pages[0] < TOC_START) {
+                    activateTab("home-tab");
+                }
+                else if (pages[0] < SAVED_CLUBS_START) {
+                    activateTab("toc-tab");
+                }
+                else if (pages[0] < CATEGORY_1_START) {
+                    activateTab("saved-clubs-tab");
+                }
+                else if (pages[0] < CATEGORY_2_START) {
+                    activateTab("category-1-tab");
+                }
+                else if (pages[0] < CATEGORY_3_START) {
+                    activateTab("category-2-tab");
+                }
+                else if (pages[0] < SEARCH_START) {
+                    activateTab("category-3-tab");
+                }
+                else {
+                    activateTab("search-tab");
+                }
             }
 
             // activateTab will add/remove the id="active" from the tabs
