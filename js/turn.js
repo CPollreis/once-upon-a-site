@@ -61,7 +61,7 @@ var has3d,
 
 		// Duration of transition in milliseconds
 
-		duration: 300,
+		duration: 200,
 
 		// Enables hardware acceleration
 
@@ -99,7 +99,7 @@ var has3d,
 
 		// Duration of transition in milliseconds
 
-		duration: 100,
+		duration: 50,
 
 		// Enables hardware acceleration
 
