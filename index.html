@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Book</title>
 
-
+        <!-- CSS STYLES to be moved to it's own file(s)-->
         <style>
             html { 
                 height: 100vh;
@@ -31,8 +31,10 @@
                 background-color: #402621;
                 border-radius: 4px;
                 padding:15px 25px 15px 25px;
+                margin-top:70px;
             }
             #base-pages {
+                position: relative;
                 background-color: white;
                 height:700px;
                 width:1200px;
@@ -54,36 +56,226 @@
             .page-content {
                 padding: 50px;
             }
+
+            .cover-page-container {
+                display: inline-block;
+                position: absolute;
+                border-left: 3px solid #D9D9D9;
+                border-right: 3px solid #D9D9D9;
+                height: 700px;
+                width: 594px;
+            }
+            .cover-page-content {
+                padding: 50px;
+            }
+            #tab-container {
+                position: absolute;
+                display: flex;
+                justify-content: space-around;
+                width: 1204px;
+                height: 80px;
+                margin: -70px 0px 0px 0px;
+            }
+            #right-page-tabs, #left-page-tabs {
+                display:flex;
+                justify-content: space-around;
+                width:500px;
+            }
             .tab {
                 text-align: center;
-                position: absolute;
+                display: inline-block;
+                vertical-align: bottom;
                 width: 100px;
-                height: 90px;
+                height: 100%;
                 background-color: #EDEBDA;
-                margin: -70px 0px 0px 15px;
-                padding: 15px 0px 0px 0px;
                 border-top-right-radius: 5px;
                 border-top-left-radius: 5px;
                 border: 2px solid #ADA895;
-            }
-            .tab h1 {
                 font-size: 17px;
+                font-weight: 1000;
+                padding-top: 15px;
+                -ms-transition: margin-top 30ms linear;
+                transition: margin-top 30ms linear;
+            }
+            .tab:hover {
+                margin-top:-5px;
+                -ms-transition: margin-top 100ms linear;
+                transition: margin-top 100ms linear;
+                cursor: pointer;
+                border: 2px solid #706D5B;
+            }
+            .tab#active {
+                margin-top:-10px;
+                border: 2px solid #4D4A3E;
+                -ms-transition: margin-top 50ms linear;
+                transition: margin-top 50ms linear;
+            }
+            .tab span {
+                margin: 15px 0px 0px 0px;
             }
         </style>
+
+        <!-- JAVASCRIPT to be moved to it's own file(s)-->
+         <script>
+            // GLOBAL CONSTANTS
+            const HOME_START = 1;
+            const TOC_START = 2;
+            const SAVED_CLUBS_START = 4;
+            const CATEGORY_1_START = 6;
+            const CATEGORY_2_START = 8;
+            const CATEGORY_3_START = 10;
+            const SEARCH_START = 12;
+            // GLOBAL VARIABLES
+            var activeTab; // Active tab is raised
+
+            // Start initialization after the html has fully loaded in.
+            window.addEventListener('load', function () {
+                console.log("Webpage has loaded");
+                setupListeners();
+                activeTab = null;
+                activateTab("home-tab");
+            })
+
+            // Startup event listeners.
+            function setupListeners() {
+                console.log("Setting up startup listeners");
+                // Tab click listeners.
+                let tabs = document.getElementsByClassName("tab");
+                for(let i = 0; i < tabs.length; i++) {
+                    tabs[i].addEventListener("click", function(){ tabClick(tabs[i].classList[1]) });
+                }
+                // Listener on page turning event.
+                $('#book-frame').on('page', turnEvent);
+            }
+
+            // A page turn event has been triggered.
+            function turnEvent() {
+                console.log("Turn event triggered");
+                // Turning a page takes a bit to complete, wait so that we can check the new active page.
+                setTimeout(function (){
+                    var pages = $('#book-frame').turn('view'); // pages will show as [page1, page2]
+                    console.log("The two pages visible are: " + pages);
+                    // Sequentially compare the active page to the next section until we've a match.
+                    if (pages[0] < TOC_START) {
+                        activateTab("home-tab");
+                    }
+                    else if (pages[0] < SAVED_CLUBS_START) {
+                        activateTab("toc-tab");
+                    }
+                    else if (pages[0] < CATEGORY_1_START) {
+                        activateTab("saved-clubs-tab");
+                    }
+                    else if (pages[0] < CATEGORY_2_START) {
+                        activateTab("category-1-tab");
+                    }
+                    else if (pages[0] < CATEGORY_3_START) {
+                        activateTab("category-2-tab");
+                    }
+                    else if (pages[0] < SEARCH_START) {
+                        activateTab("category-3-tab");
+                    }
+                    else {
+                        activateTab("search-tab");
+                    }
+                }, 110);
+
+            }
+
+            // activateTab will add/remove the id="active" from the tabs
+            // activateTab(null) will make all tabs inactive
+            function activateTab(tab) {
+                console.log("Activating new tab");
+                
+                if (tab === null) {
+                    // If there is currently an active tab, inactivate it.
+                    if (activeTab !== null) {
+                        document.getElementsByClassName(activeTab)[1].removeAttribute( "id", "active");
+                    }
+                }
+                else if (activeTab === null) {
+                    // We are activating a tab. If all tabs are inactive, make this the active one.
+                    document.getElementsByClassName(tab)[0].setAttribute( "id", "active" );
+                    activeTab = tab;
+                }
+                else if (tab !== activeTab) {
+                    // We are activating a tab. Inactivate the previous tab, and activate the new tab.
+                    console.log("No changes to active tab");
+                    document.getElementsByClassName(activeTab)[0].removeAttribute( "id", "active" );
+                    document.getElementsByClassName(tab)[0].setAttribute( "id", "active");
+                    activeTab = tab;
+                }
+            }
+
+            // A tab has been clicked on.
+            function tabClick(id) {
+                console.log("starting tabClick");
+                switch (id) {
+                    case "home-tab":
+                        console.log("home");
+                        $("#book-frame").turn("page", HOME_START);
+                        break;
+                    case "toc-tab":
+                        $("#book-frame").turn("page", TOC_START);
+                        break;
+                    case "saved-clubs-tab":
+                        $("#book-frame").turn("page", SAVED_CLUBS_START);
+                        break;
+                    case "category-1-tab":
+                        $("#book-frame").turn("page", CATEGORY_1_START);
+                        break;
+                    case "category-2-tab":
+                        $("#book-frame").turn("page", CATEGORY_2_START);
+                        break;
+                    case "category-3-tab":
+                        $("#book-frame").turn("page", CATEGORY_3_START);
+                        break;
+                    case "search-tab":
+                        $("#book-frame").turn("page", SEARCH_START);
+                        break;
+                }
+            }
+
+         </script>
     </head>
 
     <body>
         <div id="book-container">
-            <div class="tab">
-                <h1>tab</h1>
+            <div id="tab-container">
+                <div id="left-page-tabs">
+                    <div class="tab home-tab">Home</div>
+                    <div class="tab toc-tab">Table of Contents</div>
+                    <div class="tab saved-clubs-tab">Saved Clubs</div>
+                </div>
+                    <div id="right-page-tabs">
+                    <div class="tab category-1-tab">Technology</div>
+                    <div class="tab category-2-tab">Hobbies</div>
+                    <div class="tab category-3-tab">Cultural</div>
+                    <div class="tab search-tab">Search</div>
+                </div>
             </div>
+
             <div id="base-pages">
+                <!-- Non turnable first page -->
+                <div class="cover-page-container">
+                    <div class="cover-page-content">
+                        <h1>Home</h1>
+                        <p>instructions</p>
+                    </div>
+                </div>
+
+                <!-- Begin turnable book -->
                 <div id="book-frame">
                     <div>
                         <div class="page-content-container">
-
                             <div class="page-content">
-                                <h1>title 1</h1>
+                                <p>More instructions</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="page-content-container">
+                            <div class="page-content">
+                                <h1>Table of Contents</h1>
                                 <p>content</p>
                             </div>
                         </div>
@@ -91,43 +283,96 @@
                     <div>
                         <div class="page-content-container">
                             <div class="page-content">
-                                <h1>title 2</h1>
-                                <p>content</p>
+                                <p>more table of contents</p>
                             </div>
                         </div>
                     </div>
                     <div>
                         <div class="page-content-container">
                             <div class="page-content">
-                                <h1>title 3</h1>
-                                <p>content</p>
+                                <h1>Saved Clubs</h1>
+                                <p>more saved clubs</p>
                             </div>
                         </div>
                     </div>
                     <div>
                         <div class="page-content-container">
                             <div class="page-content">
-                                <h1>title 4</h1>
-                                <p>content</p>
+                                <p>more saved clubs</p>
                             </div>
                         </div>
                     </div>
                     <div>
                         <div class="page-content-container">
                             <div class="page-content">
-                                <h1>title 5</h1>
-                                <p>content</p>
+                                <h1>Technology</h1>
+                                <p>technology clubs</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="page-content-container">
+                            <div class="page-content">
+                                <p>more technology clubs</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="page-content-container">
+                            <div class="page-content">
+                                <h1>Hobbies</h1>
+                                <p>hobby clubs</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="page-content-container">
+                            <div class="page-content">
+                                <p>more hobby clubs</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="page-content-container">
+                            <div class="page-content">
+                                <h1>Cultural</h1>
+                                <p>cultural clubs</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="page-content-container">
+                            <div class="page-content">
+                                <p>more cultural clubs</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="page-content-container">
+                            <div class="page-content">
+                                <h1>Search</h1>
+                                <p>search options</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="page-content-container">
+                            <div class="page-content">
+                                <p>search results</p>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!-- End turnable book-->
+
             </div>
         </div>
         <script type="text/javascript" src="js/jquery-3.7.1.min.js"></script>
         <script type="text/javascript" src="js/turn.js"></script>
         <!-- Place this is its own file as well later -->
         <script type="text/javascript">
-	        $("#book-frame").turn();
+            // Turn.js Initialization
+	        $("#book-frame").turn({when: {turn: turnEvent}});
         </script>
     </body>
 
