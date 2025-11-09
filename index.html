@@ -27,7 +27,7 @@
                 margin: 0px;
             }
 
-            div#book-container {
+            div.book-container {
                 background-color: #402621;
                 border-radius: 4px;
                 padding:15px 25px 15px 25px;
@@ -41,7 +41,7 @@
                 border: 2px solid #D9D9D9;
             }
             div#book-frame {
-                height:700px;
+                height:100%;
                 width:100%;
             }
             #book-frame .turn-page {
@@ -50,23 +50,28 @@
             .page-content-container {
                 border-left: 3px solid #D9D9D9;
                 border-right: 3px solid #D9D9D9;
-                height: 700px;
-                width: 594px;
+                height: 100%;
+                width: 100%;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
             }
             .page-content {
+                display: flex;
+                flex-wrap: wrap;
+                height: 100%;
+            }
+            .half-page {
+                flex: 1 0 50%;
+                box-sizing: border-box;
+                height: 100%;
                 padding: 50px;
             }
-
-            .cover-page-container {
-                display: inline-block;
-                position: absolute;
-                border-left: 3px solid #D9D9D9;
+            div.half-page:nth-child(1) {
                 border-right: 3px solid #D9D9D9;
-                height: 700px;
-                width: 594px;
             }
-            .cover-page-content {
-                padding: 50px;
+            div.half-page:nth-child(2) {
+                border-left: 3px solid #D9D9D9;
             }
             #tab-container {
                 position: absolute;
@@ -110,6 +115,11 @@
                 -ms-transition: margin-top 50ms linear;
                 transition: margin-top 50ms linear;
             }
+            .tab#active:hover {
+                margin-top:-11px;
+                -ms-transition: margin-top 50ms linear;
+                transition: margin-top 50ms linear;
+            }
             .tab span {
                 margin: 15px 0px 0px 0px;
             }
@@ -120,13 +130,15 @@
             // GLOBAL CONSTANTS
             const HOME_START = 1;
             const TOC_START = 2;
-            const SAVED_CLUBS_START = 4;
-            const CATEGORY_1_START = 6;
-            const CATEGORY_2_START = 8;
-            const CATEGORY_3_START = 10;
-            const SEARCH_START = 12;
+            const SAVED_CLUBS_START = 3;
+            const CATEGORY_1_START = 4;
+            const CATEGORY_2_START = 5;
+            const CATEGORY_3_START = 6;
+            const SEARCH_START = 7;
             // GLOBAL VARIABLES
             var activeTab; // Active tab is raised
+
+            
 
             // Start initialization after the html has fully loaded in.
             window.addEventListener('load', function () {
@@ -241,7 +253,7 @@
     </head>
 
     <body>
-        <div id="book-container">
+        <div class="book-container">
             <div id="tab-container">
                 <div id="left-page-tabs">
                     <div class="tab home-tab">Home</div>
@@ -257,124 +269,112 @@
             </div>
 
             <div id="base-pages">
-                <!-- Non turnable first page -->
-                <div class="cover-page-container">
-                    <div class="cover-page-content">
-                        <h1>Home</h1>
-                        <p>instructions</p>
-                    </div>
-                </div>
-
                 <!-- Begin turnable book -->
                 <div id="book-frame">
+                    <!-- START SEARCH AND EXPLORATION PAGES-->
                     <div>
                         <div class="page-content-container">
                             <div class="page-content">
-                                <p>More instructions</p>
+                                <div class="half-page">
+                                    <h1>Home</h1>
+                                </div>
+                                <div class="half-page">
+                                    <p>more home content</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div>
                         <div class="page-content-container">
                             <div class="page-content">
-                                <h1>Table of Contents</h1>
-                                <p>content</p>
+                                <div class="half-page">
+                                    <h1>Table of Contents</h1>
+                                </div>
+                                <div class="half-page">
+                                    <p>toc content</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div>
                         <div class="page-content-container">
                             <div class="page-content">
-                                <p>more table of contents</p>
+                                <div class="half-page">
+                                    <h1>Saved Clubs</h1>
+                                </div>
+                                <div class="half-page">
+                                    <p>saved clubs content</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div>
                         <div class="page-content-container">
                             <div class="page-content">
-                                <h1>Saved Clubs</h1>
-                                <p>more saved clubs</p>
+                                <div class="half-page">
+                                    <h1>Technology</h1>
+                                </div>
+                                <div class="half-page">
+                                    <p>technology content</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div>
                         <div class="page-content-container">
                             <div class="page-content">
-                                <p>more saved clubs</p>
+                                <div class="half-page">
+                                    <h1>Hobbies</h1>
+                                </div>
+                                <div class="half-page">
+                                    <p>hobbies content</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div>
                         <div class="page-content-container">
                             <div class="page-content">
-                                <h1>Technology</h1>
-                                <p>technology clubs</p>
+                                <div class="half-page">
+                                    <h1>Culture</h1>
+                                </div>
+                                <div class="half-page">
+                                    <p>culture content</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div>
                         <div class="page-content-container">
                             <div class="page-content">
-                                <p>more technology clubs</p>
+                                <div class="half-page">
+                                    <h1>Search</h1>
+                                </div>
+                                <div class="half-page">
+                                    <p>search content</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <div class="page-content-container">
-                            <div class="page-content">
-                                <h1>Hobbies</h1>
-                                <p>hobby clubs</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="page-content-container">
-                            <div class="page-content">
-                                <p>more hobby clubs</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="page-content-container">
-                            <div class="page-content">
-                                <h1>Cultural</h1>
-                                <p>cultural clubs</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="page-content-container">
-                            <div class="page-content">
-                                <p>more cultural clubs</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="page-content-container">
-                            <div class="page-content">
-                                <h1>Search</h1>
-                                <p>search options</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="page-content-container">
-                            <div class="page-content">
-                                <p>search results</p>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- END SEARCH AND EXPLORATION PAGES-->
                 </div>
                 <!-- End turnable book-->
 
             </div>
+
         </div>
+
+        <!-- Club Page Book Overlay
+        <div class="book-container">
+                
+        </div>
+        -->
         <script type="text/javascript" src="js/jquery-3.7.1.min.js"></script>
         <script type="text/javascript" src="js/turn.js"></script>
         <!-- Place this is its own file as well later -->
         <script type="text/javascript">
             // Turn.js Initialization
-	        $("#book-frame").turn({when: {turn: turnEvent}});
+	        $("#book-frame").turn({when: {turn: turnEvent}, display: "single",});
         </script>
     </body>
 
