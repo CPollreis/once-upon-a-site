@@ -1,381 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Book</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Book</title>
 
-        <!-- CSS STYLES to be moved to it's own file(s)-->
-        <style>
-            html { 
-                height: 100vh;
-                width: 100vw;
-                overflow: hidden
-            }
-            p, h1 {
-                margin:0px;
-            }
-            body {
-                display: grid;
-                place-content: center;
-                height: 100vh;
-                width: 100vw;
-	            background: #E3D4B3;
-            }
-            html, body {
-                margin: 0px;
-            }
+    <link rel="stylesheet" href="css/style.css">
+</head>
 
-            div.book-container {
-                background-color: #402621;
-                border-radius: 4px;
-                padding:15px 25px 15px 25px;
-                margin-top:70px;
-            }
-            #base-pages {
-                position: relative;
-                background-color: white;
-                height:700px;
-                width:1200px;
-                border: 2px solid #D9D9D9;
-            }
-            div#book-frame {
-                height:100%;
-                width:100%;
-            }
-            #book-frame .turn-page {
-                background-color: white;
-            }
-            .page-content-container {
-                border-left: 3px solid #D9D9D9;
-                border-right: 3px solid #D9D9D9;
-                height: 100%;
-                width: 100%;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-                box-sizing: border-box;
-            }
-            .page-content {
-                display: flex;
-                flex-wrap: wrap;
-                height: 100%;
-            }
-            .half-page {
-                flex: 1 0 50%;
-                box-sizing: border-box;
-                height: 100%;
-                padding: 50px;
-            }
-            div.half-page:nth-child(1) {
-                border-right: 3px solid #D9D9D9;
-            }
-            div.half-page:nth-child(2) {
-                border-left: 3px solid #D9D9D9;
-            }
-            #tab-container {
-                position: absolute;
-                display: flex;
-                justify-content: space-around;
-                width: 1204px;
-                height: 80px;
-                margin: -70px 0px 0px 0px;
-            }
-            #right-page-tabs, #left-page-tabs {
-                display:flex;
-                justify-content: space-around;
-                width:500px;
-            }
-            .tab {
-                text-align: center;
-                display: inline-block;
-                vertical-align: bottom;
-                width: 100px;
-                height: 100%;
-                background-color: #EDEBDA;
-                border-top-right-radius: 5px;
-                border-top-left-radius: 5px;
-                border: 2px solid #ADA895;
-                font-size: 17px;
-                font-weight: 1000;
-                padding-top: 15px;
-                -ms-transition: margin-top 30ms linear;
-                transition: margin-top 30ms linear;
-            }
-            .tab:hover {
-                margin-top:-5px;
-                -ms-transition: margin-top 100ms linear;
-                transition: margin-top 100ms linear;
-                cursor: pointer;
-                border: 2px solid #706D5B;
-            }
-            .tab#active {
-                margin-top:-10px;
-                border: 2px solid #4D4A3E;
-                -ms-transition: margin-top 50ms linear;
-                transition: margin-top 50ms linear;
-            }
-            .tab#active:hover {
-                margin-top:-11px;
-                -ms-transition: margin-top 50ms linear;
-                transition: margin-top 50ms linear;
-            }
-            .tab span {
-                margin: 15px 0px 0px 0px;
-            }
-        </style>
-
-        <!-- JAVASCRIPT to be moved to it's own file(s)-->
-         <script>
-            // GLOBAL CONSTANTS
-            const HOME_START = 1;
-            const TOC_START = 2;
-            const SAVED_CLUBS_START = 3;
-            const CATEGORY_1_START = 4;
-            const CATEGORY_2_START = 5;
-            const CATEGORY_3_START = 6;
-            const SEARCH_START = 7;
-            // GLOBAL VARIABLES
-            var activeTab; // Active tab is raised
-
-            
-
-            // Start initialization after the html has fully loaded in.
-            window.addEventListener('load', function () {
-                console.log("Webpage has loaded");
-
-                setupListeners();
-
-                // Activate the home tab
-                activeTab = null;
-                activateTab("home-tab");
-            })
-
-            // Initialization of event listeners.
-            function setupListeners() {
-                console.log("Setting up startup listeners");
-
-                // Tab click listeners.
-                let tabs = document.getElementsByClassName("tab");
-                for(let i = 0; i < tabs.length; i++) {
-                    tabs[i].addEventListener("click", function(){ tabClick(tabs[i].classList[1]) });
-                }
-
-                // Listener on page turning event.
-                $('#book-frame').on('turned', turnEvent);
-            }
-
-            // A page turn event has been triggered.
-            function turnEvent() {
-                console.log("Turn event triggered");
-                var pages = $('#book-frame').turn('view'); // pages will show as [page1, page2]
-                console.log("The two pages visible are: " + pages);
-
-                // Sequentially compare the active page to the next section until we've a match.
-                if (pages[0] < TOC_START) {
-                    activateTab("home-tab");
-                }
-                else if (pages[0] < SAVED_CLUBS_START) {
-                    activateTab("toc-tab");
-                }
-                else if (pages[0] < CATEGORY_1_START) {
-                    activateTab("saved-clubs-tab");
-                }
-                else if (pages[0] < CATEGORY_2_START) {
-                    activateTab("category-1-tab");
-                }
-                else if (pages[0] < CATEGORY_3_START) {
-                    activateTab("category-2-tab");
-                }
-                else if (pages[0] < SEARCH_START) {
-                    activateTab("category-3-tab");
-                }
-                else {
-                    activateTab("search-tab");
-                }
-            }
-
-            // activateTab will add/remove the id="active" from the tabs
-            // activateTab(null) will make all tabs inactive
-            function activateTab(tab) {
-                console.log("Activating new tab");
-                
-                if (tab === null) {
-                    // If there is currently an active tab, inactivate it.
-                    if (activeTab !== null) {
-                        document.getElementsByClassName(activeTab)[1].removeAttribute( "id", "active");
-                    }
-                }
-                else if (activeTab === null) {
-                    // We are activating a tab. If all tabs are inactive, make this the active one.
-                    document.getElementsByClassName(tab)[0].setAttribute( "id", "active" );
-                    activeTab = tab;
-                }
-                else if (tab !== activeTab) {
-                    // We are activating a tab. Inactivate the previous tab, and activate the new tab.
-                    console.log("No changes to active tab");
-                    document.getElementsByClassName(activeTab)[0].removeAttribute( "id", "active" );
-                    document.getElementsByClassName(tab)[0].setAttribute( "id", "active");
-                    activeTab = tab;
-                }
-            }
-
-            // A tab has been clicked on.
-            function tabClick(id) {
-                console.log("starting tabClick");
-                switch (id) {
-                    case "home-tab":
-                        console.log("home");
-                        $("#book-frame").turn("page", HOME_START);
-                        break;
-                    case "toc-tab":
-                        $("#book-frame").turn("page", TOC_START);
-                        break;
-                    case "saved-clubs-tab":
-                        $("#book-frame").turn("page", SAVED_CLUBS_START);
-                        break;
-                    case "category-1-tab":
-                        $("#book-frame").turn("page", CATEGORY_1_START);
-                        break;
-                    case "category-2-tab":
-                        $("#book-frame").turn("page", CATEGORY_2_START);
-                        break;
-                    case "category-3-tab":
-                        $("#book-frame").turn("page", CATEGORY_3_START);
-                        break;
-                    case "search-tab":
-                        $("#book-frame").turn("page", SEARCH_START);
-                        break;
-                }
-            }
-
-         </script>
-    </head>
-
-    <body>
-        <div class="book-container">
-            <div id="tab-container">
-                <div id="left-page-tabs">
-                    <div class="tab home-tab">Home</div>
-                    <div class="tab toc-tab">Table of Contents</div>
-                    <div class="tab saved-clubs-tab">Saved Clubs</div>
-                </div>
-                    <div id="right-page-tabs">
-                    <div class="tab category-1-tab">Technology</div>
-                    <div class="tab category-2-tab">Hobbies</div>
-                    <div class="tab category-3-tab">Cultural</div>
-                    <div class="tab search-tab">Search</div>
-                </div>
+<body>
+    <div class="book-container">
+        <div id="tab-container">
+            <div id="left-page-tabs">
+                <div class="tab home-tab">Home</div>
+                <div class="tab toc-tab">Table of Contents</div>
+                <div class="tab saved-clubs-tab">Saved Clubs</div>
             </div>
-
-            <div id="base-pages">
-                <!-- Begin turnable book -->
-                <div id="book-frame">
-                    <!-- START SEARCH AND EXPLORATION PAGES-->
-                    <div>
-                        <div class="page-content-container">
-                            <div class="page-content">
-                                <div class="half-page">
-                                    <h1>Home</h1>
-                                </div>
-                                <div class="half-page">
-                                    <p>more home content</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="page-content-container">
-                            <div class="page-content">
-                                <div class="half-page">
-                                    <h1>Table of Contents</h1>
-                                </div>
-                                <div class="half-page">
-                                    <p>toc content</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="page-content-container">
-                            <div class="page-content">
-                                <div class="half-page">
-                                    <h1>Saved Clubs</h1>
-                                </div>
-                                <div class="half-page">
-                                    <p>saved clubs content</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="page-content-container">
-                            <div class="page-content">
-                                <div class="half-page">
-                                    <h1>Technology</h1>
-                                </div>
-                                <div class="half-page">
-                                    <p>technology content</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="page-content-container">
-                            <div class="page-content">
-                                <div class="half-page">
-                                    <h1>Hobbies</h1>
-                                </div>
-                                <div class="half-page">
-                                    <p>hobbies content</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="page-content-container">
-                            <div class="page-content">
-                                <div class="half-page">
-                                    <h1>Culture</h1>
-                                </div>
-                                <div class="half-page">
-                                    <p>culture content</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="page-content-container">
-                            <div class="page-content">
-                                <div class="half-page">
-                                    <h1>Search</h1>
-                                </div>
-                                <div class="half-page">
-                                    <p>search content</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END SEARCH AND EXPLORATION PAGES-->
-                </div>
-                <!-- End turnable book-->
-
+            <div id="right-page-tabs">
+                <div class="tab category-1-tab">Technology</div>
+                <div class="tab category-2-tab">Hobbies</div>
+                <div class="tab category-3-tab">Cultural</div>
+                <div class="tab search-tab">Search</div>
             </div>
+        </div>
+
+        <div id="base-pages">
+            <!-- Begin turnable book -->
+            <div id="book-frame">
+                <!-- START SEARCH AND EXPLORATION PAGES-->
+                <div>
+                    <div class="page-content-container">
+                        <div class="page-content">
+                            <div class="half-page">
+                                <h1>Home</h1>
+                            </div>
+                            <div class="half-page">
+                                <p>more home content</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="page-content-container">
+                        <div class="page-content">
+                            <div class="half-page">
+                                <h1>Table of Contents</h1>
+                            </div>
+                            <div class="half-page">
+                                <p>toc content</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="page-content-container">
+                        <div class="page-content">
+                            <div class="half-page">
+                                <h1>Saved Clubs</h1>
+                            </div>
+                            <div class="half-page">
+                                <p>saved clubs content</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="page-content-container">
+                        <div class="page-content">
+                            <div class="half-page">
+                                <h1>Technology</h1>
+                            </div>
+                            <div class="half-page">
+                                <p>technology content</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="page-content-container">
+                        <div class="page-content">
+                            <div class="half-page">
+                                <h1>Hobbies</h1>
+                            </div>
+                            <div class="half-page">
+                                <p>hobbies content</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="page-content-container">
+                        <div class="page-content">
+                            <div class="half-page">
+                                <h1>Culture</h1>
+                            </div>
+                            <div class="half-page">
+                                <p>culture content</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="page-content-container">
+                        <div class="page-content">
+                            <div class="half-page">
+                                <h1>Search</h1>
+                            </div>
+                            <div class="half-page">
+                                <p>search content</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END SEARCH AND EXPLORATION PAGES-->
+            </div>
+            <!-- End turnable book-->
 
         </div>
 
-        <!-- Club Page Book Overlay
+    </div>
+
+    <!-- Club Page Book Overlay
         <div class="book-container">
                 
         </div>
         -->
-        <script type="text/javascript" src="js/jquery-3.7.1.min.js"></script>
-        <script type="text/javascript" src="js/turn.js"></script>
-        <!-- Place this is its own file as well later -->
-        <script type="text/javascript">
-            // Turn.js Initialization
-	        $("#book-frame").turn({when: {turn: turnEvent}, display: "single",});
-        </script>
-    </body>
+    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/jquery-3.7.1.min.js"></script>
+    <script type="text/javascript" src="js/turn.js"></script>
+    <!-- Place this is its own file as well later -->
+    <script type="text/javascript">
+        // Turn.js Initialization
+        $("#book-frame").turn({ when: { turn: turnEvent }, display: "single", });
+    </script>
+</body>
 
 </html>

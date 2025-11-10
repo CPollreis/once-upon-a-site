@@ -1,0 +1,136 @@
+html {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden
+}
+
+p,
+h1 {
+    margin: 0px;
+}
+
+body {
+    display: grid;
+    place-content: center;
+    height: 100vh;
+    width: 100vw;
+    background: #E3D4B3;
+}
+
+html,
+body {
+    margin: 0px;
+}
+
+div.book-container {
+    background-color: #402621;
+    border-radius: 4px;
+    padding: 15px 25px 15px 25px;
+    margin-top: 70px;
+}
+
+#base-pages {
+    position: relative;
+    background-color: white;
+    height: 700px;
+    width: 1200px;
+    border: 2px solid #D9D9D9;
+}
+
+div#book-frame {
+    height: 100%;
+    width: 100%;
+}
+
+#book-frame .turn-page {
+    background-color: white;
+}
+
+.page-content-container {
+    border-left: 3px solid #D9D9D9;
+    border-right: 3px solid #D9D9D9;
+    height: 100%;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.page-content {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+}
+
+.half-page {
+    flex: 1 0 50%;
+    box-sizing: border-box;
+    height: 100%;
+    padding: 50px;
+}
+
+div.half-page:nth-child(1) {
+    border-right: 3px solid #D9D9D9;
+}
+
+div.half-page:nth-child(2) {
+    border-left: 3px solid #D9D9D9;
+}
+
+#tab-container {
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    width: 1204px;
+    height: 80px;
+    margin: -70px 0px 0px 0px;
+}
+
+#right-page-tabs,
+#left-page-tabs {
+    display: flex;
+    justify-content: space-around;
+    width: 500px;
+}
+
+.tab {
+    text-align: center;
+    display: inline-block;
+    vertical-align: bottom;
+    width: 100px;
+    height: 100%;
+    background-color: #EDEBDA;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border: 2px solid #ADA895;
+    font-size: 17px;
+    font-weight: 1000;
+    padding-top: 15px;
+    -ms-transition: margin-top 30ms linear;
+    transition: margin-top 30ms linear;
+}
+
+.tab:hover {
+    margin-top: -5px;
+    -ms-transition: margin-top 100ms linear;
+    transition: margin-top 100ms linear;
+    cursor: pointer;
+    border: 2px solid #706D5B;
+}
+
+.tab#active {
+    margin-top: -10px;
+    border: 2px solid #4D4A3E;
+    -ms-transition: margin-top 50ms linear;
+    transition: margin-top 50ms linear;
+}
+
+.tab#active:hover {
+    margin-top: -11px;
+    -ms-transition: margin-top 50ms linear;
+    transition: margin-top 50ms linear;
+}
+
+.tab span {
+    margin: 15px 0px 0px 0px;
+}
