@@ -2,6 +2,7 @@
 	"clubs": [
 		{
 			"name": ".devClub",
+			"department": "Computer Science",
 			"description": "A community of passionate developers focusing on web, mobile, and AI applications. Weekly coding jams, guest lectures from alumni in tech, and hands-on workshops in modern frameworks like React, Spring Boot, and Flutter.",
 			"startTime": ["3", "PM"],
 			"endTime": ["5", "PM"],
@@ -15,6 +16,7 @@
 		},
 		{
 			"name": "Linux Fans",
+			"department": "Computer Science",
 			"description": "For anyone fascinated by Linux, open-source culture, and tinkering with kernels. Share dotfiles, customize shells, and learn how to automate your system. Join us now for a numerous Linux-related activities",
 			"startTime": ["1", "PM"],
 			"endTime": ["6", "PM"],
@@ -28,6 +30,7 @@
 		}, 
 		{
 			"name": "Anime lovers",
+			"department": "Miscellaneous",
 			"description": "A welcoming space for anime fans to discuss shows, plan movie nights, and share creative fanworks. Expect lively debates, cosplay tips, and screenings of seasonal anime.",
 			"startTime": ["11", "AM"],
 			"endTime": ["11", "PM"],
@@ -42,6 +45,7 @@
 		},
 		{
 			"name": "Board Games Society",
+			"department": "Miscellaneous",
 			"description": "Join us for some fun with variety of games, from simple games like Uno, Cribbage to more multiplayer-based games",
 			"startTime": ["11", "AM"],
 			"endTIme": ["11", "PM"],
@@ -51,6 +55,7 @@
 		},
 		{
 			"name": "Chess Club",
+			"department": "Miscellaneous",
 			"description": "Fancying playing chess? Or wanting to become a chess-mastermind? Look no further to our clubs. Join us for more information on chess matches with training sessions on playing chess or generating strategies.",
 			"startTime": ["5", "PM"],
 			"endTime": ["9", "PM"],
