@@ -1,121 +1,254 @@
-// GLOBAL CONSTANTS
+/******* GLOBAL CONSTANTS *******/
+const MENU_STATE = 0;
+const CLUB_PAGE_STATE = 1;
+// Menu page locations. Change these to point to the first page of each section.
 const HOME_START = 1;
 const TOC_START = 2;
 const SAVED_CLUBS_START = 3;
-const CATEGORY_1_START = 4;
-const CATEGORY_2_START = 5;
-const CATEGORY_3_START = 6;
+const TECHNOLOGY_START = 4;
+const HOBBIES_START = 5;
+const CULTURAL_START = 6;
 const SEARCH_START = 7;
-// GLOBAL VARIABLES
-var activeTab; // Active tab is raised
 
 
+/******* GLOBAL STATE VARIABLES *******/
+var activeTab; // Currently active tab, active tab is raised. String of current section ID.
+var book_state; // Equal to MENU_STATE or CLUB_PAGE_STATE
 
-// Start initialization after the html has fully loaded in.
+
+/******* INITIALIZATION *******/
 window.addEventListener('load', function () {
     console.log("Webpage has loaded");
-
-    setupListeners();
-
+    
+    $("#book-frame").turn({when: {turn: turnEvent}, display: "single",}); // Initialize turn.js
+    
+    initMenuPages(); // Add the menu pages
+    book_state = MENU_STATE;
+    
     // Activate the home tab
     activeTab = null;
-    activateTab("home-tab");
+    tabClick("home");
+    activateTab("home");
+    activateListeners();
 })
 
-// Initialization of event listeners.
-function setupListeners() {
-    console.log("Setting up startup listeners");
 
-    // Tab click listeners.
-    let tabs = document.getElementsByClassName("tab");
-    for (let i = 0; i < tabs.length; i++) {
-        tabs[i].addEventListener("click", function () { tabClick(tabs[i].classList[1]) });
+/******* FUNCTIONS *******/
+
+// initMenuPages()
+// Call this to set the book to the menu pages.
+// You will need to flip to the right page yourself.
+function initMenuPages() {
+    book_state = MENU_STATE;
+    removedAPage = removeAllButOnePage();
+    var pages = document.getElementById("menu-pages");
+    for (const child of pages.children) {
+        $("#book-frame").turn("addPage", child.cloneNode(true));
+        console.log("Adding page: " + $("#book-frame").turn("pages"));
     }
+    if (removedAPage) {
+        $("#book-frame").turn("removePage", 1);
+    }
+    console.log("Finished adding menu pages")
+}
 
+// initClubPages(clubPageList)
+// clubPageList[] is an array of html elements (club page divs) that need to be added as pages.
+// You will need to flip to the right page yourself.
+function initClubPages(clubPageList) {
+    console.log("initializing club pages");
+    book_state = CLUB_PAGE_STATE;
+    removedAPage = removeAllButOnePage();
+    console.log(clubPageList);
+    for (const child of clubPageList) {
+        $("#book-frame").turn("addPage", child.cloneNode(true));
+        console.log("Adding page: " + $("#book-frame").turn("pages"));
+    }
+    if (removedAPage) {
+        $("#book-frame").turn("removePage", 1);
+    }
+    console.log("Finished adding club pages");
+}
+
+// removeAllButOnePage()
+// turn.js does not like you to remove ALL pages.
+// This will remove all but one page.
+// You will need to remove the remaining page yourself after adding new pages, so that the book isn't left empty.
+function removeAllButOnePage() {
+    removedAPage = false;
+    $("#book-frame").turn("page", 1);
+    while ($("#book-frame").turn("pages") > 1) {
+        $("#book-frame").turn("removePage", 1);
+        removedAPage = true;
+    }
+    console.log("removed club pages");
+    return removedAPage;
+}
+
+// activateListeners()
+function activateListeners() {
+    // Add a click event. We will use this for buttons.
+    document.addEventListener( "click", clickEvent );
     // Listener on page turning event.
     $('#book-frame').on('turned', turnEvent);
 }
 
-// A page turn event has been triggered.
+// turnEvent()
+// Automatically called when turn.js changes the page view.
+// Will activate a tab if the section changes.
 function turnEvent() {
-    console.log("Turn event triggered");
-    var pages = $('#book-frame').turn('view'); // pages will show as [page1, page2]
-    console.log("The two pages visible are: " + pages);
+    var pages = $('#book-frame').turn('view'); 
 
-    // Sequentially compare the active page to the next section until we've a match.
-    if (pages[0] < TOC_START) {
-        activateTab("home-tab");
+    if (book_state === CLUB_PAGE_STATE) {
+        // Might do something here later
+    }
+    // If we are in the MENU_STATE, sequentially compare the active page to the next section until we've a match.
+    else if (pages[0] < TOC_START) {
+        activateTab("home");
     }
     else if (pages[0] < SAVED_CLUBS_START) {
-        activateTab("toc-tab");
+        activateTab("toc");
     }
-    else if (pages[0] < CATEGORY_1_START) {
-        activateTab("saved-clubs-tab");
+    else if (pages[0] < TECHNOLOGY_START) {
+        activateTab("saved-clubs");
     }
-    else if (pages[0] < CATEGORY_2_START) {
-        activateTab("category-1-tab");
+    else if (pages[0] < HOBBIES_START) {
+        activateTab("technology");
     }
-    else if (pages[0] < CATEGORY_3_START) {
-        activateTab("category-2-tab");
+    else if (pages[0] < CULTURAL_START) {
+        activateTab("hobbies");
     }
     else if (pages[0] < SEARCH_START) {
-        activateTab("category-3-tab");
+        activateTab("cultural");
     }
     else {
-        activateTab("search-tab");
+        activateTab("search");
     }
 }
 
-// activateTab will add/remove the id="active" from the tabs
+// activateTab(tab)
+// tab: String id of the tab that needs to be activated.
+// activateTab will remove the id="active" from the previously activated tab,
+///     and add the id="active" to the newly selected tab.
 // activateTab(null) will make all tabs inactive
+// This function is automatically called on a turn.js page flip event.
 function activateTab(tab) {
-    console.log("Activating new tab");
-
     if (tab === null) {
-        // If there is currently an active tab, inactivate it.
+        // If there is currently an active tab, deactivate it.
         if (activeTab !== null) {
-            document.getElementsByClassName(activeTab)[1].removeAttribute("id", "active");
+            document.getElementsByClassName(activeTab)[1].removeAttribute( "id", "active");
         }
     }
     else if (activeTab === null) {
         // We are activating a tab. If all tabs are inactive, make this the active one.
-        document.getElementsByClassName(tab)[0].setAttribute("id", "active");
+        document.getElementsByClassName(tab)[0].setAttribute( "id", "active" );
         activeTab = tab;
     }
     else if (tab !== activeTab) {
-        // We are activating a tab. Inactivate the previous tab, and activate the new tab.
+        // We are activating a tab. Deactivate the previous tab, and activate the new tab.
         console.log("No changes to active tab");
-        document.getElementsByClassName(activeTab)[0].removeAttribute("id", "active");
-        document.getElementsByClassName(tab)[0].setAttribute("id", "active");
+        document.getElementsByClassName(activeTab)[0].removeAttribute( "id", "active" );
+        document.getElementsByClassName(tab)[0].setAttribute( "id", "active");
         activeTab = tab;
     }
 }
 
-// A tab has been clicked on.
-function tabClick(id) {
+// clickEvent(event)
+// Automatically called when the user clicks.
+// We will use this to activate some buttons, tabs, etc.
+function clickEvent(event) {
+    console.log("click event triggered");
+    console.log(event.target.classList[1]);
+    if (event.target.classList[1] === "tab") {
+        tabClick(event.target.classList[2]);
+    }
+    else if (event.target.classList[1] === "club-button") {
+        console.log(event.target.getElementsByClassName("club-name")[0].textContent);
+        clubButtonClick(event.target.getElementsByClassName("club-name")[0].textContent);
+    }
+}
+
+// tabClick(id)
+// Pass the tab name (e.g. "home", "saved-clubs")
+// If we are in the MENU_STATE, then jump to the new page and 
+function tabClick(tab_name) {
     console.log("starting tabClick");
-    switch (id) {
-        case "home-tab":
+    pageDestination = 1;
+    switch (tab_name) {
+        case "home":
             console.log("home");
-            $("#book-frame").turn("page", HOME_START);
+            pageDestination = HOME_START;
             break;
-        case "toc-tab":
-            $("#book-frame").turn("page", TOC_START);
+        case "toc":
+            pageDestination = TOC_START;
             break;
-        case "saved-clubs-tab":
-            $("#book-frame").turn("page", SAVED_CLUBS_START);
+        case "saved-clubs":
+            pageDestination = SAVED_CLUBS_START;
             break;
-        case "category-1-tab":
-            $("#book-frame").turn("page", CATEGORY_1_START);
+        case "technology":
+            pageDestination = TECHNOLOGY_START;
             break;
-        case "category-2-tab":
-            $("#book-frame").turn("page", CATEGORY_2_START);
+        case "hobbies":
+            pageDestination = HOBBIES_START;
             break;
-        case "category-3-tab":
-            $("#book-frame").turn("page", CATEGORY_3_START);
+        case "cultural":
+            pageDestination = CULTURAL_START;
             break;
-        case "search-tab":
-            $("#book-frame").turn("page", SEARCH_START);
+        case "search":
+            pageDestination = SEARCH_START;
             break;
     }
+    if (book_state === CLUB_PAGE_STATE) {
+        initMenuPages();
+    }
+    $("#book-frame").turn("page", pageDestination);
+}
+
+// clubButtonClick(clubName)
+// clubName: String title of the club (e.g. ".devClub", "The French Club")
+// A club button has been clicked.
+function clubButtonClick(clubName) {
+    var clubPageList;
+    // The active tab will tell us where the club button was pressed.
+    if (activeTab === "search") {
+        // TBD: Generate a list of pages corresponding to the search filters.
+    }
+    else if (activeTab === "toc") {
+        clubPageList = getClubPagesByAlpha();
+    }
+    else if (activeTab === "saved-clubs") {
+        // TBD: Generate a list of saved clubs.
+    }
+    else {
+        // Generate a list of clubs corresponding to the current category.
+        clubPageList = getClubPagesByCategory(activeTab);
+    }
+
+    // Remove the menu pages and add the list of club pages to the book.
+    initClubPages(clubPageList);
+
+    // Find the page number of the club that the user selected. Flip to that club page.
+    for (i = 0; i < clubPageList.length; i++) {
+        if (clubPageList[i].getElementsByClassName("club-name")[0].textContent === clubName) {
+            $("#book-frame").turn("page", i+1);
+            break;
+        }
+    }
+}
+
+// getClubPagesByCategory(category)
+// category: String id of the club page category (e.g. "technology", "hobbies")
+// Return: An array of club pages that match the provided category
+function getClubPagesByCategory(category) {
+    // Get the div containing all club pages. 
+    // Then generate and return a list of any div that contains the "category" as an id.
+    return document.getElementById("club-pages").getElementsByClassName(category);
+}
+
+// getClubPagesByAlpha()
+// Return: An array of club pages in alphabetical order
+function getClubPagesByAlpha() {
+    // Get the div containing all club pages. 
+    // This current implementation relies on the club pages already sorted in alphabetical order.
+    return document.getElementById("club-pages").children;
 }
