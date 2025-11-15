@@ -102,13 +102,80 @@
                     </div>
                 </div>
                 <div>
-                    <div class="page-content-container">
+                    <div id="search-page" class="page-content-container">
                         <div class="page-content">
-                            <div class="half-page">
+                            <div id="search-prompt-page" class="half-page">
                                 <h1>Search</h1>
+                                <div>
+                                    <input type="text" placeholder="Search..." />
+                                    <button id="search-button" type="button">Search</button>
+                                    <div id="filter-section">
+                                        <h3>Filters</h3>
+                                        <div id="filters-container">
+                                            <!-- Interest -->
+                                            <div class="filter-box" draggable="true">
+                                                <div class="filter-header">Interest</div>
+                                                <div class="filter-content">
+                                                    <div class="draggable-choice" data-filter="Interest" draggable="true">Movies</div>
+                                                    <div class="draggable-choice" data-filter="Interest" draggable="true">Cards</div>
+                                                    <button id="view-all-btn">View all</button>
+                                                </div>
+                                            </div>
+                                            <!-- Department -->
+                                            <div class="filter-box" draggable="true">
+                                                <div class="filter-header">Department</div>
+                                                <div class="filter-content">
+                                                    <div class="draggable-choice" data-filter="Department" draggable="true">Computer Science</div>
+                                                    <div class="draggable-choice" data-filter="Department" draggable="true">Business</div>
+                                                    <div class="draggable-choice" data-filter="Department" draggable="true">Miscellaneous</div>
+                                                    <button>View all</button>
+                                                </div>
+                                            </div>
+
+                                            <!-- Reviews -->
+                                            <div class="filter-box" draggable="true">
+                                                <div class="filter-header">Reviews</div>
+                                                <div class="filter-content">
+                                                    <div class="draggable-choice" data-filter="Reviews" draggable="true">⭐⭐⭐⭐☆</div>
+                                                    <div class="draggable-choice" data-filter="Reviews" draggable="true">⭐⭐⭐☆☆</div>
+                                                    <div class="draggable-choice" data-filter="Reviews" draggable="true">⭐⭐☆☆☆</div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Members -->
+                                            <div class="filter-box" draggable="true">
+                                                <div class="filter-header">Members</div>
+                                                <div class="filter-content">
+                                                    <div class="draggable-choice" data-filter="Members" draggable="true">&gt;100</div>
+                                                    <div class="draggable-choice" data-filter="Members" draggable="true">50–100</div>
+                                                    <div class="draggable-choice" data-filter="Members" draggable="true">25–49</div>
+                                                    <div class="draggable-choice" data-filter="Members" draggable="true">10–24</div>
+                                                    <div class="draggable-choice" data-filter="Members" draggable="true">&lt;10</div>
+                                                </div>
+                                            </div>
+                                            <!-- Skills -->
+                                            <div class="filter-box" draggable="true">
+                                                <div class="filter-header">Skills</div>
+                                                <div class="filter-content">
+                                                    <div class="draggable-choice" data-filter="Skills" draggable="true">JavaScript</div>
+                                                    <div class="draggable-choice" data-filter="Skills" draggable="true">Python</div>
+                                                    <div class="draggable-choice" data-filter="Skills" draggable="true">Design</div>
+                                                    <button>View all</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Placeholder for selected filters -->
+                                        <div id="selected-placeholder">
+                                            <h4>Selected Filters (drop here)</h4>
+                                            <div id="selected-container"></div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="half-page">
-                                <p>search content</p>
+                                <div id="search-results" hidden>  
+                                    <p>search content</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -135,5 +202,6 @@
         $("#book-frame").turn({ when: { turn: turnEvent }, display: "single", });
     </script>
 </body>
+
 
 </html>
