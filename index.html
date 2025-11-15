@@ -1,207 +1,381 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Book</title>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Book</title>
+        <link rel="stylesheet" href="css/style.css">
 
-    <link rel="stylesheet" href="css/style.css">
-</head>
+        <script type="text/javascript" src="js/script.js"></script>
+        <script type="text/javascript" src="js/jquery-3.7.1.min.js"></script>
+        <script type="text/javascript" src="js/turn.js"></script>
+        <script type="text/javascript" src="js/filter.js"></script>
+    </head>
 
-<body>
-    <div class="book-container">
-        <div id="tab-container">
-            <div id="left-page-tabs">
-                <div class="tab home-tab">Home</div>
-                <div class="tab toc-tab">Table of Contents</div>
-                <div class="tab saved-clubs-tab">Saved Clubs</div>
+    <body>
+        <div class="book-container">
+
+            <!-- Begin Tabs-->
+            <div id="tab-container">
+                <div id="left-page-tabs">
+                    <div class="button tab home">Home</div>
+                    <div class="button tab toc">Table of Contents</div>
+                    <div class="button tab saved-clubs">Saved Clubs</div>
+                </div>
+                    <div id="right-page-tabs">
+                    <div class="button tab technology">Technology</div>
+                    <div class="button tab hobbies">Hobbies</div>
+                    <div class="button tab cultural">Cultural</div>
+                    <div class="button tab search">Search</div>
+                </div>
             </div>
-            <div id="right-page-tabs">
-                <div class="tab category-1-tab">Technology</div>
-                <div class="tab category-2-tab">Hobbies</div>
-                <div class="tab category-3-tab">Cultural</div>
-                <div class="tab search-tab">Search</div>
+            <!-- End Tabs -->
+
+            <div id="base-pages">
+                <!-- Begin turnable book -->
+                <div id="book-frame">
+                    <!-- Pages will be added here dynamically -->
+                </div>
+                <!-- End turnable book -->
             </div>
+
         </div>
 
-        <div id="base-pages">
-            <!-- Begin turnable book -->
-            <div id="book-frame">
-                <!-- START SEARCH AND EXPLORATION PAGES-->
-                <div>
-                    <div class="page-content-container">
-                        <div class="page-content">
-                            <div class="half-page">
-                                <h1>Home</h1>
-                            </div>
-                            <div class="half-page">
-                                <p>more home content</p>
-                            </div>
+        <!-- Menu pages, these will be added in dynamically -->
+        <div id="menu-pages" hidden>
+            <!-- Begin pages-->
+            <div>
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1>Home</h1>
+                        </div>
+                        <div class="half-page">
+                            <p>more home content</p>
                         </div>
                     </div>
                 </div>
-                <div>
-                    <div class="page-content-container">
-                        <div class="page-content">
-                            <div class="half-page">
-                                <h1>Table of Contents</h1>
-                            </div>
-                            <div class="half-page">
-                                <p>toc content</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div class="page-content-container">
-                        <div class="page-content">
-                            <div class="half-page">
-                                <h1>Saved Clubs</h1>
-                            </div>
-                            <div class="half-page">
-                                <p>saved clubs content</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div class="page-content-container">
-                        <div class="page-content">
-                            <div class="half-page">
-                                <h1>Technology</h1>
-                            </div>
-                            <div class="half-page">
-                                <p>technology content</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div class="page-content-container">
-                        <div class="page-content">
-                            <div class="half-page">
-                                <h1>Hobbies</h1>
-                            </div>
-                            <div class="half-page">
-                                <p>hobbies content</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div class="page-content-container">
-                        <div class="page-content">
-                            <div class="half-page">
-                                <h1>Culture</h1>
-                            </div>
-                            <div class="half-page">
-                                <p>culture content</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div id="search-page" class="page-content-container">
-                        <div class="page-content">
-                            <div id="search-prompt-page" class="half-page">
-                                <h1>Search</h1>
-                                <div>
-                                    <input type="text" placeholder="Search..." />
-                                    <button id="search-button" type="button">Search</button>
-                                    <div id="filter-section">
-                                        <h3>Filters</h3>
-                                        <div id="filters-container">
-                                            <!-- Interest -->
-                                            <div class="filter-box" draggable="true">
-                                                <div class="filter-header">Interest</div>
-                                                <div class="filter-content">
-                                                    <div class="draggable-choice" data-filter="Interest" draggable="true">Movies</div>
-                                                    <div class="draggable-choice" data-filter="Interest" draggable="true">Cards</div>
-                                                    <button id="view-all-btn">View all</button>
-                                                </div>
-                                            </div>
-                                            <!-- Department -->
-                                            <div class="filter-box" draggable="true">
-                                                <div class="filter-header">Department</div>
-                                                <div class="filter-content">
-                                                    <div class="draggable-choice" data-filter="Department" draggable="true">Computer Science</div>
-                                                    <div class="draggable-choice" data-filter="Department" draggable="true">Business</div>
-                                                    <div class="draggable-choice" data-filter="Department" draggable="true">Miscellaneous</div>
-                                                    <button>View all</button>
-                                                </div>
-                                            </div>
+            </div>
 
-                                            <!-- Reviews -->
-                                            <div class="filter-box" draggable="true">
-                                                <div class="filter-header">Reviews</div>
-                                                <div class="filter-content">
-                                                    <div class="draggable-choice" data-filter="Reviews" draggable="true">⭐⭐⭐⭐☆</div>
-                                                    <div class="draggable-choice" data-filter="Reviews" draggable="true">⭐⭐⭐☆☆</div>
-                                                    <div class="draggable-choice" data-filter="Reviews" draggable="true">⭐⭐☆☆☆</div>
-                                                </div>
-                                            </div>
+            <div>
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1>Table of Contents</h1>
+                            <div class="button club-button">
+                                <p class="club-name">Technology Club 1</p>
+                            </div>
+                            <div class="button club-button">
+                                <p class="club-name">Technology Club 2</p>
+                            </div>
+                            <div class="button club-button">
+                                <p class="club-name">Technology Club 3</p>
+                            </div>
+                            <div class="button club-button">
+                                <p class="club-name">Technology Club 4</p>
+                            </div>
+                            <div class="button club-button">
+                                <p class="club-name">Hobbies Club 1</p>
+                            </div>
+                        </div>
+                        <div class="half-page">
+                            <div class="button club-button">
+                                <p class="club-name">Hobbies Club 2</p>
+                            </div>
+                            <div class="button club-button">
+                                <p class="club-name">Cultural Club 1</p>
+                            </div>
+                            <div class="button club-button">
+                                <p class="club-name">Cultural Club 2</p>
+                            </div>
+                            <div class="button club-button">
+                                <p class="club-name">Cultural Club 3</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                                            <!-- Members -->
-                                            <div class="filter-box" draggable="true">
-                                                <div class="filter-header">Members</div>
-                                                <div class="filter-content">
-                                                    <div class="draggable-choice" data-filter="Members" draggable="true">&gt;100</div>
-                                                    <div class="draggable-choice" data-filter="Members" draggable="true">50–100</div>
-                                                    <div class="draggable-choice" data-filter="Members" draggable="true">25–49</div>
-                                                    <div class="draggable-choice" data-filter="Members" draggable="true">10–24</div>
-                                                    <div class="draggable-choice" data-filter="Members" draggable="true">&lt;10</div>
-                                                </div>
-                                            </div>
-                                            <!-- Skills -->
-                                            <div class="filter-box" draggable="true">
-                                                <div class="filter-header">Skills</div>
-                                                <div class="filter-content">
-                                                    <div class="draggable-choice" data-filter="Skills" draggable="true">JavaScript</div>
-                                                    <div class="draggable-choice" data-filter="Skills" draggable="true">Python</div>
-                                                    <div class="draggable-choice" data-filter="Skills" draggable="true">Design</div>
-                                                    <button>View all</button>
-                                                </div>
+            <div>
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1>Saved Clubs</h1>
+                        </div>
+                        <div class="half-page">
+                            <p>saved clubs content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1>Technology</h1>
+                            <div class="button club-button">
+                                <p class="club-name">Technology Club 1</p>
+                            </div>
+                            <div class="button club-button">
+                                <p class="club-name">Technology Club 2</p>
+                            </div>
+                            <div class="button club-button">
+                                <p class="club-name">Technology Club 3</p>
+                            </div>
+                            <div class="button club-button">
+                                <p class="club-name">Technology Club 4</p>
+                            </div>
+                        </div>
+                        <div class="half-page">
+                            <p>technology content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1>Hobbies</h1>
+                            <div class="button club-button">
+                                <p class="club-name">Hobbies Club 1</p>
+                            </div>
+                            <div class="button club-button">
+                                <p class="club-name">Hobbies Club 2</p>
+                            </div>
+                        </div>
+                        <div class="half-page">
+                            <p>hobbies content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1>Culture</h1>
+                            <div class="button club-button">
+                                <p class="club-name">Cultural Club 1</p>
+                            </div>
+                            <div class="button club-button">
+                                <p class="club-name">Cultural Club 2</p>
+                            </div>
+                            <div class="button club-button">
+                                <p class="club-name">Cultural Club 3</p>
+                            </div>
+                        </div>
+                        <div class="half-page">
+                            <p>culture content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div id="search-page" class="page-content-container">
+                    <div class="page-content">
+                        <div id="search-prompt-page" class="half-page">
+                            <h1>Search</h1>
+                            <div>
+                                <input type="text" placeholder="Search..." />
+                                <button id="search-button" type="button">Search</button>
+                                <div id="filter-section">
+                                    <h3>Filters</h3>
+                                    <div id="filters-container">
+                                        <!-- Interest -->
+                                        <div class="filter-box" draggable="true">
+                                            <div class="filter-header">Interest</div>
+                                            <div class="filter-content">
+                                                <div class="draggable-choice" data-filter="Interest" draggable="true">Movies</div>
+                                                <div class="draggable-choice" data-filter="Interest" draggable="true">Cards</div>
+                                                <button id="view-all-btn">View all</button>
                                             </div>
                                         </div>
-                                        <!-- Placeholder for selected filters -->
-                                        <div id="selected-placeholder">
-                                            <h4>Selected Filters (drop here)</h4>
-                                            <div id="selected-container"></div>
+                                        <!-- Department -->
+                                        <div class="filter-box" draggable="true">
+                                            <div class="filter-header">Department</div>
+                                            <div class="filter-content">
+                                                <div class="draggable-choice" data-filter="Department" draggable="true">Computer Science</div>
+                                                <div class="draggable-choice" data-filter="Department" draggable="true">Business</div>
+                                                <div class="draggable-choice" data-filter="Department" draggable="true">Miscellaneous</div>
+                                                <button>View all</button>
+                                            </div>
                                         </div>
+
+                                        <!-- Reviews -->
+                                        <div class="filter-box" draggable="true">
+                                            <div class="filter-header">Reviews</div>
+                                            <div class="filter-content">
+                                                <div class="draggable-choice" data-filter="Reviews" draggable="true">⭐⭐⭐⭐☆</div>
+                                                <div class="draggable-choice" data-filter="Reviews" draggable="true">⭐⭐⭐☆☆</div>
+                                                <div class="draggable-choice" data-filter="Reviews" draggable="true">⭐⭐☆☆☆</div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Members -->
+                                        <div class="filter-box" draggable="true">
+                                            <div class="filter-header">Members</div>
+                                            <div class="filter-content">
+                                                <div class="draggable-choice" data-filter="Members" draggable="true">&gt;100</div>
+                                                <div class="draggable-choice" data-filter="Members" draggable="true">50–100</div>
+                                                <div class="draggable-choice" data-filter="Members" draggable="true">25–49</div>
+                                                <div class="draggable-choice" data-filter="Members" draggable="true">10–24</div>
+                                                <div class="draggable-choice" data-filter="Members" draggable="true">&lt;10</div>
+                                            </div>
+                                        </div>
+                                        <!-- Skills -->
+                                        <div class="filter-box" draggable="true">
+                                            <div class="filter-header">Skills</div>
+                                            <div class="filter-content">
+                                                <div class="draggable-choice" data-filter="Skills" draggable="true">JavaScript</div>
+                                                <div class="draggable-choice" data-filter="Skills" draggable="true">Python</div>
+                                                <div class="draggable-choice" data-filter="Skills" draggable="true">Design</div>
+                                                <button>View all</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Placeholder for selected filters -->
+                                    <div id="selected-placeholder">
+                                        <h4>Selected Filters (drop here)</h4>
+                                        <div id="selected-container"></div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="half-page">
-                                <div id="search-results" hidden>  
-                                    <p>search content</p>
-                                </div>
+                        </div>
+                        <div class="half-page">
+                            <div id="search-results" hidden>  
+                                <p>search content</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- END SEARCH AND EXPLORATION PAGES-->
             </div>
-            <!-- End turnable book-->
-
+            <!-- End pages-->
         </div>
+        <!-- End Menu Pages-->
 
-    </div>
 
-    <!-- Club Page Book Overlay
-        <div class="book-container">
-                
+        <!-- Club pages, these will be added in dynamically -->
+        <!-- Order these in alphabetical "club-name" order so that TOC is easier to implement-->
+        <div id="club-pages" hidden>
+            <!-- Begin pages -->
+            <div class="technology">
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1 class="club-name">Technology Club 1</h1>
+                        </div>
+                        <div class="half-page">
+                            <p>Technology club 1 content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="technology">
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1 class="club-name">Technology Club 2</h1>
+                        </div>
+                        <div class="half-page">
+                            <p>Technology club 2 content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="technology">
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1 class="club-name">Technology Club 3</h1>
+                        </div>
+                        <div class="half-page">
+                            <p>Technology club 3 content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="technology">
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1 class="club-name">Technology Club 4</h1>
+                        </div>
+                        <div class="half-page">
+                            <p>Technology club 4 content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cultural">
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1 class="club-name">Cultural Club 1</h1>
+                        </div>
+                        <div class="half-page">
+                            <p>Cultural club 1 content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cultural">
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1 class="club-name">Cultural Club 2</h1>
+                        </div>
+                        <div class="half-page">
+                            <p>Cultural club 2 content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cultural">
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1 class="club-name">Cultural Club 3</h1>
+                        </div>
+                        <div class="half-page">
+                            <p>Cultural club 3 content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hobbies">
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1 class="club-name">Hobbies Club 1</h1>
+                        </div>
+                        <div class="half-page">
+                            <p>Hobbies club 1 content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hobbies">
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1 class="club-name">Hobbies Club 2</h1>
+                        </div>
+                        <div class="half-page">
+                            <p>Hobbies club 2 content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End pages -->
         </div>
-        -->
-    <script type="text/javascript" src="js/script.js"></script>
-    <script type="text/javascript" src="js/jquery-3.7.1.min.js"></script>
-    <script type="text/javascript" src="js/turn.js"></script>
-    <!-- Place this is its own file as well later -->
-    <script type="text/javascript">
-        // Turn.js Initialization
-        $("#book-frame").turn({ when: { turn: turnEvent }, display: "single", });
-    </script>
-</body>
+        <!-- End Club Pages -->
 
+    </body>
 
 </html>
