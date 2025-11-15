@@ -134,3 +134,147 @@ div.half-page:nth-child(2) {
 .tab span {
     margin: 15px 0px 0px 0px;
 }
+
+/* Filter sections */
+#filter-section {
+    margin-top: 20px;
+    padding: 10px;
+    background: #f6f6f6;
+    border-radius: 10px;
+}
+
+#filters-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    min-height: 100px;
+}
+
+/* Filter box styles */
+.filter-box {
+    background: white;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 8px;
+    width: 180px;
+    cursor: move;
+    box-shadow: 1px 2px 4px rgba(0,0,0,0.1);
+    transition: box-shadow 0.2s ease, transform 0.1s ease;
+}
+
+.filter-box.dragging {
+    opacity: 0.7;
+    transform: rotate(-2deg) scale(1.05);
+    box-shadow: 0 0 10px rgba(0,0,0,0.25);
+}
+
+.filter-header {
+    font-weight: bold;
+    cursor: pointer;
+    background: #eaeaea;
+    padding: 6px 8px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    transition: background 0.2s ease;
+}
+
+.filter-header:hover { 
+    background: #E2D8BC; 
+}
+
+/* Arrow indicator */
+.filter-header::after {
+    content: "▼";
+    font-size: 0.8em;
+    transition: transform 0.2s ease;
+}
+
+.filter-box.active .filter-header::after {
+    transform: rotate(180deg);
+}
+
+.filter-content {
+    margin-top: 6px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease-out;
+}
+
+.filter-box.active .filter-content {
+    max-height: 220px;
+}
+
+.filter-content .view-all-btn {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+
+    width: calc(100% - 10px);
+    display: block;
+
+    background: #EDEBDA;
+    border: 1px solid #CBBE9A;
+    border-radius: 4px;
+
+    padding: 4px 0;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+/* Individual draggable choices */
+.draggable-choice {
+    margin: 3px 0;
+    background: #f0f0f0;
+    border-radius: 5px;
+    padding: 3px 6px;
+    cursor: grab;
+    transition: background 0.2s;
+}
+
+.draggable-choice:hover {
+    background: #e0e0e0;
+}
+
+/* Selected placeholder */
+#selected-placeholder {
+    margin-top: 20px;
+    border: 2px dashed #bbb;
+    border-radius: 8px;
+    padding: 10px;
+    background: #fafafa;
+    min-height: 80px;
+}
+
+#selected-placeholder.dragover {
+    background: #e8f5ff;
+    border-color: #3399ff;
+}
+
+#selected-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+/* Selected filter tag */
+.selected-tag {
+    background: #d0e8ff;
+    padding: 5px 8px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    position: relative;
+}
+
+.selected-tag::after {
+    content: "×";
+    color: #333;
+    font-weight: bold;
+    margin-left: 6px;
+    cursor: pointer;
+}
