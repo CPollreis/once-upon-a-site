@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Book</title>
+    <title>Pretty Book</title>
     <link rel="stylesheet" href="css/style.css">
 
     <script type="text/javascript" src="js/script.js"></script>
@@ -17,22 +17,22 @@
         <!-- Begin Tabs-->
         <div id="top-tab-container">
             <div id="left-page-tabs">
-                <div class="button top-tab technology">TECHNOLOGY</div>
-                <div class="button top-tab hobbies">HOBBY</div>
-                <div class="button top-tab cultural">CULTURAL</div>
-                <div class="button top-tab category-4">CATEGORY</div>
+                <div class="button tab top-tab saved-clubs"></div>
+                <div class="button tab top-tab technology">TECHNOLOGY</div>
+                <div class="button tab top-tab hobbies">HOBBY</div>
+                <div class="button tab top-tab cultural">CULTURAL</div>
             </div>
             <div id="right-page-tabs">
-                <div class="button top-tab category-5">CATEGORY</div>
-                <div class="button top-tab category-6">CATEGORY</div>
-                <div class="button top-tab saved-clubs"></div>
-                <div class="button top-tab search"><img src="images/search-icon.png"></div>
+                <div class="button tab top-tab category-4">CATEGORY</div>
+                <div class="button tab top-tab category-5">CATEGORY</div>
+                <div class="button tab top-tab category-6">CATEGORY</div>
+                <div class="button tab top-tab search"><img src="images/search-icon.png"></div>
             </div>
         </div>
         <div id="side-tab-container">
             <div id="side-page-tabs">
-                <div class="button side-tab home"><img src="images/home-icon.png"></div>
-                <div class="button side-tab toc"><img src="images/toc-icon.png"></div>
+                <div class="button tab side-tab home"><img src="images/home-icon.png"></div>
+                <div class="button tab side-tab toc"><img src="images/toc-icon.png"></div>
             </div>
         </div>
         <!-- End Tabs -->
@@ -47,30 +47,60 @@
 
     </div>
 
-    <!-- Menu pages, these will be added in dynamically -->
-    <div id="menu-pages" hidden>
-        <!-- Begin pages-->
-        <div>
+    <!-- Menu pages, these will be added into the book dynamically -->
+    <!-- Content found in menu-pages.html -->
+    <div id="menu-pages" style="display:none;">
+        <!-- Homepage-->
+        <div id="home-page">
             <div class="page-content-container">
                 <div class="page-content">
                     <div class="half-page">
                         <h1>Home</h1>
                     </div>
                     <div class="half-page">
-                        <p>more home content</p>
+
                     </div>
                 </div>
             </div>
         </div>
 
-        <div>
+        <!-- TABLE OF CONTENTS PAGE -->
+        <div id="toc-page">
             <div class="page-content-container">
                 <div class="page-content">
                     <div class="half-page">
                         <div class="banner">
                             <h1 class="page-banner-title">Table of Contents</h1>
                         </div>
-                        <div class="button club-button">
+
+                    </div>
+                    <div class="half-page">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SAVED CLUBS PAGE -->
+        <div id="saved-clubs-page">
+            <div class="page-content-container">
+                <div class="page-content">
+                    <div class="half-page">
+                        <h1>Saved Clubs</h1>
+                    </div>
+                    <div class="half-page">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TECHNOLOGY CATEGORY PAGE -->
+        <div id="technology-page">
+            <div class="page-content-container">
+                <div class="page-content">
+                    <div class="half-page">
+                        <h1>Technology</h1>
+                        <div class="button club-button technology">
                             <img src="images/placeholder-icon.jpg">
                             <div class="club-card-info">
                                 <p class="club-name">Technology Club 1</p>
@@ -78,118 +108,150 @@
                                 <p class="club-rating">4/5 Rating</p>
                             </div>
                         </div>
-                        <div class="button club-button">
+                        <div class="button club-button technology">
                             <p class="club-name">Technology Club 2</p>
                         </div>
-                        <div class="button club-button">
+                        <div class="button club-button technology">
                             <p class="club-name">Technology Club 3</p>
                         </div>
-                        <div class="button club-button">
-                            <p class="club-name">Technology Club 4</p>
-                        </div>
-                        <div class="button club-button">
-                            <p class="club-name">Hobbies Club 1</p>
-                        </div>
                     </div>
                     <div class="half-page">
-                        <div class="button club-button">
-                            <p class="club-name">Hobbies Club 2</p>
-                        </div>
-                        <div class="button club-button">
-                            <p class="club-name">Cultural Club 1</p>
-                        </div>
-                        <div class="button club-button">
-                            <p class="club-name">Cultural Club 2</p>
-                        </div>
-                        <div class="button club-button">
-                            <p class="club-name">Cultural Club 3</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div>
-            <div class="page-content-container">
-                <div class="page-content">
-                    <div class="half-page">
-                        <h1>Saved Clubs</h1>
-                    </div>
-                    <div class="half-page">
-                        <p>saved clubs content</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div>
-            <div class="page-content-container">
-                <div class="page-content">
-                    <div class="half-page">
-                        <h1>Technology</h1>
-                        <div class="button club-button">
-                            <p class="club-name">Technology Club 1</p>
-                        </div>
-                        <div class="button club-button">
-                            <p class="club-name">Technology Club 2</p>
-                        </div>
-                        <div class="button club-button">
-                            <p class="club-name">Technology Club 3</p>
-                        </div>
-                        <div class="button club-button">
+                        <div class="button club-button technology">
                             <p class="club-name">Technology Club 4</p>
                         </div>
                     </div>
-                    <div class="half-page">
-                        <p>technology content</p>
-                    </div>
                 </div>
             </div>
         </div>
 
-        <div>
+        <!-- HOBBIES CATEGORY PAGE -->
+        <div id="hobbies-page">
             <div class="page-content-container">
                 <div class="page-content">
                     <div class="half-page">
                         <h1>Hobbies</h1>
-                        <div class="button club-button">
+                        <div class="button club-button hobbies">
                             <p class="club-name">Hobbies Club 1</p>
                         </div>
-                        <div class="button club-button">
+                        <div class="button club-button hobbies">
                             <p class="club-name">Hobbies Club 2</p>
+                        </div>
+                        <div class="button club-button hobbies">
+                            <p class="club-name">Hobbies Club 3</p>
                         </div>
                     </div>
                     <div class="half-page">
-                        <p>hobbies content</p>
+                        <div class="button club-button hobbies">
+                            <p class="club-name">Hobbies Club 4</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div>
+        <!-- CULTURAL CATEGORY PAGE -->
+        <div id="cultural-page">
             <div class="page-content-container">
                 <div class="page-content">
                     <div class="half-page">
-                        <h1>Culture</h1>
-                        <div class="button club-button">
+                        <h1>Cultural</h1>
+                        <div class="button club-button cultural">
                             <p class="club-name">Cultural Club 1</p>
                         </div>
-                        <div class="button club-button">
+                        <div class="button club-button cultural">
                             <p class="club-name">Cultural Club 2</p>
                         </div>
-                        <div class="button club-button">
+                        <div class="button club-button cultural">
                             <p class="club-name">Cultural Club 3</p>
                         </div>
                     </div>
                     <div class="half-page">
-                        <p>culture content</p>
+                        <div class="button club-button cultural">
+                            <p class="club-name">Cultural Club 4</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div>
-            <div id="search-page" class="page-content-container">
+        <!-- CATEGORY-4 CATEGORY PAGE -->
+        <div id="category-4-page">
+            <div class="page-content-container">
+                <div class="page-content">
+                    <div class="half-page">
+                        <h1>Category-4</h1>
+                        <div class="button club-button category-4">
+                            <p class="club-name">Category-4 Club 1</p>
+                        </div>
+                        <div class="button club-button category-4">
+                            <p class="club-name">Category-4 Club 2</p>
+                        </div>
+                        <div class="button club-button category-4">
+                            <p class="club-name">Category-4 Club 3</p>
+                        </div>
+                    </div>
+                    <div class="half-page">
+                        <div class="button club-button category-4">
+                            <p class="club-name">Category-4 Club 4</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CATEGORY-5 CATEGORY PAGE -->
+        <div id="category-5-page">
+            <div class="page-content-container">
+                <div class="page-content">
+                    <div class="half-page">
+                        <h1>Category-5</h1>
+                        <div class="button club-button category-5">
+                            <p class="club-name">Category-5 Club 1</p>
+                        </div>
+                        <div class="button club-button category-5">
+                            <p class="club-name">Category-5 Club 2</p>
+                        </div>
+                        <div class="button club-button category-5">
+                            <p class="club-name">Category-5 Club 3</p>
+                        </div>
+                    </div>
+                    <div class="half-page">
+                        <div class="button club-button category-5">
+                            <p class="club-name">Category-5 Club 4</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CATEGORY-6 CATEGORY PAGE -->
+        <div id="category-6-page">
+            <div class="page-content-container">
+                <div class="page-content">
+                    <div class="half-page">
+                        <h1>Category-6</h1>
+                        <div class="button club-button category-6">
+                            <p class="club-name">Category-6 Club 1</p>
+                        </div>
+                        <div class="button club-button category-6">
+                            <p class="club-name">Category-6 Club 2</p>
+                        </div>
+                        <div class="button club-button category-6">
+                            <p class="club-name">Category-6 Club 3</p>
+                        </div>
+                    </div>
+                    <div class="half-page">
+                        <div class="button club-button category-6">
+                            <p class="club-name">Category-6 Club 4</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEARC PAGE -->
+        <div id="search-page" >
+            <div class="page-content-container">
                 <div class="page-content">
                     <div id="search-prompt-page" class="half-page">
                         <h1>Search</h1>
@@ -277,7 +339,6 @@
                     </div>
                     <div class="half-page">
                         <div id="search-results" hidden>
-                            <p>search content</p>
                         </div>
                     </div>
                 </div>
@@ -289,121 +350,526 @@
     <!-- End Menu Pages-->
 
 
-    <!-- Club pages, these will be added in dynamically -->
-    <!-- Order these in alphabetical "club-name" order so that TOC is easier to implement-->
-    <div id="club-pages" hidden>
-        <!-- Begin pages -->
-        <div class="technology">
-            <div class="page-content-container">
-                <div class="page-content">
-                    <div class="half-page">
-                        <h1 class="club-name">Technology Club 1</h1>
-                    </div>
-                    <div class="half-page">
-                        <p>Technology club 1 content</p>
+       <div id="club-page-list" style="display:none;">
+            <div class="technology club-page">
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1 class="club-name">Technology Club 1</h1>
+                            <div class="button save-button">Save Club</div>
+                        </div>
+                        <div class="half-page">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="technology">
-            <div class="page-content-container">
-                <div class="page-content">
-                    <div class="half-page">
-                        <h1 class="club-name">Technology Club 2</h1>
-                    </div>
-                    <div class="half-page">
-                        <p>Technology club 2 content</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="technology">
-            <div class="page-content-container">
-                <div class="page-content">
-                    <div class="half-page">
-                        <h1 class="club-name">Technology Club 3</h1>
-                    </div>
-                    <div class="half-page">
-                        <p>Technology club 3 content</p>
+
+            <div class="technology club-page">
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1 class="club-name">Technology Club 2</h1>
+                            <div class="button save-button">Save Club</div>
+                        </div>
+                        <div class="half-page">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="technology">
-            <div class="page-content-container">
-                <div class="page-content">
-                    <div class="half-page">
-                        <h1 class="club-name">Technology Club 4</h1>
-                    </div>
-                    <div class="half-page">
-                        <p>Technology club 4 content</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="cultural">
-            <div class="page-content-container">
-                <div class="page-content">
-                    <div class="half-page">
-                        <h1 class="club-name">Cultural Club 1</h1>
-                    </div>
-                    <div class="half-page">
-                        <p>Cultural club 1 content</p>
+
+            <div class="technology club-page">
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1 class="club-name">Technology Club 3</h1>
+                            <div class="button save-button">Save Club</div>
+                        </div>
+                        <div class="half-page">
+                            <p>Technology club 3 content</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="cultural">
-            <div class="page-content-container">
-                <div class="page-content">
-                    <div class="half-page">
-                        <h1 class="club-name">Cultural Club 2</h1>
-                    </div>
-                    <div class="half-page">
-                        <p>Cultural club 2 content</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="cultural">
-            <div class="page-content-container">
-                <div class="page-content">
-                    <div class="half-page">
-                        <h1 class="club-name">Cultural Club 3</h1>
-                    </div>
-                    <div class="half-page">
-                        <p>Cultural club 3 content</p>
+
+            <div class="technology club-page">
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1 class="club-name">Technology Club 4</h1>
+                            <div class="button save-button">Save Club</div>
+                        </div>
+                        <div class="half-page">
+                            <p>Technology club 4 content</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="hobbies">
-            <div class="page-content-container">
-                <div class="page-content">
-                    <div class="half-page">
-                        <h1 class="club-name">Hobbies Club 1</h1>
-                    </div>
-                    <div class="half-page">
-                        <p>Hobbies club 1 content</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="hobbies">
-            <div class="page-content-container">
-                <div class="page-content">
-                    <div class="half-page">
-                        <h1 class="club-name">Hobbies Club 2</h1>
-                    </div>
-                    <div class="half-page">
-                        <p>Hobbies club 2 content</p>
+
+            <div class="technology club-page">
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1 class="club-name">Technology Club 5</h1>
+                            <div class="button save-button">Save Club</div>
+                        </div>
+                        <div class="half-page">
+                            <p>Technology club 4 content</p>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <div class="cultural club-page">
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1 class="club-name">Cultural Club 1</h1>
+                            <div class="button save-button">Save Club</div>
+                        </div>
+                        <div class="half-page">
+                            <p>Cultural club 1 content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cultural club-page">
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1 class="club-name">Cultural Club 2</h1>
+                            <div class="button save-button">Save Club</div>
+                        </div>
+                        <div class="half-page">
+                            <p>Cultural club 2 content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cultural club-page">
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1 class="club-name">Cultural Club 3</h1>
+                            <div class="button save-button">Save Club</div>
+                        </div>
+                        <div class="half-page">
+                            <p>Cultural club 3 content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cultural club-page">
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1 class="club-name">Cultural Club 4</h1>
+                            <div class="button save-button">Save Club</div>
+                        </div>
+                        <div class="half-page">
+                            <p>Cultural club 4 content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cultural club-page">
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1 class="club-name">Cultural Club 5</h1>
+                            <div class="button save-button">Save Club</div>
+                        </div>
+                        <div class="half-page">
+                            <p>Cultural club 5 content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hobbies club-page">
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1 class="club-name">Hobbies Club 1</h1>
+                            <div class="button save-button">Save Club</div>
+                        </div>
+                        <div class="half-page">
+                            <p>Hobbies club 1 content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hobbies club-page">
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1 class="club-name">Hobbies Club 2</h1>
+                            <div class="button save-button">Save Club</div>
+                        </div>
+                        <div class="half-page">
+                            <p>Hobbies club 2 content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hobbies club-page">
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1 class="club-name">Hobbies Club 3</h1>
+                            <div class="button save-button">Save Club</div>
+                        </div>
+                        <div class="half-page">
+                            <p>Hobbies club 3 content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hobbies club-page">
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1 class="club-name">Hobbies Club 4</h1>
+                            <div class="button save-button">Save Club</div>
+                        </div>
+                        <div class="half-page">
+                            <p>Hobbies club 4 content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hobbies club-page">
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1 class="club-name">Hobbies Club 5</h1>
+                            <div class="button save-button">Save Club</div>
+                        </div>
+                        <div class="half-page">
+                            <p>Hobbies club 5 content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-4 club-page">
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1 class="club-name">Category-4 Club 1</h1>
+                            <div class="button save-button">Save Club</div>
+                        </div>
+                        <div class="half-page">
+                            <p>Category-4 club 1 content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-4 club-page">
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1 class="club-name">Category-4 Club 2</h1>
+                            <div class="button save-button">Save Club</div>
+                        </div>
+                        <div class="half-page">
+                            <p>Category-4 club 2 content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-4 club-page">
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1 class="club-name">Category-4 Club 3</h1>
+                            <div class="button save-button">Save Club</div>
+                        </div>
+                        <div class="half-page">
+                            <p>Category-4 club 3 content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-4 club-page">
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1 class="club-name">Category-4 Club 4</h1>
+                            <div class="button save-button">Save Club</div>
+                        </div>
+                        <div class="half-page">
+                            <p>Category-4 club 4 content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-4 club-page">
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1 class="club-name">Category-4 Club 5</h1>
+                            <div class="button save-button">Save Club</div>
+                        </div>
+                        <div class="half-page">
+                            <p>Category-4 content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+           <div class="category-5 club-page">
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1 class="club-name">Category-5 Club 1</h1>
+                            <div class="button save-button">Save Club</div>
+                        </div>
+                        <div class="half-page">
+                            <p>Category-5 club 1 content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-5 club-page">
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1 class="club-name">Category-5 Club 2</h1>
+                            <div class="button save-button">Save Club</div>
+                        </div>
+                        <div class="half-page">
+                            <p>Category-5 club 2 content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-5 club-page">
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1 class="club-name">Category-5 Club 3</h1>
+                            <div class="button save-button">Save Club</div>
+                        </div>
+                        <div class="half-page">
+                            <p>Category-5 club 3 content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-5 club-page">
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1 class="club-name">Category-5 Club 4</h1>
+                            <div class="button save-button">Save Club</div>
+                        </div>
+                        <div class="half-page">
+                            <p>Category-5 club 4 content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-5 club-page">
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1 class="club-name">Category-5 Club 5</h1>
+                            <div class="button save-button">Save Club</div>
+                        </div>
+                        <div class="half-page">
+                            <p>Category-5 content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+           <div class="category-6 club-page">
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1 class="club-name">Category-6 Club 1</h1>
+                            <div class="button save-button">Save Club</div>
+                        </div>
+                        <div class="half-page">
+                            <p>Category-6 club 1 content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-6 club-page">
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1 class="club-name">Category-6 Club 2</h1>
+                            <div class="button save-button">Save Club</div>
+                        </div>
+                        <div class="half-page">
+                            <p>Category-6 club 2 content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-6 club-page">
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1 class="club-name">Category-6 Club 3</h1>
+                            <div class="button save-button">Save Club</div>
+                        </div>
+                        <div class="half-page">
+                            <p>Category-6 club 3 content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-6 club-page">
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1 class="club-name">Category-6 Club 4</h1>
+                            <div class="button save-button">Save Club</div>
+                        </div>
+                        <div class="half-page">
+                            <p>Category-6 club 4 content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-6 club-page">
+                <div class="page-content-container">
+                    <div class="page-content">
+                        <div class="half-page">
+                            <h1 class="club-name">Category-6 Club 5</h1>
+                            <div class="button save-button">Save Club</div>
+                        </div>
+                        <div class="half-page">
+                            <p>Category-6 content</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End pages -->
         </div>
-        <!-- End pages -->
-    </div>
-    <!-- End Club Pages -->
+
+        <!-- Club stickers for adding to saved clubs and search -->
+        <div id="club-stickers-list" style="display:none;">
+            <!-- Order these in alphabetical "club-name" order so that TOC is easier to implement -->
+            <div class="button club-button technology">
+                <img src="images/placeholder-icon.jpg">
+                <div class="club-card-info">
+                    <p class="club-name">Technology Club 1</p>
+                    <p class="club-description">Insert all club description here</p>
+                    <p class="club-rating">4/5 Rating</p>
+                </div>
+            </div>
+            <div class="button club-button technology">
+                <p class="club-name">Technology Club 2</p>
+            </div>
+            <div class="button club-button technology">
+                <p class="club-name">Technology Club 3</p>
+            </div>
+            <div class="button club-button technology">
+                <p class="club-name">Technology Club 4</p>
+            </div>
+            <div class="button club-button technology">
+                <p class="club-name">Technology Club 5</p>
+            </div>
+            <div class="button club-button hobbies">
+                <p class="club-name">Hobbies Club 1</p>
+            </div>
+            <div class="button club-button hobbies">
+                <p class="club-name">Hobbies Club 2</p>
+            </div>
+            <div class="button club-button hobbies">
+                <p class="club-name">Hobbies Club 3</p>
+            </div>
+            <div class="button club-button hobbies">
+                <p class="club-name">Hobbies Club 4</p>
+            </div>
+            <div class="button club-button hobbies">
+                <p class="club-name">Hobbies Club 5</p>
+            </div>
+            <div class="button club-button cultural">
+                <p class="club-name">Cultural Club 1</p>
+            </div>
+            <div class="button club-button cultural">
+                <p class="club-name">Cultural Club 2</p>
+            </div>
+            <div class="button club-button cultural">
+                <p class="club-name">Cultural Club 3</p>
+            </div>
+            <div class="button club-button cultural">
+                <p class="club-name">Cultural Club 4</p>
+            </div>
+            <div class="button club-button cultural">
+                <p class="club-name">Cultural Club 5</p>
+            </div>
+            <div class="button club-button category-4">
+                <p class="club-name">Category-4 Club 1</p>
+            </div>
+            <div class="button club-button category-4">
+                <p class="club-name">Category-4 Club 2</p>
+            </div>
+            <div class="button club-button category-4">
+                <p class="club-name">Category-4 Club 3</p>
+            </div>
+            <div class="button club-button category-4">
+                <p class="club-name">Category-4 Club 4</p>
+            </div>
+            <div class="button club-button category-4">
+                <p class="club-name">Category-4 Club 5</p>
+            </div>
+            <div class="button club-button category-5">
+                <p class="club-name">Category-5 Club 1</p>
+            </div>
+            <div class="button club-button category-5">
+                <p class="club-name">Category-5 Club 2</p>
+            </div>
+            <div class="button club-button category-5">
+                <p class="club-name">Category-5 Club 3</p>
+            </div>
+            <div class="button club-button category-5">
+                <p class="club-name">Category-5 Club 4</p>
+            </div>
+            <div class="button club-button category-5">
+                <p class="club-name">Category-5 Club 5</p>
+            </div>
+            <div class="button club-button category-6">
+                <p class="club-name">Category-6 Club 1</p>
+            </div>
+            <div class="button club-button category-6">
+                <p class="club-name">Category-6 Club 2</p>
+            </div>
+            <div class="button club-button category-6">
+                <p class="club-name">Category-6 Club 3</p>
+            </div>
+            <div class="button club-button category-6">
+                <p class="club-name">Category-6 Club 4</p>
+            </div>
+            <div class="button club-button category-6">
+                <p class="club-name">Category-6 Club 5</p>
+            </div>
+        </div>
 
 </body>
 

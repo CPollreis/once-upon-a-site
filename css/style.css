@@ -204,7 +204,11 @@ div.half-page:nth-child(2) {
     margin: 15px 0px 0px 0px;
 }
 
-.saved-clubs {
+.tab * {
+    pointer-events: none;
+}
+
+.tab.saved-clubs {
     background-color: var(--red);
     margin-top: -50px;
     height: 200%;
@@ -213,22 +217,22 @@ div.half-page:nth-child(2) {
     transition: margin-top 0.2s cubic-bezier(1, 1, 0.5, 1.3333);
 }
 
-.saved-clubs:hover {
+.tab.saved-clubs:hover {
     margin-top: -60px;
     transition: margin-top 0.2s cubic-bezier(1, 1, 0.5, 1.3333);
 }
 
-.saved-clubs#active {
+.tab.saved-clubs#active {
     margin-top: -70px;
     transition: margin-top 0.2s cubic-bezier(1, 1, 0.5, 1.3333);
 }
 
-.saved-clubs#active:hover {
+.tab.saved-clubs#active:hover {
     margin-top: -75px;
     transition: margin-top 0.2s cubic-bezier(1, 1, 0.5, 1.3333);
 }
 
-.side-tab {
+.tab.side-tab {
     background-color: var(--gray);
     display: flex;
     justify-content: center;
@@ -243,34 +247,34 @@ div.half-page:nth-child(2) {
     filter: brightness(75%);
 }
 
-.side-tab:hover {
+.tab.side-tab:hover {
     margin-left: -40px;
     transition: margin-left 0.2s cubic-bezier(1, 1, 0.5, 1.3333);
 }
 
-.side-tab#active {
+.tab.side-tab#active {
     margin-left: -45px;
     transition: margin-left 0.2s cubic-bezier(1, 1, 0.5, 1.3333);
     filter: brightness(100%);
 }
 
-.side-tab#active:hover {
+.tab.side-tab#active:hover {
     margin-left: -50px;
     transition: margin-left 0.2s cubic-bezier(1, 1, 0.5, 1.3333);
 }
 
-.search img {
+.tab.search img {
     width: 25px;
     height: 25px;
 }
 
-.home img {
+.tab.home img {
     margin-left: -20px;
     width: 40px;
     height: 40px;
 }
 
-.toc img {
+.tab.toc img {
     margin-left: -20px;
     width: 45px;
     height: 45px;
@@ -287,8 +291,12 @@ div.half-page:nth-child(2) {
     margin-top: 20px;
 }
 
-.club-button:hover {
+.button:hover {
     cursor: pointer;
+}
+
+.club-button * {
+    pointer-events: none;
 }
 
 .club-button img {
@@ -303,28 +311,41 @@ div.half-page:nth-child(2) {
     pointer-events: none;
 }
 
-.technology {
+.tab.technology {
     background-color: var(--red);
 }
 
-.hobbies {
+.tab.hobbies {
     background-color: var(--blue);
 }
 
-.cultural {
+.tab.cultural {
     background-color: var(--green);
 }
 
-.category-4 {
+.tab.category-4 {
     background-color: var(--yellow);
 }
 
-.category-5 {
+.tab.category-5 {
     background-color: var(--pink);
 }
 
-.category-6 {
+.tab.category-6 {
     background-color: var(--indigo);
+}
+
+.save-button {
+    border-radius: 5px;
+    border: 2px solid black;
+    padding: 10px 30px 10px 30px;
+    margin-top: 20px;
+    display: inline-block;
+}
+.save-button:hover {
+    padding: 9px 29px 9px 29px;
+    border: 3px solid black;
+    cursor: pointer;
 }
 
 /* Filter sections */
