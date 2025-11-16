@@ -1,9 +1,10 @@
 :root {
     --background-color: #D6DBDF;
     --book-frame-color: #222;
-    --page-color: #FFF;
+    --page-color: #F5F5F5;
     --spine-color: #889097;
-    --red: #eb7368;
+    --shadow: #777;
+    --red: #EB7368;
     --orange: #FAD7A0;
     --yellow: #F9E79F;
     --green: #A9DFBF;
@@ -96,7 +97,7 @@ div#book-frame {
     flex: 1 0 50%;
     box-sizing: border-box;
     height: 100%;
-    padding: 50px;
+    padding: 25px;
 }
 
 div.half-page:nth-child(1) {
@@ -105,6 +106,27 @@ div.half-page:nth-child(1) {
 
 div.half-page:nth-child(2) {
     border-left: 2px solid var(--spine-color);
+}
+
+.banner {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    width: 100%;
+    height: 100px;   
+    background-image: url("../images/banner-test.png");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
+}
+
+.page-banner-title {
+    color: white;
+    font-family: tab-font;
+    font-size: 60px;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 #top-tab-container {
@@ -249,33 +271,40 @@ div.half-page:nth-child(2) {
 }
 
 .toc img {
-        margin-left: -20px;
+    margin-left: -20px;
     width: 45px;
     height: 45px;
 }
 
 .club-button {
-    border-radius: 5px;
-    border: 2px solid black;
-    padding: 10px 5px 10px 5px;
-    width: 200px;
+    background-color: var(--brown);
+    display: flex;
+    gap: 15px;
+    border-radius: 10px;
+    padding: 10px;
+    height: 75px;
+    box-shadow: 1px 2px 1px -1px rgba(0, 0, 0, 1), inset 0 -5px 15px -5px rgba(0, 0, 0, 1);
     margin-top: 20px;
 }
 
 .club-button:hover {
-    padding: 9px 5px 9px 5px;
-    border: 3px solid black;
     cursor: pointer;
 }
 
-.club-button p {
-    padding: 0px;
-    margin: 0px;
+.club-button img {
+    border-radius: 15px;
+    width: 75px;
+    height: 75px;
+    pointer-events: none;
+    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 1);
+}
+
+.club-card-info {
     pointer-events: none;
 }
 
 .technology {
-    background-color: var(--brown);
+    background-color: var(--red);
 }
 
 .hobbies {
@@ -295,7 +324,7 @@ div.half-page:nth-child(2) {
 }
 
 .category-6 {
-    background-color: var(--violet);
+    background-color: var(--indigo);
 }
 
 /* Filter sections */
