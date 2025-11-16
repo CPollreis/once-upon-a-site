@@ -96,6 +96,15 @@ function activateListeners() {
     document.addEventListener( "click", clickEvent );
     // Listener on page turning event.
     $('#book-frame').on('turned', turnEvent);
+
+    // Update the turn.js divs when the window size changes.
+    addEventListener("resize", () => { 
+        var container = document.getElementsByClassName("book-container")[0];
+        var style = getComputedStyle(container);
+        var width = container.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
+        var height = container.clientHeight - parseFloat(style.paddingTop) - parseFloat(style.paddingBottom);
+        $('#book-frame').turn('size', width, height);
+    })
 }
 
 // turnEvent()
