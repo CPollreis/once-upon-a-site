@@ -521,3 +521,12 @@ div.half-page:nth-child(2) {
     margin-left: 6px;
     cursor: pointer;
 }
+
+.filter-content .view-all-button {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+    width: calc(100% - 10px);
+    cursor: pointer;
+}
