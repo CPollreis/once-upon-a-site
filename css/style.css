@@ -204,6 +204,10 @@ div.half-page:nth-child(2) {
     margin: 15px 0px 0px 0px;
 }
 
+.tab {
+    user-select: none;
+}
+
 .tab * {
     pointer-events: none;
 }
