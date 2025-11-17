@@ -416,25 +416,7 @@ div.half-page:nth-child(2) {
 }
 
 .filter-box.active .filter-content {
-    max-height: 220px;
-}
-
-.filter-content #view-all-btn {
-    position: absolute;
-    bottom: 5px;
-    left: 5px;
-    right: 5px;
-
-    width: calc(100% - 10px);
-    display: block;
-
-    background: #EDEBDA;
-    border: 1px solid #CBBE9A;
-    border-radius: 4px;
-
-    padding: 4px 0;
-    text-align: center;
-    cursor: pointer;
+    max-height: 240px;
 }
 
 .search-bar {
