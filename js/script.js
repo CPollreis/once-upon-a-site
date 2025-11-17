@@ -123,7 +123,7 @@ function turnEvent() {
         else {
             activateTab(PAGE_MAPPING[ PAGE_MAPPING.length - 1 ]);
         }
-        if (PAGE_MAPPING[ PAGE_MAPPING.length - 1 ] === "search") {
+        if (PAGE_MAPPING[ pages[0] ] === "search") {
             initFilters();
         }
     }
