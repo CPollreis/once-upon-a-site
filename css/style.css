@@ -349,16 +349,15 @@ div.half-page:nth-child(2) {
 }
 
 /* Filter sections */
-#filter-section {
-    margin-top: 20px;
-    padding: 10px;
+.filter-section {
     background: #f6f6f6;
     border-radius: 10px;
 }
 
-#filters-container {
+.filters-container {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 12px;
     min-height: 100px;
 }
@@ -420,7 +419,7 @@ div.half-page:nth-child(2) {
     max-height: 220px;
 }
 
-.filter-content .view-all-btn {
+.filter-content #view-all-btn {
     position: absolute;
     bottom: 5px;
     left: 5px;
@@ -438,9 +437,39 @@ div.half-page:nth-child(2) {
     cursor: pointer;
 }
 
+.search-bar {
+    width: 65%;
+    padding: 9px 3px 9px 15px;
+    border-radius: 15px;
+    border: 2px solid #42424d;
+    font-family: verdana;
+    outline: none!important;
+}
+.search-bar:focus, .search-bar:hover {
+    border: 2px solid black;
+}
+
+.search-button {
+    width: 25%;
+    font-family: verdana;
+    text-align: center;
+    font-weight: bold;
+    padding: 9px 0px;
+    border-radius: 15px;
+    border: 2px solid #42424d;
+    background-color: var(--red);
+    filter: brightness(75%);
+}
+.search-button:hover {
+    border: 2px solid black;
+    filter: brightness(100%);
+    cursor: pointer;
+    transition: filter 0.2s;
+}
 
 /* Individual draggable choices */
 .draggable-choice {
+    height:20px;
     margin: 3px 0;
     background: #f0f0f0;
     border-radius: 5px;
@@ -454,8 +483,9 @@ div.half-page:nth-child(2) {
 }
 
 /* Selected placeholder */
-#selected-placeholder {
+.selected-placeholder {
     margin-top: 20px;
+    margin-bottom: 20px;
     border: 2px dashed #bbb;
     border-radius: 8px;
     padding: 10px;
@@ -463,12 +493,12 @@ div.half-page:nth-child(2) {
     min-height: 80px;
 }
 
-#selected-placeholder.dragover {
+.selected-placeholder.dragover {
     background: #e8f5ff;
     border-color: #3399ff;
 }
 
-#selected-container {
+.selected-container {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;

@@ -22,7 +22,7 @@ var savedCLubsList = [];
 window.addEventListener('load', function () {
     console.log("The webpage has loaded, start initialization.")
     
-    $("#book-frame").turn({when: {turn: turnEvent}, display: "single",}); // Initialize turn.js
+    $("#book-frame").turn({ display: "single",}); // Initialize turn.js
     
     initMenuPages(); // Add the menu pages
     bookState = MENU_STATE;
@@ -122,6 +122,9 @@ function turnEvent() {
         }
         else {
             activateTab(PAGE_MAPPING[ PAGE_MAPPING.length - 1 ]);
+        }
+        if (PAGE_MAPPING[ PAGE_MAPPING.length - 1 ] === "search") {
+            initFilters();
         }
     }
 }
@@ -281,6 +284,135 @@ function clubButtonClick(event) {
         if (clubPageList[i].getElementsByClassName("club-name")[0].textContent === clubName) {
             $("#book-frame").turn("page", i+1);
             break;
+        }
+    }
+}
+
+
+/******* FILTER FUNCTIONS *******/
+var draggingBox;
+var choices;
+var placeholder;
+var selectedContainer;
+var filtersContainer;
+
+function initFilters() {
+    draggingBox = null;
+    choices = document.getElementsByClassName("book-container")[0].getElementsByClassName('draggable-choice');
+    placeholder = document.getElementsByClassName("book-container")[0].getElementsByClassName('selected-placeholder')[0];
+    selectedContainer = document.getElementsByClassName("book-container")[0].getElementsByClassName('selected-container')[0];
+    filtersContainer = document.getElementsByClassName("book-container")[0].getElementsByClassName('filters-container')[0];
+
+    document.querySelectorAll('.filter-header').forEach(header => {
+        header.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const box = header.parentElement;
+            var notActive = !box.classList.contains("active");
+            for (filterBox of document.getElementsByClassName("book-container")[0].getElementsByClassName("filter-box")) {
+                if (filterBox.classList.contains("active")) {
+                    filterBox.classList.toggle('active');
+                }
+            }
+            if (notActive)  {
+                box.classList.toggle('active');
+            }
+        });
+    });
+
+    filtersContainer.addEventListener('dragstart', e => {
+        if (e.target.classList.contains('filter-box')) {
+            draggingBox = e.target;
+            e.target.classList.add('dragging');
+        }
+    });
+
+    filtersContainer.addEventListener('dragend', e => {
+        e.target.classList.remove('dragging');
+        draggingBox = null;
+    });
+
+    filtersContainer.addEventListener('dragover', e => {
+        e.preventDefault();
+        const after = getDragAfter(filtersContainer, e.clientY);
+        if (after == null) 
+            filtersContainer.appendChild(draggingBox);
+        else 
+            filtersContainer.insertBefore(draggingBox, after);
+    });
+
+    for (choice of choices) {
+        choice.addEventListener('dragstart', e => {
+            e.dataTransfer.setData('text/plain', e.target.textContent);
+            e.target.classList.add('being-dragged');
+        });
+        choice.addEventListener('dragend', e => e.target.classList.remove('being-dragged'));
+    };
+
+    placeholder.addEventListener('dragover', e => {
+        e.preventDefault();
+        placeholder.classList.add('dragover');
+    });
+
+    placeholder.addEventListener('dragleave', () => placeholder.classList.remove('dragover'));
+
+    placeholder.addEventListener('drop', e => {
+        e.preventDefault();
+        placeholder.classList.remove('dragover');
+        const text = e.dataTransfer.getData('text/plain');
+        if (text) {
+            const draggedChoice = document.querySelector('.draggable-choice.being-dragged');
+            if (draggedChoice) {
+                const filterName = draggedChoice.dataset.filter;
+                addSelectedTag(text, filterName);
+                draggedChoice.classList.add('removed');
+                setTimeout(() => draggedChoice.remove(), 150);
+            }
+        }
+    });
+
+    function getDragAfter(container, y) {
+        const boxes = [...container.querySelectorAll('.filter-box:not(.dragging)')];
+        return boxes.reduce((closest, child) => {
+            const box = child.getBoundingClientRect();
+            const offset = y - box.top - box.height / 2;
+            return (offset < 0 && offset > closest.offset) ? { offset, element: child } : closest;
+        }, { 
+            offset: Number.NEGATIVE_INFINITY 
+        }).element;
+    }
+
+   // Add tag to selected section
+    function addSelectedTag(text, filterName) {
+        const existing = [...selectedContainer.children].some(tag => tag.textContent.startsWith(text));
+        if (!existing) {
+            const tag = document.createElement('div');
+            tag.className = 'selected-tag';
+            tag.dataset.choice = text;
+            tag.dataset.filter = filterName;
+            tag.textContent = text;
+            tag.addEventListener('click', () => {
+                restoreChoice(tag.dataset.choice, tag.dataset.filter);
+                tag.remove();
+            });
+            selectedContainer.appendChild(tag);
+        }    
+    }
+
+    function restoreChoice(text, filterName) {
+        const parentBox = [...document.querySelectorAll('.filter-box')].find(box => box.querySelector('.filter-header').textContent.trim() === filterName);
+        if (parentBox) {
+            const content = parentBox.querySelector('.filter-content');
+            const el = document.createElement('div');
+            el.className = 'draggable-choice';
+            el.draggable = true;
+            el.dataset.filter = filterName;
+            el.textContent = text;
+            el.addEventListener('dragstart', e => {
+                e.dataTransfer.setData('text/plain', e.target.textContent);
+                e.target.classList.add('being-dragged');
+            });
+            el.addEventListener('dragend', e => e.target.classList.remove('being-dragged'));
+            content.appendChild(el);
         }
     }
 }
