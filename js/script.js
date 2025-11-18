@@ -2,7 +2,7 @@
 const MENU_STATE = 0;
 const CLUB_PAGE_STATE = 1;
 // Menu page locations. Change these to point to the first page of each section.
-const PAGE_MAPPING = ["home", "toc", "saved-clubs", "technology", "hobbies", "cultural", "category-4", "category-5", "category-6", "search"];
+const PAGE_MAPPING = ["home", "toc", "saved-clubs", "technology", "hobbies", "cultural", "academic", "creativity", "sports", "search"];
 const HOME_START = 1;
 const TOC_START = 2;
 const SAVED_CLUBS_START = 3;

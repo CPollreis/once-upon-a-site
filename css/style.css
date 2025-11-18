@@ -327,15 +327,15 @@ div.half-page:nth-child(2) {
     background-color: var(--green);
 }
 
-.tab.category-4 {
+.tab.academic {
     background-color: var(--yellow);
 }
 
-.tab.category-5 {
+.tab.creativity {
     background-color: var(--pink);
 }
 
-.tab.category-6 {
+.tab.sports {
     background-color: var(--indigo);
 }
 
