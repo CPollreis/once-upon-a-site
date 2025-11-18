@@ -1,7 +1,7 @@
 :root {
-    --background-color: #D6DBDF;
+    --background-color: #E8EBEE;
     --book-frame-color: #222;
-    --page-color: #F5F5F5;
+    --page-color: #F1F1F1;
     --spine-color: #889097;
     --shadow: #777;
     --red: #EB7368;
@@ -14,12 +14,19 @@
     --violet: #D7BDE2;
     --pink: #F5C6D6;
     --brown: #D7B89C;
+    --light-brown: #F0D4BC;
+    --dark-brown: #3A2F2A;
     --gray: #889097;
 }
 
 @font-face {
-    font-family: tab-font;
+    font-family: my-font;
     src: url(../fonts/helvetica-condensed-bold.otf);
+}
+
+@font-face {
+    font-family: my-font-2;
+    src: url(../fonts/helvetica-condensed-regular.ttf);
 }
 
 html {
@@ -111,19 +118,19 @@ div.half-page:nth-child(2) {
 .banner {
     display: flex;
     align-items: center;
-    justify-content: center; 
+    justify-content: center;
     width: 100%;
-    height: 100px;   
+    height: 100px;
     background-image: url("../images/banner-test.png");
     background-size: cover;
     background-position: center;
     position: relative;
-    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
+    filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.5));
 }
 
 .page-banner-title {
     color: white;
-    font-family: tab-font;
+    font-family: my-font;
     font-size: 60px;
     margin-bottom: 10px;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
@@ -174,7 +181,7 @@ div.half-page:nth-child(2) {
     height: 100%;
     border-top-right-radius: 15px;
     border-top-left-radius: 15px;
-    font-family: tab-font;
+    font-family: my-font;
     font-size: 15px;
     font-weight: 1000;
     padding-top: 15px;
@@ -285,14 +292,23 @@ div.half-page:nth-child(2) {
 }
 
 .club-button {
-    background-color: var(--brown);
+    background: linear-gradient(to right, var(--brown) 35%, var(--brown) 100%);
     display: flex;
+    align-items: flex-start;
     gap: 15px;
     border-radius: 10px;
     padding: 10px;
     height: 75px;
-    box-shadow: 1px 2px 1px -1px rgba(0, 0, 0, 1), inset 0 -5px 15px -5px rgba(0, 0, 0, 1);
+    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 1), inset 0 -5px 15px -5px rgba(0, 0, 0, 0.5);
     margin-top: 20px;
+    font-family: my-font-2;
+    color: var(--dark-brown);
+    transition: background 200ms ease-in-out;
+}
+
+.club-button:hover {
+    background: linear-gradient(to right, var(--brown) 10%, var(--light-brown) 100%);
+    transition: background 200ms ease-in-out;
 }
 
 .button:hover {
@@ -304,15 +320,32 @@ div.half-page:nth-child(2) {
 }
 
 .club-button img {
-    border-radius: 15px;
+    border-radius: 10px;
     width: 75px;
     height: 75px;
     pointer-events: none;
-    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 1);
+    box-shadow: 0 2px 1px -1px #3A2F2A;
+}
+
+.club-name {
+    font-size: 28px;
+}
+
+.club-description {
+    font-size: 14px;
+}
+
+.club-rating {
+    align-self: flex-end;
+    font-size: 26px;
+    margin-top: -5px;
 }
 
 .club-card-info {
     pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .tab.technology {
@@ -416,9 +449,11 @@ div.half-page:nth-child(2) {
     border-radius: 15px;
     border: 2px solid #42424d;
     font-family: verdana;
-    outline: none!important;
+    outline: none !important;
 }
-.search-bar:focus, .search-bar:hover {
+
+.search-bar:focus,
+.search-bar:hover {
     border: 2px solid black;
 }
 
@@ -433,6 +468,7 @@ div.half-page:nth-child(2) {
     background-color: var(--red);
     filter: brightness(75%);
 }
+
 .search-button:hover {
     border: 2px solid black;
     filter: brightness(100%);
@@ -442,7 +478,7 @@ div.half-page:nth-child(2) {
 
 /* Individual draggable choices */
 .draggable-choice {
-    height:20px;
+    height: 20px;
     margin: 3px 0;
     background: #f0f0f0;
     border-radius: 5px;
@@ -512,14 +548,17 @@ div.half-page:nth-child(2) {
     margin-top: 10px;
     border-radius: 15px;
 }
+
 .club-page-tile.grey-tile {
     background-color: #e6e6e6;
     border: none;
 }
+
 .club-page h3 {
     margin: 0px 0px 12px 0px;
     font-family: verdana;
 }
+
 .club-page .half-split {
     display: grid;
     place-content: center;
@@ -533,6 +572,7 @@ div.half-page:nth-child(2) {
     gap: 10px;
     margin-bottom: 20px;
 }
+
 .social-icon {
     width: 55px;
     height: 55px;
@@ -547,13 +587,15 @@ div.half-page:nth-child(2) {
     margin-top: 20px;
     width: 30%;
     margin: 0px auto 10px 30px;
-    text-align:center;
+    text-align: center;
 }
+
 .join-button:hover {
     padding: 9px 29px 9px 29px;
     border: 3px solid black;
     cursor: pointer;
 }
+
 .save-button {
     border-radius: 5px;
     border: 2px solid black;
@@ -561,8 +603,9 @@ div.half-page:nth-child(2) {
     margin-top: 20px;
     width: 30%;
     margin: 0 auto 10px 30px;
-    text-align:center;
+    text-align: center;
 }
+
 .save-button:hover {
     padding: 9px 29px 9px 29px;
     border: 3px solid black;
@@ -636,21 +679,27 @@ div.half-page:nth-child(2) {
     border-radius: 10px;
     background-size: cover;
 }
+
 .photo-cell.image-1 {
     background-image: url("../images/club-image-1.jpg");
 }
+
 .photo-cell.image-2 {
     background-image: url("../images/club-image-2.jpg");
 }
+
 .photo-cell.image-3 {
     background-image: url("../images/club-image-3.jpg");
 }
+
 .photo-cell.image-4 {
     background-image: url("../images/club-image-4.jpg");
 }
+
 .photo-cell.image-5 {
     background-image: url("../images/club-image-5.jpg");
 }
+
 .photo-cell.image-6 {
     background-image: url("../images/club-image-6.jpg");
 }
