@@ -400,7 +400,6 @@ div.half-page:nth-child(2) {
 
 /* Filter sections */
 .filter-section {
-    background: #f6f6f6;
     border-radius: 10px;
 }
 
@@ -466,7 +465,22 @@ div.half-page:nth-child(2) {
 }
 
 .filter-box.active .filter-content {
-    max-height: 240px;
+    max-height: 220px;
+}
+
+.filter-box .view-all-btn {
+    width: 100%;
+    background: #EDEBDA;
+    border: 1px solid #CBBE9A;
+    border-radius: 4px;
+    padding: 4px 0;
+    text-align: center;
+    cursor: pointer;
+    display:none;
+    box-sizing: border-box;
+}
+.filter-box.active .view-all-btn {
+    display: block;
 }
 
 .search-bar {
@@ -475,11 +489,10 @@ div.half-page:nth-child(2) {
     border-radius: 15px;
     border: 2px solid #42424d;
     font-family: verdana;
-    outline: none !important;
+    outline: none!important;
+    margin-top: 20px;
 }
-
-.search-bar:focus,
-.search-bar:hover {
+.search-bar:focus, .search-bar:hover {
     border: 2px solid black;
 }
 
@@ -493,8 +506,9 @@ div.half-page:nth-child(2) {
     border: 2px solid #42424d;
     background-color: var(--red);
     filter: brightness(75%);
+    margin-top: 20px;
+    float:right;
 }
-
 .search-button:hover {
     border: 2px solid black;
     filter: brightness(100%);
@@ -504,7 +518,7 @@ div.half-page:nth-child(2) {
 
 /* Individual draggable choices */
 .draggable-choice {
-    height: 20px;
+    height:20px;
     margin: 3px 0;
     background: #f0f0f0;
     border-radius: 5px;
@@ -519,25 +533,30 @@ div.half-page:nth-child(2) {
 
 /* Selected placeholder */
 .selected-placeholder {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     border: 2px dashed #bbb;
     border-radius: 8px;
-    padding: 10px;
+    padding: 5px;
     background: #fafafa;
-    min-height: 80px;
+    min-height: 60px;
 }
 
 .selected-placeholder.dragover {
     background: #e8f5ff;
     border-color: #3399ff;
 }
+.selected-placeholder h4 {
+  display: none;
+}
+.selected-placeholder:empty h4 {
+  display: block;
+}
 
 .selected-container {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-top: 8px;
 }
 
 /* Selected filter tag */
@@ -554,15 +573,6 @@ div.half-page:nth-child(2) {
     color: #333;
     font-weight: bold;
     margin-left: 6px;
-    cursor: pointer;
-}
-
-.filter-content .view-all-button {
-    position: absolute;
-    bottom: 5px;
-    left: 5px;
-    right: 5px;
-    width: calc(100% - 10px);
     cursor: pointer;
 }
 

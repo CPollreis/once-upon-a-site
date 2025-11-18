@@ -15,7 +15,7 @@ const SEARCH_START = 7;
 /******* GLOBAL STATE VARIABLES *******/
 var activeTab; // Currently active tab, active tab is raised. String of current section ID.
 var bookState; // Equal to MENU_STATE or CLUB_PAGE_STATE
-var savedCLubsList = [];
+var savedClubsList = [];
 
 
 /******* INITIALIZATION *******/
@@ -45,8 +45,13 @@ function initMenuPages() {
     onePageRemaining = removeAllButOnePage();
     var pages = document.getElementById("menu-pages");
     for (const child of pages.children) {
-        $("#book-frame").turn("addPage", child.cloneNode(true));
-        console.log("Adding page: " + $("#book-frame").turn("pages"));
+        var clonedNode = child.cloneNode(true);
+        $("#book-frame").turn("addPage", clonedNode);
+        if (clonedNode.getAttribute("id") === "search-page") {
+            $("#book-frame").turn("page", PAGE_MAPPING.indexOf("search")+1);
+            initFilters();
+            console.log("adding filter listeners");
+        }
     }
     if (onePageRemaining) {
         $("#book-frame").turn("removePage", 1);
@@ -123,9 +128,10 @@ function turnEvent() {
         else {
             activateTab(PAGE_MAPPING[ PAGE_MAPPING.length - 1 ]);
         }
+        /*
         if (PAGE_MAPPING[ pages[0] - 1 ] === "search") {
             initFilters();
-        }
+        }*/
     }
 }
 
@@ -172,6 +178,9 @@ function clickEvent(event) {
     else if (event.target.classList[1] === "save-button") {
         saveButtonClick(event);
     }
+    else if (event.target.classList[1] === "search-button") {
+        searchButtonClick(event);
+    }
 }
 
 // tabClick(id)
@@ -187,14 +196,13 @@ function tabClick(tabName) {
 }
 
 // clubButtonClick(clubName)
-// clubName: String title of the club (e.g. ".devClub", "The French Club")
 // A club button has been clicked.
 function saveButtonClick(event) {
     var sticker;
     var stickerList;
     var page;
-    var clubName = event.target.parentElement.getElementsByClassName("club-name")[0].textContent;
-    var saved = event.target.parentElement.getElementsByClassName("club-name")[0].classList.contains("saved");
+    var clubName = event.target.closest(".half-page").getElementsByClassName("club-name")[0].textContent;
+    var saved = event.target.closest(".half-page").getElementsByClassName("club-name")[0].classList.contains("saved");
     var activeClubPage = event.target.closest(".club-page");
     var saved = activeClubPage.getElementsByClassName("save-button")[0].classList.contains("saved");
     var clubPageTemplate;
@@ -204,7 +212,6 @@ function saveButtonClick(event) {
             break;
         }
     }
-
     if (saved) {
         stickerList = document.getElementById("saved-clubs-page").getElementsByClassName("club-button");
         for (sticker of stickerList) {
@@ -224,39 +231,88 @@ function saveButtonClick(event) {
             console.log(sticker);
             if (sticker.getElementsByClassName("club-name")[0].textContent === clubName) {
                 addClubSticker( document.getElementById("saved-clubs-page"), sticker.cloneNode(true) );
-                activeClubPage.getElementsByClassName("save-button")[0].classList.add("saved");
-                clubPageTemplate.getElementsByClassName("save-button")[0].classList.add("saved");
-                activeClubPage.getElementsByClassName("save-button")[0].textContent = "Saved";
-                clubPageTemplate.getElementsByClassName("save-button")[0].textContent = "Saved";
-                break;
+                if( addClubSticker( document.getElementById("saved-clubs-page").getElementsByClassName("half-page")[0], sticker.cloneNode(true), 3)
+                        || addClubSticker( document.getElementById("saved-clubs-page").getElementsByClassName("half-page")[1], sticker.cloneNode(true), 4)) {
+                    activeClubPage.getElementsByClassName("save-button")[0].classList.add("saved");
+                    clubPageTemplate.getElementsByClassName("save-button")[0].classList.add("saved");
+                    activeClubPage.getElementsByClassName("save-button")[0].textContent = "Saved";
+                    clubPageTemplate.getElementsByClassName("save-button")[0].textContent = "Saved";
+                    break;
+                }
+                else {}
             }
         }
     }
 }
 
+// searchButtonClick(event)
+// 
+function searchButtonClick(event) {
+    var resultsStickersList = [];
+    var sticker;
+    var allPagesList = document.getElementById("club-page-list").getElementsByClassName("club-page");
+    var allStickersList = document.getElementById("club-stickers-list").getElementsByClassName("club-button");
+    var searchButton = event.target;
+    var searchBarContent = searchButton.parentElement.getElementsByClassName("search-bar")[0].value;
+    var resultsPage = searchButton.closest('#search-page').getElementsByClassName("results-page")[0];
+    var searchPageTemplate = document.getElementById("menu-pages");
+    // Remove any prior results
+    if (resultsPage.getElementsByClassName("club-button").length > 0) {
+        resultsPage.textContent = "";
+    }
+    if (searchPageTemplate.getElementsByClassName("results-page")[0].getElementsByClassName("club-button").length > 0) {
+        searchPageTemplate.getElementsByClassName("results-page")[0].textContent = "";
+    }
+    // Find pages that match the results, then find the corresponding sticker
+    for (var page of allPagesList) {
+        pageName = page.getElementsByClassName("club-name")[0].textContent;
+        if (searchBarContent !== "" && pageName.toLowerCase().includes(searchBarContent.toLowerCase())) {
+            for (sticker of allStickersList) {
+                if (sticker.getElementsByClassName("club-name")[0].textContent === pageName) {
+                    resultsStickersList.push(sticker);
+                    console.log(sticker);
+                }
+            }
+        }
+    }
+    // Add sticker to results page (for now limited to 3)
+    for (sticker of resultsStickersList) {
+        addClubSticker(resultsPage, sticker.cloneNode(true), 4);
+        addClubSticker(searchPageTemplate.getElementsByClassName("results-page")[0], sticker.cloneNode(true), 4);
+    }
+    searchPageTemplate.getElementsByClassName("search-bar")[0].value = searchBarContent;
+}
+
 // addClubSticker(page, sticker)
 // page: element of the page that we will add the sticker to
 // sticker: element of the sticker that we will add
+// maxStickers: number of stickers that can be fit onto this page.
 // returns true if a sticker was added successfully
-function addClubSticker(page, sticker) {
+function addClubSticker(page, sticker, maxStickers) {
+    var added = false;
     var numberOfStickers = page.getElementsByClassName("club-button").length;
-    if (numberOfStickers < 4) {
-        page.getElementsByClassName("half-page")[0].appendChild(sticker);
+    if (numberOfStickers < maxStickers) {
+        page.appendChild(sticker);
+        added = true;
     }
-    else if (numberOfStickers < 8) {
-        page.getElementsByClassName("half-page")[1].appendChild(sticker);
-    }
+    return added;
 }
 
 // clubButtonClick(clubName)
-// clubName: String title of the club (e.g. ".devClub", "The French Club")
 // A club button has been clicked.
 function clubButtonClick(event) {
     var clubPageList;
     var clubName = event.target.getElementsByClassName("club-name")[0].textContent
     // The active tab will tell us where the club button was pressed.
     if (activeTab === "search") {
-        // TBD: Generate a list of pages corresponding to the search filters.
+        clubPageList = [];
+        for (sticker of document.getElementById("search-page").getElementsByClassName("club-button")) {
+            for (club of document.getElementById("club-page-list").children) {
+                if (club.getElementsByClassName("club-name")[0].textContent === sticker.getElementsByClassName("club-name")[0].textContent) {
+                    clubPageList.push(club);
+                }
+            }
+        }
     }
     else if (activeTab === "toc") {
         clubPageList = document.getElementById("club-page-list").children;
@@ -275,10 +331,8 @@ function clubButtonClick(event) {
         // Generate a list of clubs corresponding to the current category.
         clubPageList = document.getElementById("club-page-list").getElementsByClassName(activeTab);
     }
-
     // Remove the menu pages and add the list of club pages to the book.
     initClubPages(clubPageList);
-
     // Find the page number of the club that the user selected. Flip to that club page.
     for (i = 0; i < clubPageList.length; i++) {
         if (clubPageList[i].getElementsByClassName("club-name")[0].textContent === clubName) {
