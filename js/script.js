@@ -16,11 +16,15 @@ const SEARCH_START = 7;
 var activeTab; // Currently active tab, active tab is raised. String of current section ID.
 var bookState; // Equal to MENU_STATE or CLUB_PAGE_STATE
 var savedClubsList = [];
+var joinTarget;
 
 
 /******* INITIALIZATION *******/
 window.addEventListener('load', function () {
-    console.log("The webpage has loaded, start initialization.")
+    console.log("The webpage has loaded, start initialization.");
+
+    // Setup the join button followup dialogue box listeners. It should disable all events behind it.
+    joinFollowupInit();
     
     $("#book-frame").turn({ display: "single",}); // Initialize turn.js
     
@@ -36,6 +40,14 @@ window.addEventListener('load', function () {
 
 
 /******* FUNCTIONS *******/
+
+// joinFollowupInit() 
+function joinFollowupInit() {
+    $("#join-followup-background").bind("hover mousedown mousemove mouseup touchstart touchmove touchend", function(event) {
+        event.stopPropagation();
+    });
+
+}
 
 // initMenuPages()
 // Call this to set the book to the menu pages.
@@ -181,6 +193,37 @@ function clickEvent(event) {
     else if (event.target.classList[1] === "search-button") {
         searchButtonClick(event);
     }
+    else if (event.target.classList[1] === "join-button") {
+        joinTarget = event.target.closest(".club-page").getElementsByClassName("club-name")[0].textContent;
+        joinButtonClick();
+    }
+    else if (event.target.classList[1] === "join-cancel") {
+        joinCancelbuttonClick(event);
+
+    }
+    else if (event.target.classList[1] === "join-submit") {
+        joinSubmitbuttonClick(event)
+    }
+}
+
+// joinButtonClick() 
+// The join button on the club page has been clicked
+function joinButtonClick() {
+    document.getElementById("join-followup-background").hidden = false;
+}
+
+// joinCancelbuttonClick(event)
+// The submit button has been pressed on the join club followup dialogue screen.
+function joinCancelbuttonClick(event) {
+    console.log("cancel buttoned");
+    joinTarget = "";
+    document.getElementById("join-followup-background").hidden = true;
+}
+
+// joinSubmitbuttonClick()
+// The submit button has been pressed on the join club followup dialogue screen.
+function joinSubmitbuttonClick(event) {
+    console.log("submit buttoned");
 }
 
 // tabClick(id)
