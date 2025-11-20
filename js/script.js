@@ -24,7 +24,7 @@ window.addEventListener('load', function () {
     console.log("The webpage has loaded, start initialization.");
 
     // Setup the join button followup dialogue box listeners. It should disable all events behind it.
-    joinFollowupInit();
+    overlayBoxInit();
     
     $("#book-frame").turn({ display: "single",}); // Initialize turn.js
     
@@ -42,11 +42,13 @@ window.addEventListener('load', function () {
 /******* FUNCTIONS *******/
 
 // joinFollowupInit() 
-function joinFollowupInit() {
+function overlayBoxInit() {
     $("#join-followup-background").bind("hover mousedown mousemove mouseup touchstart touchmove touchend", function(event) {
         event.stopPropagation();
     });
-
+    $("#leave-followup-background").bind("hover mousedown mousemove mouseup touchstart touchmove touchend", function(event) {
+        event.stopPropagation();
+    });
 }
 
 // initMenuPages()
