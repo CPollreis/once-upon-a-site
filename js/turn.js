@@ -42,7 +42,7 @@ var has3d,
 	corners = {
 		backward: ['tl'],
 		forward: ['tr'],
-		all: ['tl', 'bl', 'tr', 'br']
+		all: ['tl', 'tr']
 	},
 
 	displays = ['single', 'double'],
