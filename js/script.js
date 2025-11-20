@@ -184,7 +184,6 @@ function clickEvent(event) {
         tabClick(event.target.classList[3]);
     }
     else if (event.target.classList[1] === "club-button") {
-        console.log(event.target.getElementsByClassName("club-name")[0].textContent);
         clubButtonClick(event);
     }
     else if (event.target.classList[1] === "save-button") {
@@ -194,15 +193,31 @@ function clickEvent(event) {
         searchButtonClick(event);
     }
     else if (event.target.classList[1] === "join-button") {
-        joinTarget = event.target.closest(".club-page").getElementsByClassName("club-name")[0].textContent;
-        joinButtonClick();
+        joinTarget = event.target.closest(".club-page");
+        if (event.target.classList.contains("joined")) {
+            document.getElementById("leave-followup-background").hidden = false;
+        }
+        else {
+            joinButtonClick();
+        }
     }
     else if (event.target.classList[1] === "join-cancel") {
-        joinCancelbuttonClick(event);
+        joinTarget = null;
+        joinCancelButtonClick();
 
     }
     else if (event.target.classList[1] === "join-submit") {
-        joinSubmitbuttonClick(event)
+        joinSubmitButtonClick(event);
+    }
+    else if (event.target.classList[1] === "leave-no") {
+        joinTarget = null;
+        document.getElementById("leave-followup-background").hidden = true;
+
+    }
+    else if (event.target.classList[1] === "leave-yes") {
+        joinTarget.getElementsByClassName("join-button")[0].textContent = "Join";
+        joinTarget.getElementsByClassName("join-button")[0].classList.remove("joined");
+        document.getElementById("leave-followup-background").hidden = true;
     }
 }
 
@@ -212,18 +227,84 @@ function joinButtonClick() {
     document.getElementById("join-followup-background").hidden = false;
 }
 
-// joinCancelbuttonClick(event)
+// joinCancelButtonClick(event)
 // The submit button has been pressed on the join club followup dialogue screen.
-function joinCancelbuttonClick(event) {
+function joinCancelButtonClick() {
     console.log("cancel buttoned");
     joinTarget = "";
+    for (star of document.getElementsByClassName("red-star")) {
+        if (star.hidden === false) {
+            star.hidden = true;
+        }
+    }
+    for (inputField of document.getElementsByClassName("join-input")) {
+        inputField.value = "";
+    }
+    document.getElementsByClassName("join-select")[0].value = "";
+    document.getElementsByClassName("join-textarea")[0].value = "";
     document.getElementById("join-followup-background").hidden = true;
 }
 
-// joinSubmitbuttonClick()
+// joinSubmitButtonClick()
 // The submit button has been pressed on the join club followup dialogue screen.
-function joinSubmitbuttonClick(event) {
-    console.log("submit buttoned");
+function joinSubmitButtonClick(event) {
+    var fieldsFilled = true;
+    for (var inputField of document.getElementsByClassName("join-input")) {
+        console.log(inputField.value);
+        if (inputField.value === "") {
+            fieldsFilled = false;
+            for (star of document.getElementsByClassName("red-star")) {
+                if (star.classList[1] === inputField.classList[1]) {
+                    star.hidden = false;
+                }
+            }
+        }
+        else {
+            for (star of document.getElementsByClassName("red-star")) {
+                if (star.classList[1] === inputField.classList[1]) {
+                    star.hidden = true;
+                }
+            }
+        }
+    }
+    var selectField = document.getElementsByClassName("join-select")[0];
+    if (selectField.value === "") {
+        fieldsFilled = false;
+        for (star of document.getElementsByClassName("red-star")) {
+            if (star.classList[1] === selectField.classList[1]) {
+                star.hidden = false;
+            }
+        }
+    }
+    else {
+        for (star of document.getElementsByClassName("red-star")) {
+            if (star.classList[1] === selectField.classList[1]) {
+                star.hidden = true;
+            }
+        }
+    }
+    var textareaField = document.getElementsByClassName("join-textarea")[0];
+    if (textareaField.value === "") {
+        fieldsFilled = false;
+        for (star of document.getElementsByClassName("red-star")) {
+            if (star.classList[1] === textareaField.classList[1]) {
+                star.hidden = false;
+            }
+        }
+    }
+    else {
+        for (star of document.getElementsByClassName("red-star")) {
+            if (star.classList[1] === textareaField.classList[1]) {
+                star.hidden = true;
+            }
+        }
+    }
+
+    if (fieldsFilled) {
+        joinTarget.getElementsByClassName("join-button")[0].textContent = "Joined!";
+        joinTarget.getElementsByClassName("join-button")[0].classList.add("joined");
+        joinCancelButtonClick();
+    }
 }
 
 // tabClick(id)
