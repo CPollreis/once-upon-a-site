@@ -382,11 +382,11 @@ function joinSubmitButtonClick(event) {
     }
 
     if (fieldsFilled) {
-        joinTarget.getElementsByClassName("join-button")[0].textContent = "Joined!";
+        joinTarget.getElementsByClassName("join-button")[0].textContent = "JOINED";
         joinTarget.getElementsByClassName("join-button")[0].classList.add("joined");
         for (page of document.getElementById("club-page-list").children) {
             if (page.getElementsByClassName("club-name")[0].textContent === joinTarget.getElementsByClassName("club-name")[0].textContent) {
-                page.getElementsByClassName("join-button")[0].textContent = "Joined!";
+                page.getElementsByClassName("join-button")[0].textContent = "JOINED";
                 page.getElementsByClassName("join-button")[0].classList.add("joined");
             }
         }
@@ -446,8 +446,8 @@ function saveButtonClick(event) {
                         || addClubSticker( document.getElementsByClassName("saved-clubs-page")[0].getElementsByClassName("half-page")[1], sticker.cloneNode(true), 4)) {
                     activeClubPage.getElementsByClassName("save-button")[0].classList.add("saved");
                     clubPageTemplate.getElementsByClassName("save-button")[0].classList.add("saved");
-                    activeClubPage.getElementsByClassName("save-button")[0].textContent = "Saved";
-                    clubPageTemplate.getElementsByClassName("save-button")[0].textContent = "Saved";
+                    activeClubPage.getElementsByClassName("save-button")[0].textContent = "SAVED";
+                    clubPageTemplate.getElementsByClassName("save-button")[0].textContent = "SAVED";
                     break;
                 }
                 else {}
