@@ -359,6 +359,9 @@ div.half-page:nth-child(2) {
 .club-name {
     font-size: 18px;
 }
+.club-page-title .club-name {
+    font-size: 40px;
+}
 
 .club-description {
     font-size: 14px;
@@ -403,6 +406,12 @@ div.half-page:nth-child(2) {
 
 
 /* Table of Contents */
+.toc-page .half-page {
+    gap: 10px;
+}
+.toc-page .banner {
+
+}
 .alphabet-section {
     font-family: my-font;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
@@ -431,12 +440,14 @@ div.half-page:nth-child(2) {
     padding-left: 20px;
     margin-top: -5px;
     margin-left: 125px;
+    margin-bottom:0px;
 }
 
 .alphabet-section a {
     text-decoration: none;
     color: black;
     font-size: 16px;
+    cursor: pointer;
 }
 
 .alphabet-section a:hover {
@@ -646,9 +657,12 @@ div.half-page:nth-child(2) {
 
 .half-page.club-page-right-container {
     display: grid;
-    justify-content: center;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 40% 60%;
+    grid-template-areas:
+        "gallery gallery"
+        "your-review all-reviews";
+    gap: 20px;
     width: 100%;
     height: 100%;
     overflow: hidden;
@@ -669,6 +683,7 @@ div.half-page:nth-child(2) {
 .tape-section {
     position: absolute;
     width: 100%;
+    pointer-events: none;
 }
 
 .tape-section:first-of-type {
@@ -741,7 +756,9 @@ div.half-page:nth-child(2) {
 }
 
 .club-page-meet-team,
-.club-page-skills {
+.club-page-skills,
+.all-reviews,
+.your-review {
     display: flex;
     flex-direction: column;
 }
@@ -828,13 +845,34 @@ div.half-page:nth-child(2) {
     filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.5));
 }
 
+.join-save-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
 .join-button {
     background-color: var(--red);
     border-radius: 10px;
-    width: 100%;
-    height: 100%;
+    width: 50%;
+    height: 80%;
+    padding-top:13px;
     font-family: my-font;
-    font-size: 50px;
+    font-size: 25px;
+    color: var(--white);
+    text-align: center;
+    box-shadow: 0 4px 10px 1px rgba(0, 0, 0, 0.25), inset 0 -5px 15px -5px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.save-button {
+    background-color: var(--gray);
+    border-radius: 10px;
+    width: 50%;
+    height: 80%;
+    padding-top:13px;
+    font-family: my-font;
+    font-size: 25px;
     color: var(--white);
     text-align: center;
     box-shadow: 0 4px 10px 1px rgba(0, 0, 0, 0.25), inset 0 -5px 15px -5px rgba(0, 0, 0, 0.5);
@@ -897,6 +935,10 @@ div.half-page:nth-child(2) {
     margin-top: 10px;
 }
 
+.club-page-photo-gallery {
+    grid-area: gallery;
+}
+
 .photo-grid {
     background-color: var(--white);
     width: 100%;
@@ -940,18 +982,14 @@ div.half-page:nth-child(2) {
 }
 
 .club-page-reviews {
-    width: 100%;
-    height: 100%;
+
 }
 
 .reviews-scroll {
     background: var(--white);
-    width: 100%;
-    height: 200px;
+    height: 75%;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    display: grid;
-    justify-content: center;
     gap: 15px;
     padding: 10px 0px;
     grid-template-columns: 150px 150px 150px;
@@ -959,15 +997,14 @@ div.half-page:nth-child(2) {
 }
 
 .review-card {
-    display: grid;
-    grid-template-rows: 25px 1fr 25px;
-    row-gap: 20px;
-    width: 100%;
+    width: 80%;
+    height: 80%;
     background: var(--white);
     border-radius: 12px;
     border: 1px solid #bbb;
     justify-self: center;
     box-shadow: 0 4px 10px 1px rgba(0, 0, 0, 0.25), inset 0 -5px 15px -5px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
 }
 
 .review-stars {
@@ -976,7 +1013,6 @@ div.half-page:nth-child(2) {
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75);
     justify-self: center;
 }
-
 
 .review-text {
     font-family: my-font-2;
@@ -988,6 +1024,56 @@ div.half-page:nth-child(2) {
     font-style: italic;
     font-size: 14px;
     margin-left: 15px;
+}
+
+/* Review slider */
+.slideshow-container {
+    position: relative;
+    height: 100%;
+}
+.slideshow-container div {
+    display: none;
+}
+/* Next & previous buttons */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 40%;
+    width: auto;
+    margin-top: -25px;
+    padding: 7px;
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.3s ease;
+    border-radius: 100px;
+    user-select: none;
+    background-color: rgb(212, 212, 212);
+    filter: brightness(75%);
+}
+.next {
+    right: 13px;
+}
+.prev {
+    left: 13px;
+}
+.prev:hover, .next:hover {
+    filter: brightness(85%);
+}
+.numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
 }
 
 #join-followup-background {
@@ -1085,12 +1171,198 @@ div.half-page:nth-child(2) {
     resize: none;
 }
 
-.join-submit,
+.join-submit, .join-cancel {
+    display: inline-block;
+    padding: 9px 0px;
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 10px;
+    text-align: center;
+    background-color: var(--red);
+    font-family: verdana;
+    font-weight: bold;
+    filter: brightness(75%);
+}
+.join-submit {
+    background-color: var(--red);
+}
 .join-cancel {
-    width: 50px;
-    height: 15px;
+    background-color: rgb(212, 212, 212);
+    margin-right: 10px;
+}
+.join-submit:hover, .join-cancel:hover {
+    filter: brightness(100%);
+    cursor: pointer;
+    transition: filter 0.2s;
+}
+
+.red-star {
+    color:red;
+    position:absolute;
+    margin-right:-5px;
+}
+#leave-followup-background {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(62, 77, 84, .4);
+    backdrop-filter: blur(1px);
+    z-index: 99;
+}
+
+.leave-followup-container {
+    position: fixed;
+    top: 53.8%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--page-color);
+    border: 2px solid var(--dark-brown);
+    border-radius: 3px;
+    width: 300px;
+    height: 160px; 
+    z-index: 100;
+    padding: 20px;
+    box-shadow: -5px 5px 5px 0px rgba(0, 0, 0, 0.25), 5px 5px 5px 0px rgba(0, 0, 0, 0.25), 0 5px 5px 0px rgba(0, 0, 0, 0.25);
+}
+
+.leave-followup-container h1 {
+    font-family: my-font;
+    text-align:center;
+    padding: 10px 0px 20px 0px;
+}
+
+.leave-confirmation-container {
+    width: 100%;
+    text-align:center;
+}
+
+.leave-no, .leave-yes {
+    display: inline-block;
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 10px;
+    text-align: center;
+    background-color: var(--red);
+    font-family: verdana;
+    font-weight: bold;
+    filter: brightness(75%);
+    width: 100px;
+}
+
+.leave-no {
+    background-color: var(--red);
+    margin-right: 10px;
+}
+
+.leave-yes {
+    background-color: rgb(212, 212, 212);
+}
+
+.leave-no:hover, .leave-yes:hover {
+    filter: brightness(100%);
+    cursor: pointer;
+    transition: filter 0.2s;
+}
+
+/* Review Submission */
+.your-review .review-card {
+    padding: 0px 15px 0px 15px;
+}
+.review-input-container {
+    height: 100%;
+    width: 100%;
+    position:relative;
+}
+.review-textarea {
+    padding:3px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+    height: 85px;
+    border-radius: 5px;
+    resize: none;
+    outline: none;
+}
+.review-input-name {
+    padding:3px;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid rgb(118, 118, 118);
+}
+.button-submit-review {
+    padding: 9px 0px;
     border: 1px solid black;
     border-radius: 15px;
     padding: 7px;
-    margin: 15px;
+    text-align: center;
+    background-color: var(--red);
+    font-family: verdana;
+    font-weight: bold;
+    font-size:11px;
+    filter: brightness(75%);
+    float:right;
+    margin: 10px 10% 0px 0px;
+}
+.button-submit-review:hover {
+    filter: brightness(100%);
+    cursor: pointer;
+    transition: filter 0.2s;
+}
+.submit-review-notice {
+    float: right;
+    max-width: 60%;
+    font-size: 13px;
+    margin-top: 19px;
+    margin-right: 5px;
+    color:red;
+    display: none;
+}
+.submit-review-notice.success {
+    display: block;
+}
+.txt-center {
+  text-align: center;
+}
+.hide {
+  display: none;
+}
+.clear {
+  float: none;
+  clear: both;
+}
+.rating {
+    width: 170px;
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    text-align: center;
+    position: relative;
+    cursor: default;
+    letter-spacing: -3px;
+}
+.rating > label {
+    display: inline;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    width: 1.1em;
+    cursor: pointer;
+    color: #000;
+}
+.rating > label:hover,
+.rating > label:hover ~ label,
+.rating > input:checked ~ label {
+    color: transparent;
+    text-shadow: 0px;
+}
+.rating > label:hover:before,
+.rating > label:hover ~ label:before,
+.rating > input:checked ~ label:before,
+.rating > input:checked ~ label:before {
+    content: "\2605";
+    position: absolute;
+    left: 0;
+    color: var(--yellow);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75);
 }

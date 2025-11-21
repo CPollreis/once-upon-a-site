@@ -61,7 +61,7 @@ var has3d,
 
 		// Duration of transition in milliseconds
 
-		duration: 200,
+		duration: 0,
 
 		// Enables hardware acceleration
 
@@ -91,7 +91,7 @@ var has3d,
 		
 		// Size of the active zone of each corner
 
-		cornerSize: 100,
+		cornerSize: 80,
 
 		// Enables gradients
 
@@ -99,7 +99,7 @@ var has3d,
 
 		// Duration of transition in milliseconds
 
-		duration: 50,
+		duration: 100,
 
 		// Enables hardware acceleration
 
@@ -1640,7 +1640,7 @@ flipMethods = {
 
 				var that = this, point = (data.point && data.point.corner==c.corner) ? data.point : flipMethods._c.call(this, c.corner, 1);
 			
-				this.animatef({from: [point.x, point.y], to:[c.x, c.y], duration: 500, frame: function(v) {
+				this.animatef({from: [point.x, point.y], to:[c.x, c.y], duration: 100, frame: function(v) {
 					c.x = Math.round(v[0]);
 					c.y = Math.round(v[1]);
 					flipMethods._fold.call(that, c);
@@ -1722,7 +1722,7 @@ flipMethods = {
 					flipMethods._fold.call(that, p1);
 				},
 				complete: hide,
-				duration: 800,
+				duration: 200,
 				hiding: true
 				});
 

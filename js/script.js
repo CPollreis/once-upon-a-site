@@ -2,7 +2,7 @@
 const MENU_STATE = 0;
 const CLUB_PAGE_STATE = 1;
 // Menu page locations. Change these to point to the first page of each section.
-const PAGE_MAPPING = ["home", "toc", "saved-clubs", "technology", "hobbies", "cultural", "academic", "creativity", "sports", "search"];
+const PAGE_MAPPING = ["home", "toc", "toc-2", "saved-clubs", "technology", "hobbies", "cultural", "academic", "creativity", "sports", "search"];
 const HOME_START = 1;
 const TOC_START = 2;
 const SAVED_CLUBS_START = 3;
@@ -25,18 +25,48 @@ window.addEventListener('load', function () {
 
     // Setup the join button followup dialogue box listeners. It should disable all events behind it.
     overlayBoxInit();
+    for (slider of document.getElementById("club-page-list").getElementsByClassName("slideshow-container")){
+        slider.children[0].style.display = "block";
+    }
     
     $("#book-frame").turn({ display: "single",}); // Initialize turn.js
     
     initMenuPages(); // Add the menu pages
     bookState = MENU_STATE;
-
+    
     // Activate the home tab
     activeTab = null;
     tabClick("home");
     activateTab("home");
     activateListeners();
+
 })
+
+// Slideshow content
+let slideIndex = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42];
+/* Class the members of each slideshow group with different CSS classes */
+let slideId = ["mySlides1", "mySlides2", "mySlides3", "mySlides4", "mySlides5", "mySlides6", "mySlides7", "mySlides8", "mySlides9", "mySlides10", "mySlides11", "mySlides12", "mySlides13", "mySlides14",
+                "mySlides15", "mySlides16", "mySlides17", "mySlides18", "mySlides19", "mySlides20", "mySlides21", "mySlides22", "mySlides23", "mySlides24", "mySlides25", "mySlides26", "mySlides27", "mySlides28",
+                "mySlides29", "mySlides30", "mySlides31", "mySlides32", "mySlides33", "mySlides34", "mySlides35", "mySlides36", "mySlides37", "mySlides38", "mySlides39", "mySlides40", "mySlides41", "mySlides42"
+]
+
+function plusSlides(n, no) {
+    showSlides(slideIndex[no] += n, no);
+}
+
+function showSlides(n, no) {
+    let i;
+    let activePageSlideshow = document.getElementsByClassName("book-container")[0].getElementsByClassName(slideId[no]);
+    let templatePageSlideshow = document.getElementById("club-page-list").getElementsByClassName(slideId[no]);
+    if (n > activePageSlideshow.length) {slideIndex[no] = 1}
+    if (n < 1) {slideIndex[no] = activePageSlideshow.length}
+    for (i = 0; i < activePageSlideshow.length; i++) {
+        activePageSlideshow[i].style.display = "none";
+        templatePageSlideshow[i].style.display = "none";
+    }
+    activePageSlideshow[slideIndex[no]-1].style.display = "block";
+    templatePageSlideshow[slideIndex[no]-1].style.display = "block";
+} 
 
 
 /******* FUNCTIONS *******/
@@ -61,8 +91,8 @@ function initMenuPages() {
     for (const child of pages.children) {
         var clonedNode = child.cloneNode(true);
         $("#book-frame").turn("addPage", clonedNode);
-        if (clonedNode.getAttribute("id") === "search-page") {
-            $("#book-frame").turn("page", PAGE_MAPPING.indexOf("search") + 1);
+        if (child.classList.contains("search-page")) {
+            $("#book-frame").turn("page", PAGE_MAPPING.indexOf("search")+1);
             initFilters();
             console.log("adding filter listeners");
         }
@@ -112,12 +142,12 @@ function removeAllButOnePage() {
 // activateListeners()
 function activateListeners() {
     // Add a click event. We will use this for buttons.
-    document.addEventListener("click", clickEvent);
+    document.addEventListener( "click", clickEvent );
     // Listener on page turning event.
     $('#book-frame').on('turned', turnEvent);
 
     // Update the turn.js divs when the window size changes.
-    addEventListener("resize", () => {
+    addEventListener("resize", () => { 
         var container = document.getElementsByClassName("book-container")[0];
         var style = getComputedStyle(container);
         var width = container.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
@@ -130,17 +160,27 @@ function activateListeners() {
 // Automatically called when turn.js changes the page view.
 // Will activate a tab if the section changes.
 function turnEvent() {
-    var pages = $('#book-frame').turn('view');
+    var pages = $('#book-frame').turn('view'); 
 
     if (bookState === CLUB_PAGE_STATE) {
-        // Might do something here later
+        /*
+        for (page of document.getElementsByClassName("book-container")[0].children) {
+            if (page.getElementsByClassName("club-name")[0].textContent === clubName) {
+                for (var i = 0; i < 5; i++) {
+                    if (page.getElementsByClassName("radio-btn").classList.contains("saved")) {
+                        page.getElementsByClassName("radio-btn").checked = true;
+                    }
+                }
+            }
+        }
+            */
     }
     else {
         if (pages[0] < PAGE_MAPPING.length) {
-            activateTab(PAGE_MAPPING[pages[0] - 1]);
+            activateTab(PAGE_MAPPING[ pages[0] -1 ]);
         }
         else {
-            activateTab(PAGE_MAPPING[PAGE_MAPPING.length - 1]);
+            activateTab(PAGE_MAPPING[ PAGE_MAPPING.length - 1 ]);
         }
         /*
         if (PAGE_MAPPING[ pages[0] - 1 ] === "search") {
@@ -156,22 +196,24 @@ function turnEvent() {
 // activateTab(null) will make all tabs inactive
 // This function is automatically called on a turn.js page flip event.
 function activateTab(tab) {
+    if (tab === "toc-2") {
+        tab = "toc";
+    }
     if (tab === null) {
         // If there is currently an active tab, deactivate it.
         if (activeTab !== null) {
-            document.getElementsByClassName(activeTab)[1].removeAttribute("id", "active");
+            document.getElementsByClassName(activeTab)[1].removeAttribute( "id", "active");
         }
     }
     else if (activeTab === null) {
         // We are activating a tab. If all tabs are inactive, make this the active one.
-        document.getElementsByClassName(tab)[0].setAttribute("id", "active");
+        document.getElementsByClassName(tab)[0].setAttribute( "id", "active" );
         activeTab = tab;
     }
     else if (tab !== activeTab) {
         // We are activating a tab. Deactivate the previous tab, and activate the new tab.
-        console.log("No changes to active tab");
-        document.getElementsByClassName(activeTab)[0].removeAttribute("id", "active");
-        document.getElementsByClassName(tab)[0].setAttribute("id", "active");
+        document.getElementsByClassName(activeTab)[0].removeAttribute( "id", "active" );
+        document.getElementsByClassName(tab)[0].setAttribute( "id", "active");
         activeTab = tab;
     }
 }
@@ -186,6 +228,9 @@ function clickEvent(event) {
         tabClick(event.target.classList[3]);
     }
     else if (event.target.classList[1] === "club-button") {
+        clubButtonClick(event);
+    }
+    else if (event.target.classList[1] === "toc-button") {
         clubButtonClick(event);
     }
     else if (event.target.classList[1] === "save-button") {
@@ -220,7 +265,41 @@ function clickEvent(event) {
         joinTarget.getElementsByClassName("join-button")[0].textContent = "Join";
         joinTarget.getElementsByClassName("join-button")[0].classList.remove("joined");
         document.getElementById("leave-followup-background").hidden = true;
+        for (page of document.getElementById("club-page-list").children) {
+            if (page.getElementsByClassName("club-name")[0].textContent === joinTarget.getElementsByClassName("club-name")[0].textContent) {
+                page.getElementsByClassName("join-button")[0].textContent = "Join";
+                page.getElementsByClassName("join-button")[0].classList.remove("joined");
+            }
+        }
     }
+    else if (event.target.classList[1] === "button-submit-review") {
+        submitReviewButtonClick(event);
+    }
+}
+
+function submitReviewButtonClick(event) {
+    var clubPage = event.target.closest(".club-page");
+    var clubName = clubPage.getElementsByClassName("club-name")[0].textContent;
+    var clubPageTemplate;
+    for (page of document.getElementById("club-page-list").children) {
+        if (page.getElementsByClassName("club-name")[0].textContent === clubName) {
+            clubPageTemplate = page;
+            break;
+        }
+    }
+    clubPageTemplate.getElementsByClassName("review-textarea")[0].value = clubPage.getElementsByClassName("review-textarea")[0].value;
+    clubPageTemplate.getElementsByClassName("review-input-name")[0].value = clubPage.getElementsByClassName("review-input-name")[0].value;
+    clubPageStars = clubPage.getElementsByClassName("radio-btn");
+    templateStars = clubPageTemplate.getElementsByClassName("radio-btn");
+    for (var i = 0; i < 5; i++) {
+        if (clubPage.getElementsByClassName("radio-btn")[i].checked) {
+            clubPageTemplate.getElementsByClassName("radio-btn")[i].classList.add("saved");
+        }
+    }
+    clubPageTemplate.getElementsByClassName("submit-review-notice")[0].classList.add("success");
+    clubPage.getElementsByClassName("submit-review-notice")[0].classList.add("success");
+    clubPageTemplate.getElementsByClassName("button-submit-review")[0].textContent = "Resend";
+    clubPage.getElementsByClassName("button-submit-review")[0].textContent = "Resend";
 }
 
 // joinButtonClick() 
@@ -305,6 +384,12 @@ function joinSubmitButtonClick(event) {
     if (fieldsFilled) {
         joinTarget.getElementsByClassName("join-button")[0].textContent = "Joined!";
         joinTarget.getElementsByClassName("join-button")[0].classList.add("joined");
+        for (page of document.getElementById("club-page-list").children) {
+            if (page.getElementsByClassName("club-name")[0].textContent === joinTarget.getElementsByClassName("club-name")[0].textContent) {
+                page.getElementsByClassName("join-button")[0].textContent = "Joined!";
+                page.getElementsByClassName("join-button")[0].classList.add("joined");
+            }
+        }
         joinCancelButtonClick();
     }
 }
@@ -318,10 +403,10 @@ function tabClick(tabName) {
     if (bookState === CLUB_PAGE_STATE) {
         initMenuPages();
     }
-    $("#book-frame").turn("page", pageDestination + 1);
+    $("#book-frame").turn("page", pageDestination+1);
 }
 
-// clubButtonClick(clubName)
+// saveButtonClick(clubName)
 // A club button has been clicked.
 function saveButtonClick(event) {
     var sticker;
@@ -339,7 +424,7 @@ function saveButtonClick(event) {
         }
     }
     if (saved) {
-        stickerList = document.getElementById("saved-clubs-page").getElementsByClassName("club-button");
+        stickerList = document.getElementsByClassName("saved-clubs-page")[0].getElementsByClassName("club-button");
         for (sticker of stickerList) {
             if (sticker.getElementsByClassName("club-name")[0].textContent === clubName) {
                 sticker.parentNode.removeChild(sticker);
@@ -356,16 +441,16 @@ function saveButtonClick(event) {
         for (sticker of stickerList) {
             console.log(sticker);
             if (sticker.getElementsByClassName("club-name")[0].textContent === clubName) {
-                addClubSticker(document.getElementById("saved-clubs-page"), sticker.cloneNode(true));
-                if (addClubSticker(document.getElementById("saved-clubs-page").getElementsByClassName("half-page")[0], sticker.cloneNode(true), 3)
-                    || addClubSticker(document.getElementById("saved-clubs-page").getElementsByClassName("half-page")[1], sticker.cloneNode(true), 4)) {
+                addClubSticker( document.getElementsByClassName("saved-clubs-page")[0], sticker.cloneNode(true) );
+                if( addClubSticker( document.getElementsByClassName("saved-clubs-page")[0].getElementsByClassName("half-page")[0], sticker.cloneNode(true), 3)
+                        || addClubSticker( document.getElementsByClassName("saved-clubs-page")[0].getElementsByClassName("half-page")[1], sticker.cloneNode(true), 4)) {
                     activeClubPage.getElementsByClassName("save-button")[0].classList.add("saved");
                     clubPageTemplate.getElementsByClassName("save-button")[0].classList.add("saved");
                     activeClubPage.getElementsByClassName("save-button")[0].textContent = "Saved";
                     clubPageTemplate.getElementsByClassName("save-button")[0].textContent = "Saved";
                     break;
                 }
-                else { }
+                else {}
             }
         }
     }
@@ -380,7 +465,7 @@ function searchButtonClick(event) {
     var allStickersList = document.getElementById("club-stickers-list").getElementsByClassName("club-button");
     var searchButton = event.target;
     var searchBarContent = searchButton.parentElement.getElementsByClassName("search-bar")[0].value;
-    var resultsPage = searchButton.closest('#search-page').getElementsByClassName("results-page")[0];
+    var resultsPage = searchButton.closest('.search-page').getElementsByClassName("results-page")[0];
     var searchPageTemplate = document.getElementById("menu-pages");
     // Remove any prior results
     if (resultsPage.getElementsByClassName("club-button").length > 0) {
@@ -424,48 +509,84 @@ function addClubSticker(page, sticker, maxStickers) {
     return added;
 }
 
-// clubButtonClick(clubName)
+// tocButtonClick(event)
+function tocButtonClick(event) {
+    var clubName = event.target.textContent;
+    clubPageList = document.getElementById("club-page-list").children;
+    // Remove the menu pages and add the list of club pages to the book.
+    initClubPages(clubPageList);
+    // Find the page number of the club that the user selected. Flip to that club page.
+    for (i = 0; i < clubPageList.length; i++) {
+        console.log(clubPageList[i].getElementsByClassName("club-name")[0].textContent);
+        if (clubPageList[i].getElementsByClassName("club-name")[0].textContent === clubName) {
+            $("#book-frame").turn("page", i+1);
+            num = i + 1;
+            stars = document.querySelectorAll('[page="' + num + '"]')[0].getElementsByClassName("radio-btn");
+            for (star of stars) {
+                if (star.classList.contains("saved")) {
+                    star.checked = true;
+                }
+            }
+            break;
+        }
+    }
+}
+
+// clubButtonClick(event)
 // A club button has been clicked.
 function clubButtonClick(event) {
     var clubPageList;
-    var clubName = event.target.getElementsByClassName("club-name")[0].textContent
+    var clubName;
     // The active tab will tell us where the club button was pressed.
     if (activeTab === "search") {
         clubPageList = [];
-        for (sticker of document.getElementById("search-page").getElementsByClassName("club-button")) {
+        for (sticker of document.getElementsByClassName("search-page")[0].getElementsByClassName("club-button")) {
             for (club of document.getElementById("club-page-list").children) {
                 if (club.getElementsByClassName("club-name")[0].textContent === sticker.getElementsByClassName("club-name")[0].textContent) {
                     clubPageList.push(club);
                 }
             }
         }
+        clubName = event.target.getElementsByClassName("club-name")[0].textContent;
     }
     else if (activeTab === "toc") {
         clubPageList = document.getElementById("club-page-list").children;
+        clubName = event.target.textContent;
     }
     else if (activeTab === "saved-clubs") {
         clubPageList = [];
-        for (sticker of document.getElementById("saved-clubs-page").getElementsByClassName("club-button")) {
+        for (sticker of document.getElementsByClassName("saved-clubs-page")[0].getElementsByClassName("club-button")) {
             for (club of document.getElementById("club-page-list").children) {
                 if (club.getElementsByClassName("club-name")[0].textContent === sticker.getElementsByClassName("club-name")[0].textContent) {
                     clubPageList.push(club);
                 }
             }
         }
+        clubName = event.target.getElementsByClassName("club-name")[0].textContent;
     }
     else {
         // Generate a list of clubs corresponding to the current category.
+        clubName = event.target.getElementsByClassName("club-name")[0].textContent;
         clubPageList = document.getElementById("club-page-list").getElementsByClassName(activeTab);
     }
     // Remove the menu pages and add the list of club pages to the book.
     initClubPages(clubPageList);
     // Find the page number of the club that the user selected. Flip to that club page.
     for (i = 0; i < clubPageList.length; i++) {
+        console.log(clubPageList[i].getElementsByClassName("club-name")[0].textContent);
         if (clubPageList[i].getElementsByClassName("club-name")[0].textContent === clubName) {
-            $("#book-frame").turn("page", i + 1);
+            $("#book-frame").turn("page", i+1);
+            num = i + 1;
+            stars = document.querySelectorAll('[page="' + num + '"]')[0].getElementsByClassName("radio-btn");
+            for (star of stars) {
+                if (star.classList.contains("saved")) {
+                    star.checked = true;
+                }
+            }
             break;
         }
     }
+
 }
 
 
@@ -493,7 +614,7 @@ function initFilters() {
                     filterBox.classList.toggle('active');
                 }
             }
-            if (notActive) {
+            if (notActive)  {
                 box.classList.toggle('active');
             }
         });
@@ -514,9 +635,9 @@ function initFilters() {
     filtersContainer.addEventListener('dragover', e => {
         e.preventDefault();
         const after = getDragAfter(filtersContainer, e.clientY);
-        if (after == null)
+        if (after == null) 
             filtersContainer.appendChild(draggingBox);
-        else
+        else 
             filtersContainer.insertBefore(draggingBox, after);
     });
 
@@ -556,12 +677,12 @@ function initFilters() {
             const box = child.getBoundingClientRect();
             const offset = y - box.top - box.height / 2;
             return (offset < 0 && offset > closest.offset) ? { offset, element: child } : closest;
-        }, {
-            offset: Number.NEGATIVE_INFINITY
+        }, { 
+            offset: Number.NEGATIVE_INFINITY 
         }).element;
     }
 
-    // Add tag to selected section
+   // Add tag to selected section
     function addSelectedTag(text, filterName) {
         const existing = [...selectedContainer.children].some(tag => tag.textContent.startsWith(text));
         if (!existing) {
@@ -575,7 +696,7 @@ function initFilters() {
                 tag.remove();
             });
             selectedContainer.appendChild(tag);
-        }
+        }    
     }
 
     function restoreChoice(text, filterName) {
