@@ -14,10 +14,65 @@
 </head>
 
 <body>
+    <!-- Leave Club Followup Box -->
+    <div id="leave-followup-background" hidden>
+        <div class="leave-followup-container">
+            <h1>Are you sure you want to leave this club?</h1>
+            <div class="leave-confirmation-container">
+                <div class="button leave-no">No</div>
+                <div class="button leave-yes">Yes</div>
+            </div>
+        </div>
+    </div>
+
     <!-- Join Followup Box -->
     <div id="join-followup-background" hidden>
         <div id="join-followup-container">
-            <div class="join-followup-content">
+            <h1>Club Application</h1>
+            <p>Please complete this application to notify the club organizers of your intent to join.</p>
+            <div id="join-followup-content">
+                <div class="join-label first-name">First Name:<span class="red-star first-name" hidden>*</span></div>
+                <div><input class="join-input first-name"></input></div>
+                <div class="join-label last-name">Last Name:<span class="red-star last-name" hidden>*</span></div>
+                <div><input class="join-input last-name"></input></div>
+                <div class="join-label stu-num">Student #:<span class="red-star stu-num" hidden>*</span></div>
+                <div><input class="join-input stu-num"></input></div>
+                <div class="join-label age">Age:<span class="red-star age" hidden>*</span></div>
+                <div><input class="join-input age"></input></div>
+                <div class="join-label faculty">Faculty:<span class="red-star faculty" hidden>*</span></div>
+                <div>
+                    <select class="join-select faculty">
+                        <option value="" selected disabled hidden></option>
+                        <option>Faculty of Agricultural and Food Sciences</option>
+                        <option>School of Agriculture</option>
+                        <option>Faculty of Architecture</option>
+                        <option>School of Art</option>
+                        <option>Faculty of Arts</option>
+                        <option>I. H. Asper School of Business</option>
+                        <option>Faculty of Education</option>
+                        <option>Price Faculty of Engineering</option>
+                        <option>Clayton H. Riddell Faculty of Environment, Earth, and Resources</option>
+                        <option>Extended Education</option>
+                        <option>Faculty of Graduate Studies</option>
+                        <option>Rady Faculty of Health Sciences</option>
+                        <option>School of Dental Hygiene</option>
+                        <option>Dr. Gerald Niznick College of Dentistry</option>
+                        <option>Max Rady College of Medicine</option>
+                        <option>College of Nursing</option>
+                        <option>College of Pharmacy</option>
+                        <option>College of Rehabilitation Sciences</option>
+                        <option>Faculty of Kinesiology and Recreation Management</option>
+                        <option>Faculty of Law</option>
+                        <option>Desautels Faculty of Music</option>
+                        <option>Faculty of Science</option>
+                        <option>Faculty of Social Work</option>
+                        <option>University 1</option>
+                    </select>
+                </div>
+                <div class="join-label reason">Reason for joining:<span class="red-star reason" hidden>*</span></div>
+            </div>
+            <div><textarea class="join-textarea reason"></textarea></div>
+            <div class="join-submission-container">
                 <div class="button join-cancel">Cancel</div>
                 <div class="button join-submit">Submit</div>
             </div>
@@ -1695,7 +1750,7 @@
                 <p class="club-rating">★★★★☆</p>
             </div>
         </div>
-        <div class="button club-button cultural">
+        <div class="button club-button hobbies">
             <img src="images/placeholder-icon.jpg">
             <div class="club-card-info">
                 <h1 class="club-name">Syrian Students Club</h1>
