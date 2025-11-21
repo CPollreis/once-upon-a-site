@@ -418,18 +418,19 @@ div.half-page:nth-child(2) {
 }
 
 .toc-alphabet-label {
-    margin-left: 25px;
+    margin-left: 60px;
     font-size: 24px;
     font-weight: bold;
     position: relative;
+    color: var(--gray);
 }
 
 .toc-alphabet-label::after {
     content: "";
     display: inline-block;
-    width: 100px;
+    width: 90px;
     height: 2px;
-    background: black;
+    background: var(--gray);
     margin-left: 10px;
     margin-top: 10px;
     vertical-align: middle;
@@ -443,9 +444,13 @@ div.half-page:nth-child(2) {
     margin-bottom:0px;
 }
 
+.alphabet-section li {
+    margin-bottom:2px;
+}
+
 .alphabet-section a {
     text-decoration: none;
-    color: black;
+    color: black
     font-size: 16px;
     cursor: pointer;
 }
@@ -556,22 +561,23 @@ div.half-page:nth-child(2) {
 }
 
 .search-button {
+    border: 0px;
+    outline: 0px;
     width: 25%;
     font-family: verdana;
     text-align: center;
     font-weight: bold;
     padding: 9px 0px;
-    border-radius: 15px;
-    border: 2px solid #42424d;
+    border-radius: 10px;
     background-color: var(--red);
-    filter: brightness(75%);
     margin-top: 20px;
     float: right;
+    transition: 0.3s ease;
+    box-shadow: 0 4px 10px 1px rgba(0, 0, 0, 0.25), inset 0 -5px 15px -5px rgba(0, 0, 0, 0.5);
 }
 
 .search-button:hover {
-    border: 2px solid black;
-    filter: brightness(100%);
+    filter: brightness(110%);
     cursor: pointer;
     transition: filter 0.2s;
 }
@@ -863,6 +869,7 @@ div.half-page:nth-child(2) {
     text-align: center;
     box-shadow: 0 4px 10px 1px rgba(0, 0, 0, 0.25), inset 0 -5px 15px -5px rgba(0, 0, 0, 0.5);
     cursor: pointer;
+    transition: 0.3s ease;
 }
 
 .save-button {
@@ -877,10 +884,11 @@ div.half-page:nth-child(2) {
     text-align: center;
     box-shadow: 0 4px 10px 1px rgba(0, 0, 0, 0.25), inset 0 -5px 15px -5px rgba(0, 0, 0, 0.5);
     cursor: pointer;
+    transition: 0.3s ease;
 }
 
-.join-button:hover {
-    
+.join-button:hover, .save-button:hover {
+    filter: brightness(110%);
 }
 
 .leads-horizontal-scroll {
@@ -1050,6 +1058,7 @@ div.half-page:nth-child(2) {
     user-select: none;
     background-color: rgb(212, 212, 212);
     filter: brightness(75%);
+    transition: 0.3s ease;
 }
 .next {
     right: 13px;
@@ -1162,6 +1171,10 @@ div.half-page:nth-child(2) {
     padding-left: 8px;
 }
 
+
+
+
+
 .join-submission-container {
     position: absolute;
     bottom: 0;
@@ -1174,14 +1187,14 @@ div.half-page:nth-child(2) {
 .join-submit, .join-cancel {
     display: inline-block;
     padding: 9px 0px;
-    border: 1px solid black;
     border-radius: 15px;
     padding: 10px;
     text-align: center;
     background-color: var(--red);
     font-family: verdana;
     font-weight: bold;
-    filter: brightness(75%);
+    transition: 0.3s ease;
+    box-shadow: 0 4px 10px 1px rgba(0, 0, 0, 0.25), inset 0 -5px 15px -5px rgba(0, 0, 0, 0.5);
 }
 .join-submit {
     background-color: var(--red);
@@ -1191,9 +1204,8 @@ div.half-page:nth-child(2) {
     margin-right: 10px;
 }
 .join-submit:hover, .join-cancel:hover {
-    filter: brightness(100%);
+    filter: brightness(110%);
     cursor: pointer;
-    transition: filter 0.2s;
 }
 
 .red-star {
@@ -1293,22 +1305,21 @@ div.half-page:nth-child(2) {
 }
 .button-submit-review {
     padding: 9px 0px;
-    border: 1px solid black;
-    border-radius: 15px;
+    border-radius: 10px;
     padding: 7px;
     text-align: center;
     background-color: var(--red);
     font-family: verdana;
     font-weight: bold;
-    font-size:11px;
-    filter: brightness(75%);
+    font-size:12px;
     float:right;
     margin: 10px 10% 0px 0px;
+    transition: 0.3s ease;
 }
+
 .button-submit-review:hover {
-    filter: brightness(100%);
+    filter: brightness(110%);
     cursor: pointer;
-    transition: filter 0.2s;
 }
 .submit-review-notice {
     float: right;
