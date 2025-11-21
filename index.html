@@ -881,17 +881,128 @@
     <!-- End Menu Pages-->
 
     <div id="club-page-list" style="display:none;">
+
         <div class="hobbies club-page">
             <div class="page-content-container">
                 <div class="page-content">
-                    <div class="half-page">
-                        <h1 class="club-name">All Aboard</h1>
-                        <p class="club-description">Play a large variety of tabletop games: casual, complicated,
-                            cooperative, card games, Eurogames, and more!</p>
-                        <div class="button save-button">Save Club</div>
+                    <div class="half-page club-page-left-container">
+                        <!-- Club Page (Left) -->
+                        <div class="club-page-title">
+                            <div class="tape-section"></div><div class="club-name">All Aboard</div>
+                        </div>
+                        <div class="club-page-description">
+                            <h1 class="club-page-description-title">Description</h1>
+                            <p class="club-page-description-content">Play a large variety of tabletop games: casual, complicated, cooperative, card games, Eurogames, and more!</p>
+                            <p class="club-page-meeting-times">Meeting Time(s): Wednesdays — 3 PM to 5 PM<br>Location:
+                                CSSA Lounge</p>
+                            <p class="club-page-location"></p>
+                        </div>
+                        <div class="club-page-meet-team">
+                            <div class="club-page-header">Meet The Team!</div>
+                            <div class="team-card">
+                                <img src="images/placeholder-icon.jpg">
+                                <h1>Person Name</h1>
+                                <p>Occupation</p>
+                            </div>
+                        </div>
+                        <div class="club-page-skills">
+                            <div class="club-page-header">Learning Outcomes!</div>
+                            <div class="skill-card">
+                                <div>
+                                    <ul>
+                                        <li>Skill 1</li>
+                                        <li>Skill 2</li>
+                                        <li>Skill 3</li>
+                                        <li>Skill 4</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <ul>
+                                        <li>Skill 5</li>
+                                        <li>Skill 6</li>
+                                        <li>Skill 7</li>
+                                        <li>Skill 8</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="club-page-social-icons">
+                            <div class="social-icon"><img src="images/instagram.png"></div>
+                            <div class="social-icon"><img src="images/linkedin.png"></div>
+                            <div class="social-icon"><img src="images/tiktok.png"></div>
+                            <div class="social-icon"><img src="images/envelope.png"></div>
+                        </div>
+                        <div class="join-save-buttons">
+                            <div class="button join-button">JOIN US</div>
+                            <div class="button save-button">SAVE</div>
+                        </div>
                     </div>
-                    <div class="half-page">
-                        <p>Hobbies club 1 content</p>
+                    <div class="half-page club-page-right-container">
+                        <!-- Club Page (Right) -->
+                        <div class="club-page-photo-gallery">
+                            <div class="club-page-header">Photo Gallery</div>
+                            <div class="photo-grid">
+                                <div class="button photo-cell image-1"></div>
+                                <div class="button photo-cell image-2"></div>
+                                <div class="button photo-cell image-3"></div>
+                                <div class="button photo-cell image-4"></div>
+                                <div class="button photo-cell image-5"></div>
+                                <div class="button photo-cell image-6"></div>
+                            </div>
+                        </div>
+                        <div class="club-page-reviews your-review">
+                            <div class="club-page-header">Leave a Review</div>
+                            <div class="reviews-scroll">
+                                <div class="review-card">
+                                    <div class="rating review-stars">
+                                        <input id="star5" name="star" type="radio" value="5" class="radio-btn hide" />
+                                        <label for="star5" >☆</label>
+                                        <input id="star4" name="star" type="radio" value="4" class="radio-btn hide" />
+                                        <label for="star4" >☆</label>
+                                        <input id="star3" name="star" type="radio" value="3" class="radio-btn hide" />
+                                        <label for="star3" >☆</label>
+                                        <input id="star2" name="star" type="radio" value="2" class="radio-btn hide" />
+                                        <label for="star2" >☆</label>
+                                        <input id="star1" name="star" type="radio" value="1" class="radio-btn hide" />
+                                        <label for="star1" >☆</label>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <textarea class="review-textarea" placeholder="Your thoughts on this club"></textarea>
+                                    <input class="review-input-name" placeholder="Your name"></p>
+                                </div>
+                                <div class="button button-submit-review">
+                                    Submit
+                                </div>
+                                <div class="submit-review-notice">
+                                    Submission success!
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="club-page-reviews all-reviews">
+                            <div class="club-page-header">Peer Reviews</div>
+                            <div class="reviews-scroll">
+                                <div class="slideshow-container">
+                                    <div class="mySlides10 fade review-card">
+                                        <p class="review-stars">★★★★★</p>
+                                        <p class="review-text">I love this club!</p>
+                                        <p class="review-author">– Jane Smith</p>
+                                    </div>
+                                    <div class="mySlides10 fade review-card">
+                                        <p class="review-stars">★★★★★</p>
+                                        <p class="review-text">The people here are very fun</p>
+                                        <p class="review-author">– John Smith</p>
+                                    </div>
+                                    <div class="mySlides10 fade review-card">
+                                        <p class="review-stars">★★★★★</p>
+                                        <p class="review-text">I recommend you join... We will welcome you!</p>
+                                        <p class="review-author">– Jill Smith</p>
+                                    </div>
+                                    <a class="prev" onclick="plusSlides(-1, 9)">&#10094;</a>
+                                    <a class="next" onclick="plusSlides(1, 9)">&#10095;</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -900,14 +1011,124 @@
         <div class="sports club-page">
             <div class="page-content-container">
                 <div class="page-content">
-                    <div class="half-page">
-                        <h1 class="club-name">Badminton</h1>
-                        <p class="club-description">Promotes the sport's social, competitive and leisure aspects by
-                            hosting various social and competitive events.</p>
-                        <div class="button save-button">Save Club</div>
+                    <div class="half-page club-page-left-container">
+                        <!-- Club Page (Left) -->
+                        <div class="club-page-title">
+                            <div class="tape-section"></div><div class="club-name">Badminton</div>
+                        </div>
+                        <div class="club-page-description">
+                            <h1 class="club-page-description-title">Description</h1>
+                            <p class="club-page-description-content">Promotes the sport's social, competitive and leisure aspects by hosting various social and competitive events.</p>
+                            <p class="club-page-meeting-times">Meeting Time(s): Wednesdays — 3 PM to 5 PM<br>Location:
+                                CSSA Lounge</p>
+                            <p class="club-page-location"></p>
+                        </div>
+                        <div class="club-page-meet-team">
+                            <div class="club-page-header">Meet The Team!</div>
+                            <div class="team-card">
+                                <img src="images/placeholder-icon.jpg">
+                                <h1>Person Name</h1>
+                                <p>Occupation</p>
+                            </div>
+                        </div>
+                        <div class="club-page-skills">
+                            <div class="club-page-header">Learning Outcomes!</div>
+                            <div class="skill-card">
+                                <div>
+                                    <ul>
+                                        <li>Skill 1</li>
+                                        <li>Skill 2</li>
+                                        <li>Skill 3</li>
+                                        <li>Skill 4</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <ul>
+                                        <li>Skill 5</li>
+                                        <li>Skill 6</li>
+                                        <li>Skill 7</li>
+                                        <li>Skill 8</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="club-page-social-icons">
+                            <div class="social-icon"><img src="images/instagram.png"></div>
+                            <div class="social-icon"><img src="images/linkedin.png"></div>
+                            <div class="social-icon"><img src="images/tiktok.png"></div>
+                            <div class="social-icon"><img src="images/envelope.png"></div>
+                        </div>
+                        <div class="join-save-buttons">
+                            <div class="button join-button">JOIN US</div>
+                            <div class="button save-button">SAVE</div>
+                        </div>
                     </div>
-                    <div class="half-page">
-                        <p>Sports club 1 content</p>
+                    <div class="half-page club-page-right-container">
+                        <!-- Club Page (Right) -->
+                        <div class="club-page-photo-gallery">
+                            <div class="club-page-header">Photo Gallery</div>
+                            <div class="photo-grid">
+                                <div class="button photo-cell image-1"></div>
+                                <div class="button photo-cell image-2"></div>
+                                <div class="button photo-cell image-3"></div>
+                                <div class="button photo-cell image-4"></div>
+                                <div class="button photo-cell image-5"></div>
+                                <div class="button photo-cell image-6"></div>
+                            </div>
+                        </div>
+                        <div class="club-page-reviews your-review">
+                            <div class="club-page-header">Leave a Review</div>
+                            <div class="reviews-scroll">
+                                <div class="review-card">
+                                    <div class="rating review-stars">
+                                        <input id="star5" name="star" type="radio" value="5" class="radio-btn hide" />
+                                        <label for="star5" >☆</label>
+                                        <input id="star4" name="star" type="radio" value="4" class="radio-btn hide" />
+                                        <label for="star4" >☆</label>
+                                        <input id="star3" name="star" type="radio" value="3" class="radio-btn hide" />
+                                        <label for="star3" >☆</label>
+                                        <input id="star2" name="star" type="radio" value="2" class="radio-btn hide" />
+                                        <label for="star2" >☆</label>
+                                        <input id="star1" name="star" type="radio" value="1" class="radio-btn hide" />
+                                        <label for="star1" >☆</label>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <textarea class="review-textarea" placeholder="Your thoughts on this club"></textarea>
+                                    <input class="review-input-name" placeholder="Your name"></p>
+                                </div>
+                                <div class="button button-submit-review">
+                                    Submit
+                                </div>
+                                <div class="submit-review-notice">
+                                    Submission success!
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="club-page-reviews all-reviews">
+                            <div class="club-page-header">Peer Reviews</div>
+                            <div class="reviews-scroll">
+                                <div class="slideshow-container">
+                                    <div class="mySlides9 fade review-card">
+                                        <p class="review-stars">★★★★★</p>
+                                        <p class="review-text">I love this club!</p>
+                                        <p class="review-author">– Jane Smith</p>
+                                    </div>
+                                    <div class="mySlides9 fade review-card">
+                                        <p class="review-stars">★★★★★</p>
+                                        <p class="review-text">The people here are very fun</p>
+                                        <p class="review-author">– John Smith</p>
+                                    </div>
+                                    <div class="mySlides9 fade review-card">
+                                        <p class="review-stars">★★★★★</p>
+                                        <p class="review-text">I recommend you join... We will welcome you!</p>
+                                        <p class="review-author">– Jill Smith</p>
+                                    </div>
+                                    <a class="prev" onclick="plusSlides(-1, 8)">&#10094;</a>
+                                    <a class="next" onclick="plusSlides(1, 8)">&#10095;</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -916,14 +1137,124 @@
         <div class="cultural club-page">
             <div class="page-content-container">
                 <div class="page-content">
-                    <div class="half-page">
-                        <h1 class="club-name">Bangladeshi Students’ Association</h1>
-                        <p class="club-description">Support and enrich the academic, social, and cultural lives of
-                            Bangladeshi students at the University of Manitoba.</p>
-                        <div class="button save-button">Save Club</div>
+                    <div class="half-page club-page-left-container">
+                        <!-- Club Page (Left) -->
+                        <div class="club-page-title">
+                            <div class="tape-section"></div><div class="club-name">Bangladeshi Students’ Association</div>
+                        </div>
+                        <div class="club-page-description">
+                            <h1 class="club-page-description-title">Description</h1>
+                            <p class="club-page-description-content">Support and enrich the academic, social, and cultural lives of Bangladeshi students at the University of Manitoba.</p>
+                            <p class="club-page-meeting-times">Meeting Time(s): Wednesdays — 3 PM to 5 PM<br>Location:
+                                CSSA Lounge</p>
+                            <p class="club-page-location"></p>
+                        </div>
+                        <div class="club-page-meet-team">
+                            <div class="club-page-header">Meet The Team!</div>
+                            <div class="team-card">
+                                <img src="images/placeholder-icon.jpg">
+                                <h1>Person Name</h1>
+                                <p>Occupation</p>
+                            </div>
+                        </div>
+                        <div class="club-page-skills">
+                            <div class="club-page-header">Learning Outcomes!</div>
+                            <div class="skill-card">
+                                <div>
+                                    <ul>
+                                        <li>Skill 1</li>
+                                        <li>Skill 2</li>
+                                        <li>Skill 3</li>
+                                        <li>Skill 4</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <ul>
+                                        <li>Skill 5</li>
+                                        <li>Skill 6</li>
+                                        <li>Skill 7</li>
+                                        <li>Skill 8</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="club-page-social-icons">
+                            <div class="social-icon"><img src="images/instagram.png"></div>
+                            <div class="social-icon"><img src="images/linkedin.png"></div>
+                            <div class="social-icon"><img src="images/tiktok.png"></div>
+                            <div class="social-icon"><img src="images/envelope.png"></div>
+                        </div>
+                        <div class="join-save-buttons">
+                            <div class="button join-button">JOIN US</div>
+                            <div class="button save-button">SAVE</div>
+                        </div>
                     </div>
-                    <div class="half-page">
-                        <p>Cultural club 3 content</p>
+                    <div class="half-page club-page-right-container">
+                        <!-- Club Page (Right) -->
+                        <div class="club-page-photo-gallery">
+                            <div class="club-page-header">Photo Gallery</div>
+                            <div class="photo-grid">
+                                <div class="button photo-cell image-1"></div>
+                                <div class="button photo-cell image-2"></div>
+                                <div class="button photo-cell image-3"></div>
+                                <div class="button photo-cell image-4"></div>
+                                <div class="button photo-cell image-5"></div>
+                                <div class="button photo-cell image-6"></div>
+                            </div>
+                        </div>
+                        <div class="club-page-reviews your-review">
+                            <div class="club-page-header">Leave a Review</div>
+                            <div class="reviews-scroll">
+                                <div class="review-card">
+                                    <div class="rating review-stars">
+                                        <input id="star5" name="star" type="radio" value="5" class="radio-btn hide" />
+                                        <label for="star5" >☆</label>
+                                        <input id="star4" name="star" type="radio" value="4" class="radio-btn hide" />
+                                        <label for="star4" >☆</label>
+                                        <input id="star3" name="star" type="radio" value="3" class="radio-btn hide" />
+                                        <label for="star3" >☆</label>
+                                        <input id="star2" name="star" type="radio" value="2" class="radio-btn hide" />
+                                        <label for="star2" >☆</label>
+                                        <input id="star1" name="star" type="radio" value="1" class="radio-btn hide" />
+                                        <label for="star1" >☆</label>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <textarea class="review-textarea" placeholder="Your thoughts on this club"></textarea>
+                                    <input class="review-input-name" placeholder="Your name"></p>
+                                </div>
+                                <div class="button button-submit-review">
+                                    Submit
+                                </div>
+                                <div class="submit-review-notice">
+                                    Submission success!
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="club-page-reviews all-reviews">
+                            <div class="club-page-header">Peer Reviews</div>
+                            <div class="reviews-scroll">
+                                <div class="slideshow-container">
+                                    <div class="mySlides8 fade review-card">
+                                        <p class="review-stars">★★★★★</p>
+                                        <p class="review-text">I love this club!</p>
+                                        <p class="review-author">– Jane Smith</p>
+                                    </div>
+                                    <div class="mySlides8 fade review-card">
+                                        <p class="review-stars">★★★★★</p>
+                                        <p class="review-text">The people here are very fun</p>
+                                        <p class="review-author">– John Smith</p>
+                                    </div>
+                                    <div class="mySlides8 fade review-card">
+                                        <p class="review-stars">★★★★★</p>
+                                        <p class="review-text">I recommend you join... We will welcome you!</p>
+                                        <p class="review-author">– Jill Smith</p>
+                                    </div>
+                                    <a class="prev" onclick="plusSlides(-1, 7)">&#10094;</a>
+                                    <a class="next" onclick="plusSlides(1, 7)">&#10095;</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -932,14 +1263,124 @@
         <div class="academic club-page">
             <div class="page-content-container">
                 <div class="page-content">
-                    <div class="half-page">
-                        <h1 class="club-name">Biology Undergraduate Students' Association</h1>
-                        <p class="club-description">Academic community of the Biological Sciences and to all of those
-                            who are interested!</p>
-                        <div class="button save-button">Save Club</div>
+                    <div class="half-page club-page-left-container">
+                        <!-- Club Page (Left) -->
+                        <div class="club-page-title">
+                            <div class="tape-section"></div><div class="club-name">Biology Undergraduate Students' Association</div>
+                        </div>
+                        <div class="club-page-description">
+                            <h1 class="club-page-description-title">Description</h1>
+                            <p class="club-page-description-content">Academic community of the Biological Sciences and to all of those who are interested!</p>
+                            <p class="club-page-meeting-times">Meeting Time(s): Wednesdays — 3 PM to 5 PM<br>Location:
+                                CSSA Lounge</p>
+                            <p class="club-page-location"></p>
+                        </div>
+                        <div class="club-page-meet-team">
+                            <div class="club-page-header">Meet The Team!</div>
+                            <div class="team-card">
+                                <img src="images/placeholder-icon.jpg">
+                                <h1>Person Name</h1>
+                                <p>Occupation</p>
+                            </div>
+                        </div>
+                        <div class="club-page-skills">
+                            <div class="club-page-header">Learning Outcomes!</div>
+                            <div class="skill-card">
+                                <div>
+                                    <ul>
+                                        <li>Skill 1</li>
+                                        <li>Skill 2</li>
+                                        <li>Skill 3</li>
+                                        <li>Skill 4</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <ul>
+                                        <li>Skill 5</li>
+                                        <li>Skill 6</li>
+                                        <li>Skill 7</li>
+                                        <li>Skill 8</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="club-page-social-icons">
+                            <div class="social-icon"><img src="images/instagram.png"></div>
+                            <div class="social-icon"><img src="images/linkedin.png"></div>
+                            <div class="social-icon"><img src="images/tiktok.png"></div>
+                            <div class="social-icon"><img src="images/envelope.png"></div>
+                        </div>
+                        <div class="join-save-buttons">
+                            <div class="button join-button">JOIN US</div>
+                            <div class="button save-button">SAVE</div>
+                        </div>
                     </div>
-                    <div class="half-page">
-                        <p>Academic club 1 content</p>
+                    <div class="half-page club-page-right-container">
+                        <!-- Club Page (Right) -->
+                        <div class="club-page-photo-gallery">
+                            <div class="club-page-header">Photo Gallery</div>
+                            <div class="photo-grid">
+                                <div class="button photo-cell image-1"></div>
+                                <div class="button photo-cell image-2"></div>
+                                <div class="button photo-cell image-3"></div>
+                                <div class="button photo-cell image-4"></div>
+                                <div class="button photo-cell image-5"></div>
+                                <div class="button photo-cell image-6"></div>
+                            </div>
+                        </div>
+                        <div class="club-page-reviews your-review">
+                            <div class="club-page-header">Leave a Review</div>
+                            <div class="reviews-scroll">
+                                <div class="review-card">
+                                    <div class="rating review-stars">
+                                        <input id="star5" name="star" type="radio" value="5" class="radio-btn hide" />
+                                        <label for="star5" >☆</label>
+                                        <input id="star4" name="star" type="radio" value="4" class="radio-btn hide" />
+                                        <label for="star4" >☆</label>
+                                        <input id="star3" name="star" type="radio" value="3" class="radio-btn hide" />
+                                        <label for="star3" >☆</label>
+                                        <input id="star2" name="star" type="radio" value="2" class="radio-btn hide" />
+                                        <label for="star2" >☆</label>
+                                        <input id="star1" name="star" type="radio" value="1" class="radio-btn hide" />
+                                        <label for="star1" >☆</label>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <textarea class="review-textarea" placeholder="Your thoughts on this club"></textarea>
+                                    <input class="review-input-name" placeholder="Your name"></p>
+                                </div>
+                                <div class="button button-submit-review">
+                                    Submit
+                                </div>
+                                <div class="submit-review-notice">
+                                    Submission success!
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="club-page-reviews all-reviews">
+                            <div class="club-page-header">Peer Reviews</div>
+                            <div class="reviews-scroll">
+                                <div class="slideshow-container">
+                                    <div class="mySlides7 fade review-card">
+                                        <p class="review-stars">★★★★★</p>
+                                        <p class="review-text">I love this club!</p>
+                                        <p class="review-author">– Jane Smith</p>
+                                    </div>
+                                    <div class="mySlides7 fade review-card">
+                                        <p class="review-stars">★★★★★</p>
+                                        <p class="review-text">The people here are very fun</p>
+                                        <p class="review-author">– John Smith</p>
+                                    </div>
+                                    <div class="mySlides7 fade review-card">
+                                        <p class="review-stars">★★★★★</p>
+                                        <p class="review-text">I recommend you join... We will welcome you!</p>
+                                        <p class="review-author">– Jill Smith</p>
+                                    </div>
+                                    <a class="prev" onclick="plusSlides(-1, 6)">&#10094;</a>
+                                    <a class="next" onclick="plusSlides(1, 6)">&#10095;</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -948,14 +1389,124 @@
         <div class="academic club-page">
             <div class="page-content-container">
                 <div class="page-content">
-                    <div class="half-page">
-                        <h1 class="club-name">Chem Club</h1>
-                        <p class="club-description">Undergraduate Social group brought together by their enthusiasm for
-                            all things chemistry.</p>
-                        <div class="button save-button">Save Club</div>
+                    <div class="half-page club-page-left-container">
+                        <!-- Club Page (Left) -->
+                        <div class="club-page-title">
+                            <div class="tape-section"></div><div class="club-name">Chem Club</div>
+                        </div>
+                        <div class="club-page-description">
+                            <h1 class="club-page-description-title">Description</h1>
+                            <p class="club-page-description-content">Undergraduate Social group brought together by their enthusiasm for all things chemistry.</p>
+                            <p class="club-page-meeting-times">Meeting Time(s): Wednesdays — 3 PM to 5 PM<br>Location:
+                                CSSA Lounge</p>
+                            <p class="club-page-location"></p>
+                        </div>
+                        <div class="club-page-meet-team">
+                            <div class="club-page-header">Meet The Team!</div>
+                            <div class="team-card">
+                                <img src="images/placeholder-icon.jpg">
+                                <h1>Person Name</h1>
+                                <p>Occupation</p>
+                            </div>
+                        </div>
+                        <div class="club-page-skills">
+                            <div class="club-page-header">Learning Outcomes!</div>
+                            <div class="skill-card">
+                                <div>
+                                    <ul>
+                                        <li>Skill 1</li>
+                                        <li>Skill 2</li>
+                                        <li>Skill 3</li>
+                                        <li>Skill 4</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <ul>
+                                        <li>Skill 5</li>
+                                        <li>Skill 6</li>
+                                        <li>Skill 7</li>
+                                        <li>Skill 8</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="club-page-social-icons">
+                            <div class="social-icon"><img src="images/instagram.png"></div>
+                            <div class="social-icon"><img src="images/linkedin.png"></div>
+                            <div class="social-icon"><img src="images/tiktok.png"></div>
+                            <div class="social-icon"><img src="images/envelope.png"></div>
+                        </div>
+                        <div class="join-save-buttons">
+                            <div class="button join-button">JOIN US</div>
+                            <div class="button save-button">SAVE</div>
+                        </div>
                     </div>
-                    <div class="half-page">
-                        <p>Academic club 2 content</p>
+                    <div class="half-page club-page-right-container">
+                        <!-- Club Page (Right) -->
+                        <div class="club-page-photo-gallery">
+                            <div class="club-page-header">Photo Gallery</div>
+                            <div class="photo-grid">
+                                <div class="button photo-cell image-1"></div>
+                                <div class="button photo-cell image-2"></div>
+                                <div class="button photo-cell image-3"></div>
+                                <div class="button photo-cell image-4"></div>
+                                <div class="button photo-cell image-5"></div>
+                                <div class="button photo-cell image-6"></div>
+                            </div>
+                        </div>
+                        <div class="club-page-reviews your-review">
+                            <div class="club-page-header">Leave a Review</div>
+                            <div class="reviews-scroll">
+                                <div class="review-card">
+                                    <div class="rating review-stars">
+                                        <input id="star5" name="star" type="radio" value="5" class="radio-btn hide" />
+                                        <label for="star5" >☆</label>
+                                        <input id="star4" name="star" type="radio" value="4" class="radio-btn hide" />
+                                        <label for="star4" >☆</label>
+                                        <input id="star3" name="star" type="radio" value="3" class="radio-btn hide" />
+                                        <label for="star3" >☆</label>
+                                        <input id="star2" name="star" type="radio" value="2" class="radio-btn hide" />
+                                        <label for="star2" >☆</label>
+                                        <input id="star1" name="star" type="radio" value="1" class="radio-btn hide" />
+                                        <label for="star1" >☆</label>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <textarea class="review-textarea" placeholder="Your thoughts on this club"></textarea>
+                                    <input class="review-input-name" placeholder="Your name"></p>
+                                </div>
+                                <div class="button button-submit-review">
+                                    Submit
+                                </div>
+                                <div class="submit-review-notice">
+                                    Submission success!
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="club-page-reviews all-reviews">
+                            <div class="club-page-header">Peer Reviews</div>
+                            <div class="reviews-scroll">
+                                <div class="slideshow-container">
+                                    <div class="mySlides6 fade review-card">
+                                        <p class="review-stars">★★★★★</p>
+                                        <p class="review-text">I love this club!</p>
+                                        <p class="review-author">– Jane Smith</p>
+                                    </div>
+                                    <div class="mySlides6 fade review-card">
+                                        <p class="review-stars">★★★★★</p>
+                                        <p class="review-text">The people here are very fun</p>
+                                        <p class="review-author">– John Smith</p>
+                                    </div>
+                                    <div class="mySlides6 fade review-card">
+                                        <p class="review-stars">★★★★★</p>
+                                        <p class="review-text">I recommend you join... We will welcome you!</p>
+                                        <p class="review-author">– Jill Smith</p>
+                                    </div>
+                                    <a class="prev" onclick="plusSlides(-1, 5)">&#10094;</a>
+                                    <a class="next" onclick="plusSlides(1, 5)">&#10095;</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -964,14 +1515,124 @@
         <div class="cultural club-page">
             <div class="page-content-container">
                 <div class="page-content">
-                    <div class="half-page">
-                        <h1 class="club-name">Christians on Campus</h1>
-                        <p class="club-description">Group of Christians on the UofM campus discovering and experiencing
-                            the truths in the Bible.</p>
-                        <div class="button save-button">Save Club</div>
+                    <div class="half-page club-page-left-container">
+                        <!-- Club Page (Left) -->
+                        <div class="club-page-title">
+                            <div class="tape-section"></div><div class="club-name">Christians on Campus</div>
+                        </div>
+                        <div class="club-page-description">
+                            <h1 class="club-page-description-title">Description</h1>
+                            <p class="club-page-description-content">Group of Christians on the UofM campus discovering and experiencing the truths in the Bible.</p>
+                            <p class="club-page-meeting-times">Meeting Time(s): Wednesdays — 3 PM to 5 PM<br>Location:
+                                CSSA Lounge</p>
+                            <p class="club-page-location"></p>
+                        </div>
+                        <div class="club-page-meet-team">
+                            <div class="club-page-header">Meet The Team!</div>
+                            <div class="team-card">
+                                <img src="images/placeholder-icon.jpg">
+                                <h1>Person Name</h1>
+                                <p>Occupation</p>
+                            </div>
+                        </div>
+                        <div class="club-page-skills">
+                            <div class="club-page-header">Learning Outcomes!</div>
+                            <div class="skill-card">
+                                <div>
+                                    <ul>
+                                        <li>Skill 1</li>
+                                        <li>Skill 2</li>
+                                        <li>Skill 3</li>
+                                        <li>Skill 4</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <ul>
+                                        <li>Skill 5</li>
+                                        <li>Skill 6</li>
+                                        <li>Skill 7</li>
+                                        <li>Skill 8</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="club-page-social-icons">
+                            <div class="social-icon"><img src="images/instagram.png"></div>
+                            <div class="social-icon"><img src="images/linkedin.png"></div>
+                            <div class="social-icon"><img src="images/tiktok.png"></div>
+                            <div class="social-icon"><img src="images/envelope.png"></div>
+                        </div>
+                        <div class="join-save-buttons">
+                            <div class="button join-button">JOIN US</div>
+                            <div class="button save-button">SAVE</div>
+                        </div>
                     </div>
-                    <div class="half-page">
-                        <p>Cultural club 7 content</p>
+                    <div class="half-page club-page-right-container">
+                        <!-- Club Page (Right) -->
+                        <div class="club-page-photo-gallery">
+                            <div class="club-page-header">Photo Gallery</div>
+                            <div class="photo-grid">
+                                <div class="button photo-cell image-1"></div>
+                                <div class="button photo-cell image-2"></div>
+                                <div class="button photo-cell image-3"></div>
+                                <div class="button photo-cell image-4"></div>
+                                <div class="button photo-cell image-5"></div>
+                                <div class="button photo-cell image-6"></div>
+                            </div>
+                        </div>
+                        <div class="club-page-reviews your-review">
+                            <div class="club-page-header">Leave a Review</div>
+                            <div class="reviews-scroll">
+                                <div class="review-card">
+                                    <div class="rating review-stars">
+                                        <input id="star5" name="star" type="radio" value="5" class="radio-btn hide" />
+                                        <label for="star5" >☆</label>
+                                        <input id="star4" name="star" type="radio" value="4" class="radio-btn hide" />
+                                        <label for="star4" >☆</label>
+                                        <input id="star3" name="star" type="radio" value="3" class="radio-btn hide" />
+                                        <label for="star3" >☆</label>
+                                        <input id="star2" name="star" type="radio" value="2" class="radio-btn hide" />
+                                        <label for="star2" >☆</label>
+                                        <input id="star1" name="star" type="radio" value="1" class="radio-btn hide" />
+                                        <label for="star1" >☆</label>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <textarea class="review-textarea" placeholder="Your thoughts on this club"></textarea>
+                                    <input class="review-input-name" placeholder="Your name"></p>
+                                </div>
+                                <div class="button button-submit-review">
+                                    Submit
+                                </div>
+                                <div class="submit-review-notice">
+                                    Submission success!
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="club-page-reviews all-reviews">
+                            <div class="club-page-header">Peer Reviews</div>
+                            <div class="reviews-scroll">
+                                <div class="slideshow-container">
+                                    <div class="mySlides5 fade review-card">
+                                        <p class="review-stars">★★★★★</p>
+                                        <p class="review-text">I love this club!</p>
+                                        <p class="review-author">– Jane Smith</p>
+                                    </div>
+                                    <div class="mySlides5 fade review-card">
+                                        <p class="review-stars">★★★★★</p>
+                                        <p class="review-text">The people here are very fun</p>
+                                        <p class="review-author">– John Smith</p>
+                                    </div>
+                                    <div class="mySlides5 fade review-card">
+                                        <p class="review-stars">★★★★★</p>
+                                        <p class="review-text">I recommend you join... We will welcome you!</p>
+                                        <p class="review-author">– Jill Smith</p>
+                                    </div>
+                                    <a class="prev" onclick="plusSlides(-1, 4)">&#10094;</a>
+                                    <a class="next" onclick="plusSlides(1, 4)">&#10095;</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -980,14 +1641,124 @@
         <div class="creativity club-page">
             <div class="page-content-container">
                 <div class="page-content">
-                    <div class="half-page">
-                        <h1 class="club-name">Classic Students’ Collective</h1>
-                        <p class="club-description">The Classics Students' Collective supports inclusivity within the
-                            field of study and celebrates diversity among scholars.</p>
-                        <div class="button save-button">Save Club</div>
+                    <div class="half-page club-page-left-container">
+                        <!-- Club Page (Left) -->
+                        <div class="club-page-title">
+                            <div class="tape-section"></div><div class="club-name">Classic Students’ Collective</div>
+                        </div>
+                        <div class="club-page-description">
+                            <h1 class="club-page-description-title">Description</h1>
+                            <p class="club-page-description-content">The Classics Students' Collective supports inclusivity within the field of study and celebrates diversity among scholars.</p>
+                            <p class="club-page-meeting-times">Meeting Time(s): Wednesdays — 3 PM to 5 PM<br>Location:
+                                CSSA Lounge</p>
+                            <p class="club-page-location"></p>
+                        </div>
+                        <div class="club-page-meet-team">
+                            <div class="club-page-header">Meet The Team!</div>
+                            <div class="team-card">
+                                <img src="images/placeholder-icon.jpg">
+                                <h1>Person Name</h1>
+                                <p>Occupation</p>
+                            </div>
+                        </div>
+                        <div class="club-page-skills">
+                            <div class="club-page-header">Learning Outcomes!</div>
+                            <div class="skill-card">
+                                <div>
+                                    <ul>
+                                        <li>Skill 1</li>
+                                        <li>Skill 2</li>
+                                        <li>Skill 3</li>
+                                        <li>Skill 4</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <ul>
+                                        <li>Skill 5</li>
+                                        <li>Skill 6</li>
+                                        <li>Skill 7</li>
+                                        <li>Skill 8</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="club-page-social-icons">
+                            <div class="social-icon"><img src="images/instagram.png"></div>
+                            <div class="social-icon"><img src="images/linkedin.png"></div>
+                            <div class="social-icon"><img src="images/tiktok.png"></div>
+                            <div class="social-icon"><img src="images/envelope.png"></div>
+                        </div>
+                        <div class="join-save-buttons">
+                            <div class="button join-button">JOIN US</div>
+                            <div class="button save-button">SAVE</div>
+                        </div>
                     </div>
-                    <div class="half-page">
-                        <p>Creativity content</p>
+                    <div class="half-page club-page-right-container">
+                        <!-- Club Page (Right) -->
+                        <div class="club-page-photo-gallery">
+                            <div class="club-page-header">Photo Gallery</div>
+                            <div class="photo-grid">
+                                <div class="button photo-cell image-1"></div>
+                                <div class="button photo-cell image-2"></div>
+                                <div class="button photo-cell image-3"></div>
+                                <div class="button photo-cell image-4"></div>
+                                <div class="button photo-cell image-5"></div>
+                                <div class="button photo-cell image-6"></div>
+                            </div>
+                        </div>
+                        <div class="club-page-reviews your-review">
+                            <div class="club-page-header">Leave a Review</div>
+                            <div class="reviews-scroll">
+                                <div class="review-card">
+                                    <div class="rating review-stars">
+                                        <input id="star5" name="star" type="radio" value="5" class="radio-btn hide" />
+                                        <label for="star5" >☆</label>
+                                        <input id="star4" name="star" type="radio" value="4" class="radio-btn hide" />
+                                        <label for="star4" >☆</label>
+                                        <input id="star3" name="star" type="radio" value="3" class="radio-btn hide" />
+                                        <label for="star3" >☆</label>
+                                        <input id="star2" name="star" type="radio" value="2" class="radio-btn hide" />
+                                        <label for="star2" >☆</label>
+                                        <input id="star1" name="star" type="radio" value="1" class="radio-btn hide" />
+                                        <label for="star1" >☆</label>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <textarea class="review-textarea" placeholder="Your thoughts on this club"></textarea>
+                                    <input class="review-input-name" placeholder="Your name"></p>
+                                </div>
+                                <div class="button button-submit-review">
+                                    Submit
+                                </div>
+                                <div class="submit-review-notice">
+                                    Submission success!
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="club-page-reviews all-reviews">
+                            <div class="club-page-header">Peer Reviews</div>
+                            <div class="reviews-scroll">
+                                <div class="slideshow-container">
+                                    <div class="mySlides4 fade review-card">
+                                        <p class="review-stars">★★★★★</p>
+                                        <p class="review-text">I love this club!</p>
+                                        <p class="review-author">– Jane Smith</p>
+                                    </div>
+                                    <div class="mySlides4 fade review-card">
+                                        <p class="review-stars">★★★★★</p>
+                                        <p class="review-text">The people here are very fun</p>
+                                        <p class="review-author">– John Smith</p>
+                                    </div>
+                                    <div class="mySlides4 fade review-card">
+                                        <p class="review-stars">★★★★★</p>
+                                        <p class="review-text">I recommend you join... We will welcome you!</p>
+                                        <p class="review-author">– Jill Smith</p>
+                                    </div>
+                                    <a class="prev" onclick="plusSlides(-1, 3)">&#10094;</a>
+                                    <a class="next" onclick="plusSlides(1, 3)">&#10095;</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -996,14 +1767,124 @@
         <div class="sports club-page">
             <div class="page-content-container">
                 <div class="page-content">
-                    <div class="half-page">
-                        <h1 class="club-name">Climbing</h1>
-                        <p class="club-description">Non-instructional group of climbing fans who practice bouldering.
-                            Sessions will be held on the ALC climbing wall.</p>
-                        <div class="button save-button">Save Club</div>
+                    <div class="half-page club-page-left-container">
+                        <!-- Club Page (Left) -->
+                        <div class="club-page-title">
+                            <div class="tape-section"></div><div class="club-name">Climbing</div>
+                        </div>
+                        <div class="club-page-description">
+                            <h1 class="club-page-description-title">Description</h1>
+                            <p class="club-page-description-content">Non-instructional group of climbing fans who practice bouldering. Sessions will be held on the ALC climbing wall.</p>
+                            <p class="club-page-meeting-times">Meeting Time(s): Wednesdays — 3 PM to 5 PM<br>Location:
+                                CSSA Lounge</p>
+                            <p class="club-page-location"></p>
+                        </div>
+                        <div class="club-page-meet-team">
+                            <div class="club-page-header">Meet The Team!</div>
+                            <div class="team-card">
+                                <img src="images/placeholder-icon.jpg">
+                                <h1>Person Name</h1>
+                                <p>Occupation</p>
+                            </div>
+                        </div>
+                        <div class="club-page-skills">
+                            <div class="club-page-header">Learning Outcomes!</div>
+                            <div class="skill-card">
+                                <div>
+                                    <ul>
+                                        <li>Skill 1</li>
+                                        <li>Skill 2</li>
+                                        <li>Skill 3</li>
+                                        <li>Skill 4</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <ul>
+                                        <li>Skill 5</li>
+                                        <li>Skill 6</li>
+                                        <li>Skill 7</li>
+                                        <li>Skill 8</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="club-page-social-icons">
+                            <div class="social-icon"><img src="images/instagram.png"></div>
+                            <div class="social-icon"><img src="images/linkedin.png"></div>
+                            <div class="social-icon"><img src="images/tiktok.png"></div>
+                            <div class="social-icon"><img src="images/envelope.png"></div>
+                        </div>
+                        <div class="join-save-buttons">
+                            <div class="button join-button">JOIN US</div>
+                            <div class="button save-button">SAVE</div>
+                        </div>
                     </div>
-                    <div class="half-page">
-                        <p>Sports club 2 content</p>
+                    <div class="half-page club-page-right-container">
+                        <!-- Club Page (Right) -->
+                        <div class="club-page-photo-gallery">
+                            <div class="club-page-header">Photo Gallery</div>
+                            <div class="photo-grid">
+                                <div class="button photo-cell image-1"></div>
+                                <div class="button photo-cell image-2"></div>
+                                <div class="button photo-cell image-3"></div>
+                                <div class="button photo-cell image-4"></div>
+                                <div class="button photo-cell image-5"></div>
+                                <div class="button photo-cell image-6"></div>
+                            </div>
+                        </div>
+                        <div class="club-page-reviews your-review">
+                            <div class="club-page-header">Leave a Review</div>
+                            <div class="reviews-scroll">
+                                <div class="review-card">
+                                    <div class="rating review-stars">
+                                        <input id="star5" name="star" type="radio" value="5" class="radio-btn hide" />
+                                        <label for="star5" >☆</label>
+                                        <input id="star4" name="star" type="radio" value="4" class="radio-btn hide" />
+                                        <label for="star4" >☆</label>
+                                        <input id="star3" name="star" type="radio" value="3" class="radio-btn hide" />
+                                        <label for="star3" >☆</label>
+                                        <input id="star2" name="star" type="radio" value="2" class="radio-btn hide" />
+                                        <label for="star2" >☆</label>
+                                        <input id="star1" name="star" type="radio" value="1" class="radio-btn hide" />
+                                        <label for="star1" >☆</label>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <textarea class="review-textarea" placeholder="Your thoughts on this club"></textarea>
+                                    <input class="review-input-name" placeholder="Your name"></p>
+                                </div>
+                                <div class="button button-submit-review">
+                                    Submit
+                                </div>
+                                <div class="submit-review-notice">
+                                    Submission success!
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="club-page-reviews all-reviews">
+                            <div class="club-page-header">Peer Reviews</div>
+                            <div class="reviews-scroll">
+                                <div class="slideshow-container">
+                                    <div class="mySlides3 fade review-card">
+                                        <p class="review-stars">★★★★★</p>
+                                        <p class="review-text">I love this club!</p>
+                                        <p class="review-author">– Jane Smith</p>
+                                    </div>
+                                    <div class="mySlides3 fade review-card">
+                                        <p class="review-stars">★★★★★</p>
+                                        <p class="review-text">The people here are very fun</p>
+                                        <p class="review-author">– John Smith</p>
+                                    </div>
+                                    <div class="mySlides3 fade review-card">
+                                        <p class="review-stars">★★★★★</p>
+                                        <p class="review-text">I recommend you join... We will welcome you!</p>
+                                        <p class="review-author">– Jill Smith</p>
+                                    </div>
+                                    <a class="prev" onclick="plusSlides(-1, 2)">&#10094;</a>
+                                    <a class="next" onclick="plusSlides(1, 2)">&#10095;</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1012,14 +1893,124 @@
         <div class="technology club-page">
             <div class="page-content-container">
                 <div class="page-content">
-                    <div class="half-page">
-                        <h1 class="club-name">Computer Science Students' Association</h1>
-                        <p class="club-description">CSSA is the official voice and community for computer science
-                            students at the University of Manitoba.</p>
-                        <div class="button save-button">Save Club</div>
+                    <div class="half-page club-page-left-container">
+                        <!-- Club Page (Left) -->
+                        <div class="club-page-title">
+                            <div class="tape-section"></div><div class="club-name">Computer Science Students' Association</div>
+                        </div>
+                        <div class="club-page-description">
+                            <h1 class="club-page-description-title">Description</h1>
+                            <p class="club-page-description-content">CSSA is the official voice and community for computer science students at the University of Manitoba.</p>
+                            <p class="club-page-meeting-times">Meeting Time(s): Wednesdays — 3 PM to 5 PM<br>Location:
+                                CSSA Lounge</p>
+                            <p class="club-page-location"></p>
+                        </div>
+                        <div class="club-page-meet-team">
+                            <div class="club-page-header">Meet The Team!</div>
+                            <div class="team-card">
+                                <img src="images/placeholder-icon.jpg">
+                                <h1>Person Name</h1>
+                                <p>Occupation</p>
+                            </div>
+                        </div>
+                        <div class="club-page-skills">
+                            <div class="club-page-header">Learning Outcomes!</div>
+                            <div class="skill-card">
+                                <div>
+                                    <ul>
+                                        <li>Skill 1</li>
+                                        <li>Skill 2</li>
+                                        <li>Skill 3</li>
+                                        <li>Skill 4</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <ul>
+                                        <li>Skill 5</li>
+                                        <li>Skill 6</li>
+                                        <li>Skill 7</li>
+                                        <li>Skill 8</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="club-page-social-icons">
+                            <div class="social-icon"><img src="images/instagram.png"></div>
+                            <div class="social-icon"><img src="images/linkedin.png"></div>
+                            <div class="social-icon"><img src="images/tiktok.png"></div>
+                            <div class="social-icon"><img src="images/envelope.png"></div>
+                        </div>
+                        <div class="join-save-buttons">
+                            <div class="button join-button">JOIN US</div>
+                            <div class="button save-button">SAVE</div>
+                        </div>
                     </div>
-                    <div class="half-page">
-                        <p>Technology club 4 content</p>
+                    <div class="half-page club-page-right-container">
+                        <!-- Club Page (Right) -->
+                        <div class="club-page-photo-gallery">
+                            <div class="club-page-header">Photo Gallery</div>
+                            <div class="photo-grid">
+                                <div class="button photo-cell image-1"></div>
+                                <div class="button photo-cell image-2"></div>
+                                <div class="button photo-cell image-3"></div>
+                                <div class="button photo-cell image-4"></div>
+                                <div class="button photo-cell image-5"></div>
+                                <div class="button photo-cell image-6"></div>
+                            </div>
+                        </div>
+                        <div class="club-page-reviews your-review">
+                            <div class="club-page-header">Leave a Review</div>
+                            <div class="reviews-scroll">
+                                <div class="review-card">
+                                    <div class="rating review-stars">
+                                        <input id="star5" name="star" type="radio" value="5" class="radio-btn hide" />
+                                        <label for="star5" >☆</label>
+                                        <input id="star4" name="star" type="radio" value="4" class="radio-btn hide" />
+                                        <label for="star4" >☆</label>
+                                        <input id="star3" name="star" type="radio" value="3" class="radio-btn hide" />
+                                        <label for="star3" >☆</label>
+                                        <input id="star2" name="star" type="radio" value="2" class="radio-btn hide" />
+                                        <label for="star2" >☆</label>
+                                        <input id="star1" name="star" type="radio" value="1" class="radio-btn hide" />
+                                        <label for="star1" >☆</label>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <textarea class="review-textarea" placeholder="Your thoughts on this club"></textarea>
+                                    <input class="review-input-name" placeholder="Your name"></p>
+                                </div>
+                                <div class="button button-submit-review">
+                                    Submit
+                                </div>
+                                <div class="submit-review-notice">
+                                    Submission success!
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="club-page-reviews all-reviews">
+                            <div class="club-page-header">Peer Reviews</div>
+                            <div class="reviews-scroll">
+                                <div class="slideshow-container">
+                                    <div class="mySlides2 fade review-card">
+                                        <p class="review-stars">★★★★★</p>
+                                        <p class="review-text">I love this club!</p>
+                                        <p class="review-author">– Jane Smith</p>
+                                    </div>
+                                    <div class="mySlides2 fade review-card">
+                                        <p class="review-stars">★★★★★</p>
+                                        <p class="review-text">The people here are very fun</p>
+                                        <p class="review-author">– John Smith</p>
+                                    </div>
+                                    <div class="mySlides2 fade review-card">
+                                        <p class="review-stars">★★★★★</p>
+                                        <p class="review-text">I recommend you join... We will welcome you!</p>
+                                        <p class="review-author">– Jill Smith</p>
+                                    </div>
+                                    <a class="prev" onclick="plusSlides(-1, 1)">&#10094;</a>
+                                    <a class="next" onclick="plusSlides(1, 1)">&#10095;</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1635,14 +2626,124 @@
         <div class="sports club-page">
             <div class="page-content-container">
                 <div class="page-content">
-                    <div class="half-page">
-                        <h1 class="club-name">Volleyball</h1>
-                        <p class="club-description">Volleyball enthusiasts of varying skill levels. If you want to learn
-                            more about the sport, this is the club for you.</p>
-                        <div class="button save-button">Save Club</div>
+                    <div class="half-page club-page-left-container">
+                        <!-- Club Page (Left) -->
+                        <div class="club-page-title">
+                            <div class="tape-section"></div><div class="club-name">Volleyball</div>
+                        </div>
+                        <div class="club-page-description">
+                            <h1 class="club-page-description-title">Description</h1>
+                            <p class="club-page-description-content">Volleyball enthusiasts of varying skill levels. If you want to learn more about the sport, this is the club for you.</p>
+                            <p class="club-page-meeting-times">Meeting Time(s): Wednesdays — 3 PM to 5 PM<br>Location:
+                                CSSA Lounge</p>
+                            <p class="club-page-location"></p>
+                        </div>
+                        <div class="club-page-meet-team">
+                            <div class="club-page-header">Meet The Team!</div>
+                            <div class="team-card">
+                                <img src="images/placeholder-icon.jpg">
+                                <h1>Person Name</h1>
+                                <p>Occupation</p>
+                            </div>
+                        </div>
+                        <div class="club-page-skills">
+                            <div class="club-page-header">Learning Outcomes!</div>
+                            <div class="skill-card">
+                                <div>
+                                    <ul>
+                                        <li>Skill 1</li>
+                                        <li>Skill 2</li>
+                                        <li>Skill 3</li>
+                                        <li>Skill 4</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <ul>
+                                        <li>Skill 5</li>
+                                        <li>Skill 6</li>
+                                        <li>Skill 7</li>
+                                        <li>Skill 8</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="club-page-social-icons">
+                            <div class="social-icon"><img src="images/instagram.png"></div>
+                            <div class="social-icon"><img src="images/linkedin.png"></div>
+                            <div class="social-icon"><img src="images/tiktok.png"></div>
+                            <div class="social-icon"><img src="images/envelope.png"></div>
+                        </div>
+                        <div class="join-save-buttons">
+                            <div class="button join-button">JOIN US</div>
+                            <div class="button save-button">SAVE</div>
+                        </div>
                     </div>
-                    <div class="half-page">
-                        <p>Sports content</p>
+                    <div class="half-page club-page-right-container">
+                        <!-- Club Page (Right) -->
+                        <div class="club-page-photo-gallery">
+                            <div class="club-page-header">Photo Gallery</div>
+                            <div class="photo-grid">
+                                <div class="button photo-cell image-1"></div>
+                                <div class="button photo-cell image-2"></div>
+                                <div class="button photo-cell image-3"></div>
+                                <div class="button photo-cell image-4"></div>
+                                <div class="button photo-cell image-5"></div>
+                                <div class="button photo-cell image-6"></div>
+                            </div>
+                        </div>
+                        <div class="club-page-reviews your-review">
+                            <div class="club-page-header">Leave a Review</div>
+                            <div class="reviews-scroll">
+                                <div class="review-card">
+                                    <div class="rating review-stars">
+                                        <input id="star5" name="star" type="radio" value="5" class="radio-btn hide" />
+                                        <label for="star5" >☆</label>
+                                        <input id="star4" name="star" type="radio" value="4" class="radio-btn hide" />
+                                        <label for="star4" >☆</label>
+                                        <input id="star3" name="star" type="radio" value="3" class="radio-btn hide" />
+                                        <label for="star3" >☆</label>
+                                        <input id="star2" name="star" type="radio" value="2" class="radio-btn hide" />
+                                        <label for="star2" >☆</label>
+                                        <input id="star1" name="star" type="radio" value="1" class="radio-btn hide" />
+                                        <label for="star1" >☆</label>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <textarea class="review-textarea" placeholder="Your thoughts on this club"></textarea>
+                                    <input class="review-input-name" placeholder="Your name"></p>
+                                </div>
+                                <div class="button button-submit-review">
+                                    Submit
+                                </div>
+                                <div class="submit-review-notice">
+                                    Submission success!
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="club-page-reviews all-reviews">
+                            <div class="club-page-header">Peer Reviews</div>
+                            <div class="reviews-scroll">
+                                <div class="slideshow-container">
+                                    <div class="mySlides12 fade review-card">
+                                        <p class="review-stars">★★★★★</p>
+                                        <p class="review-text">I love this club!</p>
+                                        <p class="review-author">– Jane Smith</p>
+                                    </div>
+                                    <div class="mySlides12 fade review-card">
+                                        <p class="review-stars">★★★★★</p>
+                                        <p class="review-text">The people here are very fun</p>
+                                        <p class="review-author">– John Smith</p>
+                                    </div>
+                                    <div class="mySlides12 fade review-card">
+                                        <p class="review-stars">★★★★★</p>
+                                        <p class="review-text">I recommend you join... We will welcome you!</p>
+                                        <p class="review-author">– Jill Smith</p>
+                                    </div>
+                                    <a class="prev" onclick="plusSlides(-1, 11)">&#10094;</a>
+                                    <a class="next" onclick="plusSlides(1, 11)">&#10095;</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1651,13 +2752,124 @@
         <div class="technology club-page">
             <div class="page-content-container">
                 <div class="page-content">
-                    <div class="half-page">
-                        <h1 class="club-name">Women in Computer Science Council</h1>
-                        <p class="club-description">Community for gender minority CS students, & advocates for the
-                            advancement of equity, diversity & inclusion in CS.</p>
-                        <div class="button save-button">Save Club</div>
+                    <div class="half-page club-page-left-container">
+                        <!-- Club Page (Left) -->
+                        <div class="club-page-title">
+                            <div class="tape-section"></div><div class="club-name">Women in Computer Science Council</div>
+                        </div>
+                        <div class="club-page-description">
+                            <h1 class="club-page-description-title">Description</h1>
+                            <p class="club-page-description-content">Community for gender minority CS students, & advocates for the advancement of equity, diversity & inclusion in CS.</p>
+                            <p class="club-page-meeting-times">Meeting Time(s): Wednesdays — 3 PM to 5 PM<br>Location:
+                                CSSA Lounge</p>
+                            <p class="club-page-location"></p>
+                        </div>
+                        <div class="club-page-meet-team">
+                            <div class="club-page-header">Meet The Team!</div>
+                            <div class="team-card">
+                                <img src="images/placeholder-icon.jpg">
+                                <h1>Person Name</h1>
+                                <p>Occupation</p>
+                            </div>
+                        </div>
+                        <div class="club-page-skills">
+                            <div class="club-page-header">Learning Outcomes!</div>
+                            <div class="skill-card">
+                                <div>
+                                    <ul>
+                                        <li>Skill 1</li>
+                                        <li>Skill 2</li>
+                                        <li>Skill 3</li>
+                                        <li>Skill 4</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <ul>
+                                        <li>Skill 5</li>
+                                        <li>Skill 6</li>
+                                        <li>Skill 7</li>
+                                        <li>Skill 8</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="club-page-social-icons">
+                            <div class="social-icon"><img src="images/instagram.png"></div>
+                            <div class="social-icon"><img src="images/linkedin.png"></div>
+                            <div class="social-icon"><img src="images/tiktok.png"></div>
+                            <div class="social-icon"><img src="images/envelope.png"></div>
+                        </div>
+                        <div class="join-save-buttons">
+                            <div class="button join-button">JOIN US</div>
+                            <div class="button save-button">SAVE</div>
+                        </div>
                     </div>
-                    <div class="half-page">
+                    <div class="half-page club-page-right-container">
+                        <!-- Club Page (Right) -->
+                        <div class="club-page-photo-gallery">
+                            <div class="club-page-header">Photo Gallery</div>
+                            <div class="photo-grid">
+                                <div class="button photo-cell image-1"></div>
+                                <div class="button photo-cell image-2"></div>
+                                <div class="button photo-cell image-3"></div>
+                                <div class="button photo-cell image-4"></div>
+                                <div class="button photo-cell image-5"></div>
+                                <div class="button photo-cell image-6"></div>
+                            </div>
+                        </div>
+                        <div class="club-page-reviews your-review">
+                            <div class="club-page-header">Leave a Review</div>
+                            <div class="reviews-scroll">
+                                <div class="review-card">
+                                    <div class="rating review-stars">
+                                        <input id="star5" name="star" type="radio" value="5" class="radio-btn hide" />
+                                        <label for="star5" >☆</label>
+                                        <input id="star4" name="star" type="radio" value="4" class="radio-btn hide" />
+                                        <label for="star4" >☆</label>
+                                        <input id="star3" name="star" type="radio" value="3" class="radio-btn hide" />
+                                        <label for="star3" >☆</label>
+                                        <input id="star2" name="star" type="radio" value="2" class="radio-btn hide" />
+                                        <label for="star2" >☆</label>
+                                        <input id="star1" name="star" type="radio" value="1" class="radio-btn hide" />
+                                        <label for="star1" >☆</label>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <textarea class="review-textarea" placeholder="Your thoughts on this club"></textarea>
+                                    <input class="review-input-name" placeholder="Your name"></p>
+                                </div>
+                                <div class="button button-submit-review">
+                                    Submit
+                                </div>
+                                <div class="submit-review-notice">
+                                    Submission success!
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="club-page-reviews all-reviews">
+                            <div class="club-page-header">Peer Reviews</div>
+                            <div class="reviews-scroll">
+                                <div class="slideshow-container">
+                                    <div class="mySlides11 fade review-card">
+                                        <p class="review-stars">★★★★★</p>
+                                        <p class="review-text">I love this club!</p>
+                                        <p class="review-author">– Jane Smith</p>
+                                    </div>
+                                    <div class="mySlides11 fade review-card">
+                                        <p class="review-stars">★★★★★</p>
+                                        <p class="review-text">The people here are very fun</p>
+                                        <p class="review-author">– John Smith</p>
+                                    </div>
+                                    <div class="mySlides11 fade review-card">
+                                        <p class="review-stars">★★★★★</p>
+                                        <p class="review-text">I recommend you join... We will welcome you!</p>
+                                        <p class="review-author">– Jill Smith</p>
+                                    </div>
+                                    <a class="prev" onclick="plusSlides(-1, 10)">&#10094;</a>
+                                    <a class="next" onclick="plusSlides(1, 10)">&#10095;</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

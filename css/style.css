@@ -360,7 +360,7 @@ div.half-page:nth-child(2) {
     font-size: 18px;
 }
 .club-page-title .club-name {
-    font-size: 40px;
+    font-size: 30px;
 }
 
 .club-description {
@@ -450,7 +450,7 @@ div.half-page:nth-child(2) {
 
 .alphabet-section a {
     text-decoration: none;
-    color: black
+    color: black;
     font-size: 16px;
     cursor: pointer;
 }
