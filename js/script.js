@@ -112,7 +112,8 @@ function initClubPages(clubPageList) {
     onePageRemaining = removeAllButOnePage();
     console.log(clubPageList);
     for (const child of clubPageList) {
-        $("#book-frame").turn("addPage", child.cloneNode(true));
+        var clonedChild = child.cloneNode(true);
+        $("#book-frame").turn("addPage", clonedChild);
         console.log("Adding page: " + $("#book-frame").turn("pages"));
     }
     if (onePageRemaining) {
@@ -163,17 +164,12 @@ function turnEvent() {
     var pages = $('#book-frame').turn('view'); 
 
     if (bookState === CLUB_PAGE_STATE) {
-        /*
-        for (page of document.getElementsByClassName("book-container")[0].children) {
-            if (page.getElementsByClassName("club-name")[0].textContent === clubName) {
-                for (var i = 0; i < 5; i++) {
-                    if (page.getElementsByClassName("radio-btn").classList.contains("saved")) {
-                        page.getElementsByClassName("radio-btn").checked = true;
-                    }
-                }
+        stars = document.querySelectorAll('[page="' + pages + '"]')[0].getElementsByClassName("radio-btn");
+        for (star of stars) {
+            if (star.classList.contains("saved")) {
+                star.checked = true;
             }
         }
-            */
     }
     else {
         if (pages[0] < PAGE_MAPPING.length) {
@@ -292,12 +288,29 @@ function submitReviewButtonClick(event) {
     clubPageStars = clubPage.getElementsByClassName("radio-btn");
     templateStars = clubPageTemplate.getElementsByClassName("radio-btn");
     for (var i = 0; i < 5; i++) {
-        if (clubPage.getElementsByClassName("radio-btn")[i].checked) {
-            clubPageTemplate.getElementsByClassName("radio-btn")[i].classList.add("saved");
+        if (clubPageStars[i].checked) {
+            clubPageStars[i].classList.add("saved");
+            templateStars[i].classList.add("saved");
         }
     }
     clubPageTemplate.getElementsByClassName("submit-review-notice")[0].classList.add("success");
     clubPage.getElementsByClassName("submit-review-notice")[0].classList.add("success");
+    for (activeStar of clubPage.getElementsByClassName("radio-btn")) {
+        if (activeStar.checked) {
+            for (templateStar of clubPageTemplate.getElementsByClassName("radio-btn")) {
+                if (templateStar.value === activeStar.value) {
+                    templateStar.classList.add("saved");
+                }
+            }
+        }
+        else {
+            for (templateStar of clubPageTemplate.getElementsByClassName("radio-btn")) {
+                if (templateStar.value === activeStar.value && templateStar.classList.contains("saved")) {
+                    templateStar.classList.remove("saved");
+                }
+            }
+        }
+    }
     clubPageTemplate.getElementsByClassName("button-submit-review")[0].textContent = "Resend";
     clubPage.getElementsByClassName("button-submit-review")[0].textContent = "Resend";
 }
@@ -521,12 +534,6 @@ function tocButtonClick(event) {
         if (clubPageList[i].getElementsByClassName("club-name")[0].textContent === clubName) {
             $("#book-frame").turn("page", i+1);
             num = i + 1;
-            stars = document.querySelectorAll('[page="' + num + '"]')[0].getElementsByClassName("radio-btn");
-            for (star of stars) {
-                if (star.classList.contains("saved")) {
-                    star.checked = true;
-                }
-            }
             break;
         }
     }
@@ -577,12 +584,6 @@ function clubButtonClick(event) {
         if (clubPageList[i].getElementsByClassName("club-name")[0].textContent === clubName) {
             $("#book-frame").turn("page", i+1);
             num = i + 1;
-            stars = document.querySelectorAll('[page="' + num + '"]')[0].getElementsByClassName("radio-btn");
-            for (star of stars) {
-                if (star.classList.contains("saved")) {
-                    star.checked = true;
-                }
-            }
             break;
         }
     }
