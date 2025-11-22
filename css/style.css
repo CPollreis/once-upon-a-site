@@ -63,7 +63,7 @@ div.book-container {
     margin-top: 70px;
     width: 80vw;
     max-width: 1200px;
-    height: 90vh;
+    height: 70vh;
     max-height: 550px;
     display: grid;
     box-shadow: -5px 5px 5px 0px rgba(0, 0, 0, 0.25), 5px 5px 5px 0px rgba(0, 0, 0, 0.25), 0 5px 5px 0px rgba(0, 0, 0, 0.25);
@@ -360,7 +360,7 @@ div.half-page:nth-child(2) {
     font-size: 18px;
 }
 .club-page-title .club-name {
-    font-size: 30px;
+    font-size: 1.45vw;
 }
 
 .club-description {
@@ -404,14 +404,22 @@ div.half-page:nth-child(2) {
     background-color: var(--indigo);
 }
 
+/* Homepage // Navigation Tips */
+.homepage-icon {
+    width: 25px;
+    height: 25px;
+}
+
+.navtips-img {
+    width: 125px;
+    height: 125px;
+}
 
 /* Table of Contents */
 .toc-page .half-page {
     gap: 10px;
 }
-.toc-page .banner {
 
-}
 .alphabet-section {
     font-family: my-font;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
@@ -726,7 +734,7 @@ div.half-page:nth-child(2) {
 
 .club-page-description {
     background: repeating-linear-gradient(transparent 0 calc(1.2rem - 1px), var(--pink) 0 1.2rem);
-    border-radius: 15px;
+    border-radius: 5px;
     box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.25);
     padding: 1.3rem 1.25rem;
     line-height: 1.25rem;
@@ -858,7 +866,7 @@ div.half-page:nth-child(2) {
 }
 
 .join-button {
-    background-color: var(--red);
+    background-color: var(--gray);
     border-radius: 10px;
     width: 50%;
     height: 80%;
@@ -873,7 +881,7 @@ div.half-page:nth-child(2) {
 }
 
 .save-button {
-    background-color: var(--gray);
+    background-color: var(--red);
     border-radius: 10px;
     width: 50%;
     height: 80%;
@@ -1250,15 +1258,15 @@ div.half-page:nth-child(2) {
 
 .leave-no, .leave-yes {
     display: inline-block;
-    border: 1px solid black;
     border-radius: 15px;
     padding: 10px;
     text-align: center;
     background-color: var(--red);
     font-family: verdana;
     font-weight: bold;
-    filter: brightness(75%);
     width: 100px;
+    box-shadow: 0 4px 10px 1px rgba(0, 0, 0, 0.25), inset 0 -5px 15px -5px rgba(0, 0, 0, 0.5);
+    transition: 0.3s ease;
 }
 
 .leave-no {
@@ -1267,13 +1275,14 @@ div.half-page:nth-child(2) {
 }
 
 .leave-yes {
-    background-color: rgb(212, 212, 212);
+    background-color: var(--gray);
 }
 
+
+
 .leave-no:hover, .leave-yes:hover {
-    filter: brightness(100%);
+    filter: brightness(110%);
     cursor: pointer;
-    transition: filter 0.2s;
 }
 
 /* Review Submission */
@@ -1315,7 +1324,10 @@ div.half-page:nth-child(2) {
     float:right;
     margin: 10px 10% 0px 0px;
     transition: 0.3s ease;
+    box-shadow: 0 4px 10px 1px rgba(0, 0, 0, 0.25), inset 0 -5px 15px -5px rgba(0, 0, 0, 0.5);
 }
+
+
 
 .button-submit-review:hover {
     filter: brightness(110%);
