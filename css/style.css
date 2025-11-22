@@ -335,6 +335,13 @@ div.half-page:nth-child(2) {
     transition: background 200ms ease-in-out;
     margin: 0px 15px;
 }
+.half-page > .club-button {
+    margin-top:30px;
+}
+
+.half-page > .club-button ~ .club-button {
+    margin-top:0px;
+}
 
 .club-button:hover {
     background: linear-gradient(to right, var(--brown) 10%, var(--light-brown) 100%);
