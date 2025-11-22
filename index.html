@@ -14,8 +14,21 @@
 </head>
 
 <body>
+
+    <!-- Maximum of 8 clubs error -->
+    <div id="error-background" class="overlay-background" hidden>
+        <div class="error-container">
+            <h1>We are sorry.</h1>
+            <p>We can only support a maximum of <strong>7</strong>&nbsp;saved&nbsp;clubs at this time.</p>
+            <p>You can unsave a club to make room for this one.</p>
+            <div class="leave-confirmation-container">
+                <div class="button error-ok">OK</div>
+            </div>
+        </div>
+    </div>
+
     <!-- Leave Club Followup Box -->
-    <div id="leave-followup-background" hidden>
+    <div id="leave-followup-background" class="overlay-background" hidden>
         <div class="leave-followup-container">
             <h1>Are you sure you want to leave this club?</h1>
             <div class="leave-confirmation-container">
@@ -26,7 +39,7 @@
     </div>
 
     <!-- Join Followup Box -->
-    <div id="join-followup-background" hidden>
+    <div id="join-followup-background" class="overlay-background" hidden>
         <div id="join-followup-container">
             <h1>Club Application</h1>
             <p>Please complete this application to notify the club organizers of your intent to join.</p>

@@ -79,6 +79,9 @@ function overlayBoxInit() {
     $("#leave-followup-background").bind("hover mousedown mousemove mouseup touchstart touchmove touchend", function(event) {
         event.stopPropagation();
     });
+    $("#error-background").bind("hover mousedown mousemove mouseup touchstart touchmove touchend", function(event) {
+        event.stopPropagation();
+    });
 }
 
 // initMenuPages()
@@ -255,7 +258,10 @@ function clickEvent(event) {
     else if (event.target.classList[1] === "leave-no") {
         joinTarget = null;
         document.getElementById("leave-followup-background").hidden = true;
-
+    }
+    else if (event.target.classList[1] === "error-ok") {
+        joinTarget = null;
+        document.getElementById("error-background").hidden = true;
     }
     else if (event.target.classList[1] === "leave-yes") {
         joinTarget.getElementsByClassName("join-button")[0].textContent = "Join";
@@ -463,7 +469,9 @@ function saveButtonClick(event) {
                     clubPageTemplate.getElementsByClassName("save-button")[0].textContent = "SAVED";
                     break;
                 }
-                else {}
+                else {
+                    document.getElementById("error-background").hidden = false;
+                }
             }
         }
     }

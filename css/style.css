@@ -1093,7 +1093,7 @@ div.half-page:nth-child(2) {
     to {opacity: 1}
 }
 
-#join-followup-background {
+.overlay-background {
     position: absolute;
     height: 100vh;
     width: 100vw;
@@ -1179,10 +1179,6 @@ div.half-page:nth-child(2) {
     padding-left: 8px;
 }
 
-
-
-
-
 .join-submission-container {
     position: absolute;
     bottom: 0;
@@ -1221,14 +1217,6 @@ div.half-page:nth-child(2) {
     position:absolute;
     margin-right:-5px;
 }
-#leave-followup-background {
-    position: absolute;
-    height: 100vh;
-    width: 100vw;
-    background-color: rgb(62, 77, 84, .4);
-    backdrop-filter: blur(1px);
-    z-index: 99;
-}
 
 .leave-followup-container {
     position: fixed;
@@ -1261,7 +1249,6 @@ div.half-page:nth-child(2) {
     border-radius: 15px;
     padding: 10px;
     text-align: center;
-    background-color: var(--red);
     font-family: verdana;
     font-weight: bold;
     width: 100px;
@@ -1278,9 +1265,52 @@ div.half-page:nth-child(2) {
     background-color: var(--gray);
 }
 
-
-
 .leave-no:hover, .leave-yes:hover {
+    filter: brightness(110%);
+    cursor: pointer;
+}
+
+.error-container {
+    position: fixed;
+    top: 53.8%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--page-color);
+    border: 2px solid var(--dark-brown);
+    border-radius: 3px;
+    width: 300px;
+    height: 200px; 
+    z-index: 100;
+    padding: 20px;
+    box-shadow: -5px 5px 5px 0px rgba(0, 0, 0, 0.25), 5px 5px 5px 0px rgba(0, 0, 0, 0.25), 0 5px 5px 0px rgba(0, 0, 0, 0.25);
+}
+
+.error-container p {
+    font-family: verdana;
+    font-size: 15px;
+    padding-bottom:10px;
+}
+
+.error-container h1 {
+    font-family: my-font;
+    text-align:center;
+    padding: 10px 0px 10px 0px;
+}
+
+.error-ok {
+    display: inline-block;
+    border-radius: 15px;
+    padding: 10px;
+    text-align: center;
+    font-family: verdana;
+    font-weight: bold;
+    width: 100px;
+    box-shadow: 0 4px 10px 1px rgba(0, 0, 0, 0.25), inset 0 -5px 15px -5px rgba(0, 0, 0, 0.5);
+    transition: 0.3s ease;
+    background-color: var(--red);
+}
+
+.error-ok:hover {
     filter: brightness(110%);
     cursor: pointer;
 }
