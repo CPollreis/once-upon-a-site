@@ -172,7 +172,7 @@ div.half-page:nth-child(2) {
     display: flex;
     justify-content: space-evenly;
     width: 100%;
-    height: 60px;
+    height: 65px;
     margin-top: -50px;
 }
 
@@ -188,7 +188,7 @@ div.half-page:nth-child(2) {
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 60px;
+    width: 55px;
     height: 100%;
     margin-left: -50px;
 }
@@ -227,13 +227,13 @@ div.half-page:nth-child(2) {
 }
 
 .top-tab#active {
-    margin-top: -20px;
+    margin-top: -25px;
     transition: margin-top 0.2s cubic-bezier(1, 1, 0.5, 1.3333);
     filter: brightness(100%);
 }
 
 .top-tab#active:hover {
-    margin-top: -25px;
+    margin-top: -30px;
     transition: margin-top 0.2s cubic-bezier(1, 1, 0.5, 1.3333);
 }
 
@@ -253,7 +253,7 @@ div.half-page:nth-child(2) {
     background-color: var(--red);
     margin-top: -50px;
     height: 200%;
-    clip-path: polygon(0% 0%, 50% 40%, 100% 0%, 100% 100%, 0% 100%);
+    clip-path: polygon(0% 0%, 50% 35%, 100% 0%, 100% 100%, 0% 100%);
     border-radius: 0;
     transition: margin-top 0.2s cubic-bezier(1, 1, 0.5, 1.3333);
 }
@@ -280,7 +280,7 @@ div.half-page:nth-child(2) {
     align-items: center;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
-    width: 100px;
+    width: 110px;
     height: 75px;
     margin-left: -30px;
     box-shadow: inset -5px 0 15px -5px rgba(0, 0, 0, 1);
@@ -289,18 +289,18 @@ div.half-page:nth-child(2) {
 }
 
 .tab.side-tab:hover {
-    margin-left: -40px;
+    margin-left: -35px;
     transition: margin-left 0.2s cubic-bezier(1, 1, 0.5, 1.3333);
 }
 
 .tab.side-tab#active {
-    margin-left: -45px;
+    margin-left: -55px;
     transition: margin-left 0.2s cubic-bezier(1, 1, 0.5, 1.3333);
     filter: brightness(100%);
 }
 
 .tab.side-tab#active:hover {
-    margin-left: -50px;
+    margin-left: -60px;
     transition: margin-left 0.2s cubic-bezier(1, 1, 0.5, 1.3333);
 }
 
@@ -310,13 +310,13 @@ div.half-page:nth-child(2) {
 }
 
 .tab.home img {
-    margin-left: -20px;
+    margin-left: -30px;
     width: 40px;
     height: 40px;
 }
 
 .tab.toc img {
-    margin-left: -20px;
+    margin-left: -30px;
     width: 45px;
     height: 45px;
 }
@@ -333,6 +333,7 @@ div.half-page:nth-child(2) {
     font-family: my-font-2;
     color: var(--dark-brown);
     transition: background 200ms ease-in-out;
+    margin: 0px 15px;
 }
 
 .club-button:hover {
@@ -357,7 +358,7 @@ div.half-page:nth-child(2) {
 }
 
 .club-name {
-    font-size: 18px;
+    font-size: 17px;
 }
 .club-page-title .club-name {
     font-size: 1.45vw;
