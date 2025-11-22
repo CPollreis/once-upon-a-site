@@ -283,6 +283,9 @@ function submitReviewButtonClick(event) {
     var clubPage = event.target.closest(".club-page");
     var clubName = clubPage.getElementsByClassName("club-name")[0].textContent;
     var clubPageTemplate;
+    fieldsFilled = true;
+
+    
     for (page of document.getElementById("club-page-list").children) {
         if (page.getElementsByClassName("club-name")[0].textContent === clubName) {
             clubPageTemplate = page;
@@ -363,6 +366,15 @@ function joinSubmitButtonClick(event) {
             for (star of document.getElementsByClassName("red-star")) {
                 if (star.classList[1] === inputField.classList[1]) {
                     star.hidden = true;
+                }
+            }
+            if (inputField.classList.contains("num-req") && !/^\d+$/.test(inputField.value)) {
+                inputField.value = "";
+                inputField.placeholder = "You must enter a valid number";
+                for (star of document.getElementsByClassName("red-star")) {
+                    if (star.classList[1] === inputField.classList[1]) {
+                        star.hidden = false;
+                    }
                 }
             }
         }
