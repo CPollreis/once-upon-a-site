@@ -308,12 +308,12 @@ function clickEvent(event) {
         document.getElementById("error-background").hidden = true;
     }
     else if (event.target.classList[1] === "leave-yes") {
-        joinTarget.getElementsByClassName("join-button")[0].textContent = "Join";
+        joinTarget.getElementsByClassName("join-button")[0].textContent = "JOIN";
         joinTarget.getElementsByClassName("join-button")[0].classList.remove("joined");
         document.getElementById("leave-followup-background").hidden = true;
         for (page of document.getElementById("club-page-list").children) {
             if (page.getElementsByClassName("club-name")[0].textContent === joinTarget.getElementsByClassName("club-name")[0].textContent) {
-                page.getElementsByClassName("join-button")[0].textContent = "Join";
+                page.getElementsByClassName("join-button")[0].textContent = "JOIN";
                 page.getElementsByClassName("join-button")[0].classList.remove("joined");
             }
         }
