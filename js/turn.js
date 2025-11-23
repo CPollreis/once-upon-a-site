@@ -91,7 +91,7 @@ var has3d,
 		
 		// Size of the active zone of each corner
 
-		cornerSize: 80,
+		cornerSize: 40,
 
 		// Enables gradients
 
@@ -99,7 +99,7 @@ var has3d,
 
 		// Duration of transition in milliseconds
 
-		duration: 100,
+		duration: 0,
 
 		// Enables hardware acceleration
 
@@ -1547,7 +1547,7 @@ flipMethods = {
 							point2D(left?100:0, top?100:0),
 							point2D(gradientEndPointA.x, gradientEndPointA.y),
 							[[gradientStartV, 'rgba(0,0,0,0)'],
-							[((1-gradientStartV)*0.8)+gradientStartV, 'rgba(0,0,0,'+(0.2*gradientOpacity)+')'],
+							[((1-gradientStartV)*0.8)+gradientStartV, 'rgba(0,0,0,'+(0.3*gradientOpacity)+')'],
 							[1, 'rgba(255,255,255,'+(0.2*gradientOpacity)+')']],
 							3,
 							alpha);
@@ -1722,7 +1722,7 @@ flipMethods = {
 					flipMethods._fold.call(that, p1);
 				},
 				complete: hide,
-				duration: 200,
+				duration: 0,
 				hiding: true
 				});
 
@@ -1811,7 +1811,7 @@ flipMethods = {
 				
 				var corner = flipMethods._cornerActivated.call(this, e[0]);
 				if (corner) {
-					var origin = flipMethods._c.call(this, corner.corner, data.opts.cornerSize/2);
+					var origin = flipMethods._c.call(this, corner.corner, data.opts.cornerSize);
 					corner.x = origin.x;
 					corner.y = origin.y;
 					flipMethods._showFoldedPage.call(this, corner, true);

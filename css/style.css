@@ -67,6 +67,7 @@ div.book-container {
     max-height: 550px;
     display: grid;
     box-shadow: -5px 5px 5px 0px rgba(0, 0, 0, 0.25), 5px 5px 5px 0px rgba(0, 0, 0, 0.25), 0 5px 5px 0px rgba(0, 0, 0, 0.25);
+    position: relative;
 }
 
 #base-pages {
@@ -95,6 +96,7 @@ div#book-frame {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    position: relative;
 }
 
 .page-content {
@@ -1482,4 +1484,25 @@ div.half-page:nth-child(2) {
     left: 0;
     color: var(--yellow);
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75);
+}
+
+
+.arrow {
+    position:absolute;
+    z-index: 12;
+    background-color: none;
+    color: black;
+    cursor: default;
+    pointer-events: none;
+}
+.arrow img {
+    max-width: 30px;
+}
+.right-fold {
+    top: 00px;
+    right: 00px;
+}
+.left-fold {
+    top: 00px;
+    left: 00px;
 }

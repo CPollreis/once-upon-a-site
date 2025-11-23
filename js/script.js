@@ -17,6 +17,7 @@ var activeTab; // Currently active tab, active tab is raised. String of current 
 var bookState; // Equal to MENU_STATE or CLUB_PAGE_STATE
 var savedClubsList = [];
 var joinTarget;
+var activePage;
 
 
 /******* INITIALIZATION *******/
@@ -42,6 +43,7 @@ window.addEventListener('load', function () {
     activateTab("home");
     activateListeners();
 
+    this.document.getElementsByClassName("book-container")[0].getElementsByClassName("home-page")[0].getElementsByClassName("right-fold")[0].hidden = false;
 })
 
 // Slideshow content
@@ -136,9 +138,14 @@ function initClubPages(clubPageList) {
     bookState = CLUB_PAGE_STATE;
     onePageRemaining = removeAllButOnePage();
     console.log(clubPageList);
+    var clonedClubPageList = [];
     for (const child of clubPageList) {
-        var clonedChild = child.cloneNode(true);
-        $("#book-frame").turn("addPage", clonedChild);
+        clonedClubPageList.push(child.cloneNode(true));
+    }
+    clonedClubPageList[0].getElementsByClassName("left-fold")[0].classList.add("no-fold");
+    clonedClubPageList[clonedClubPageList.length - 1].getElementsByClassName("right-fold")[0].classList.add("no-fold");
+    for (const child of clonedClubPageList) {
+        $("#book-frame").turn("addPage", child);
         console.log("Adding page: " + $("#book-frame").turn("pages"));
     }
     if (onePageRemaining) {
@@ -171,6 +178,7 @@ function activateListeners() {
     document.addEventListener( "click", clickEvent );
     // Listener on page turning event.
     $('#book-frame').on('turned', turnEvent);
+    $('#book-frame').on('turning', turningEvent);
 
     // Update the turn.js divs when the window size changes.
     addEventListener("resize", () => { 
@@ -208,6 +216,22 @@ function turnEvent() {
             initFilters();
         }*/
     }
+    // Static fold icon
+
+    activePage = document.querySelectorAll('[page="' + pages + '"]')[0];
+    if (!activePage.getElementsByClassName("left-fold")[0].classList.contains("no-fold")) {
+        activePage.getElementsByClassName("left-fold")[0].hidden = false;
+    }
+    if (!activePage.getElementsByClassName("right-fold")[0].classList.contains("no-fold")) {
+        activePage.getElementsByClassName("right-fold")[0].hidden = false;
+    }
+}
+
+function turningEvent() {
+    var pages = $('#book-frame').turn('view'); 
+    activePage = document.querySelectorAll('[page="' + pages + '"]')[0];
+    activePage.getElementsByClassName("left-fold")[0].hidden = true;
+    activePage.getElementsByClassName("right-fold")[0].hidden = true;
 }
 
 // activateTab(tab)
