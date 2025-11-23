@@ -1193,6 +1193,11 @@ div.half-page:nth-child(2) {
     animation-duration: 1.5s;
 }
 
+#gallery-background .fade {
+    animation-name: fade;
+    animation-duration: .3s;
+}
+
 @keyframes fade {
     from {
         opacity: .4
