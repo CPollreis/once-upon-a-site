@@ -121,6 +121,7 @@ function initMenuPages() {
         if (child.classList.contains("search-page")) {
             $("#book-frame").turn("page", PAGE_MAPPING.indexOf("search")+1);
             initFilters();
+            addEventListener("input", search)
             console.log("adding filter listeners");
         }
     }
@@ -280,9 +281,6 @@ function clickEvent(event) {
     }
     else if (event.target.classList[1] === "save-button") {
         saveButtonClick(event);
-    }
-    else if (event.target.classList[1] === "search-button") {
-        searchButtonClick(event);
     }
     else if (event.target.classList[1] === "join-button") {
         joinTarget = event.target.closest(".club-page");
@@ -569,15 +567,13 @@ function saveButtonClick(event) {
     }
 }
 
-// searchButtonClick(event)
-// 
-function searchButtonClick(event) {
+function search(event) {
+    var searchBarContent = event.target.value;
     var resultsStickersList = [];
     var sticker;
     var allPagesList = document.getElementById("club-page-list").getElementsByClassName("club-page");
     var allStickersList = document.getElementById("club-stickers-list").getElementsByClassName("club-button");
     var searchButton = event.target;
-    var searchBarContent = searchButton.parentElement.getElementsByClassName("search-bar")[0].value;
     var resultsPage = searchButton.closest('.search-page').getElementsByClassName("results-page")[0];
     var searchPageTemplate = document.getElementById("menu-pages");
     // Remove any prior results
@@ -795,9 +791,13 @@ function initFilters() {
             tag.addEventListener('click', () => {
                 restoreChoice(tag.dataset.choice, tag.dataset.filter);
                 tag.remove();
+                if (document.getElementsByClassName("book-container")[0].getElementsByClassName("selected-container")[0].getElementsByClassName("selected-tag").length === 0) {
+                    document.getElementsByClassName("book-container")[0].getElementsByClassName("filter-placeholder")[0].hidden = false;  
+                }
             });
             selectedContainer.appendChild(tag);
-        }    
+        }
+        document.getElementsByClassName("book-container")[0].getElementsByClassName("filter-placeholder")[0].hidden = true;  
     }
 
     function restoreChoice(text, filterName) {

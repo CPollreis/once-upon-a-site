@@ -567,6 +567,13 @@ div.half-page:nth-child(2) {
 
 
 /* Filter sections */
+.filter-placeholder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #bbb;
+}
 .filter-section {
     border-radius: 10px;
 }
@@ -652,13 +659,14 @@ div.half-page:nth-child(2) {
 }
 
 .search-bar {
-    width: 65%;
+    width: 100%;
     padding: 9px 3px 9px 15px;
     border-radius: 15px;
     border: 2px solid #42424d;
     font-family: verdana;
     outline: none !important;
     margin-top: 20px;
+    box-sizing: border-box;
 }
 
 .search-bar:focus,
@@ -712,6 +720,7 @@ div.half-page:nth-child(2) {
     padding: 5px;
     background: #fafafa;
     min-height: 60px;
+    position:relative;
 }
 
 .selected-placeholder.dragover {
