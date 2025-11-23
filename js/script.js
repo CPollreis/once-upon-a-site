@@ -495,11 +495,11 @@ function joinSubmitButtonClick(event) {
     }
 
     if (fieldsFilled) {
-        joinTarget.getElementsByClassName("join-button")[0].textContent = "JOINED";
+        joinTarget.getElementsByClassName("join-button")[0].textContent = "LEAVE CLUB";
         joinTarget.getElementsByClassName("join-button")[0].classList.add("joined");
         for (page of document.getElementById("club-page-list").children) {
             if (page.getElementsByClassName("club-name")[0].textContent === joinTarget.getElementsByClassName("club-name")[0].textContent) {
-                page.getElementsByClassName("join-button")[0].textContent = "JOINED";
+                page.getElementsByClassName("join-button")[0].textContent = "LEAVE CLUB";
                 page.getElementsByClassName("join-button")[0].classList.add("joined");
             }
         }
