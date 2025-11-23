@@ -542,8 +542,8 @@ function saveButtonClick(event) {
         }
         activeClubPage.getElementsByClassName("save-button")[0].classList.remove("saved");
         clubPageTemplate.getElementsByClassName("save-button")[0].classList.remove("saved");
-        event.target.textContent = "Save Club";
-        clubPageTemplate.getElementsByClassName("save-button")[0].textContent = "Save Club";
+        event.target.textContent = "SAVE";
+        clubPageTemplate.getElementsByClassName("save-button")[0].textContent = "SAVE";
     }
     else {
         stickerList = document.getElementById("club-stickers-list").getElementsByClassName("club-button");
