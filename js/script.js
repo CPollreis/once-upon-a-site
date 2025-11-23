@@ -406,6 +406,9 @@ function submitReviewButtonClick(event) {
 // The join button on the club page has been clicked
 function joinButtonClick() {
     document.getElementById("join-followup-background").hidden = false;
+    for (field of document.getElementById("join-followup-background").getElementsByClassName("num-req")) {
+        field.placeholder = "";
+    }
 }
 
 // joinCancelButtonClick(event)
@@ -447,6 +450,7 @@ function joinSubmitButtonClick(event) {
                 }
             }
             if (inputField.classList.contains("num-req") && !/^\d+$/.test(inputField.value)) {
+                fieldsFilled = false;
                 inputField.value = "";
                 inputField.placeholder = "You must enter a valid number";
                 for (star of document.getElementsByClassName("red-star")) {
