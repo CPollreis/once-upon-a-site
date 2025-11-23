@@ -584,6 +584,7 @@ div.half-page:nth-child(2) {
     justify-content: center;
     gap: 12px;
     min-height: 100px;
+        font-family: my-font-2;
 }
 
 /* Filter box styles */
@@ -923,7 +924,7 @@ div.half-page:nth-child(2) {
     width: 75px;
     height: 75px;
     pointer-events: none;
-    box-shadow: 0 2px 1px -1px #3A2F2A;
+    box-shadow: 0 4px 2px -1px rgba(0, 0, 0, 0.5);
     align-self: center;
     margin-left: 30px;
     grid-area: image;
@@ -941,6 +942,7 @@ div.half-page:nth-child(2) {
 .skill-card {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    font-family: my-font-2;
 }
 
 .club-page-meet-team {
