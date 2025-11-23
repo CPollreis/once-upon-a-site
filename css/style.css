@@ -67,6 +67,7 @@ div.book-container {
     max-height: 550px;
     display: grid;
     box-shadow: -5px 5px 5px 0px rgba(0, 0, 0, 0.25), 5px 5px 5px 0px rgba(0, 0, 0, 0.25), 0 5px 5px 0px rgba(0, 0, 0, 0.25);
+    position: relative;
 }
 
 #base-pages {
@@ -95,6 +96,7 @@ div#book-frame {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    position: relative;
 }
 
 .page-content {
@@ -1094,8 +1096,6 @@ div.half-page:nth-child(2) {
     background-image: url("../images/club-image-6.jpg");
 }
 
-.club-page-reviews {}
-
 .reviews-scroll {
     background: var(--white);
     height: 75%;
@@ -1437,6 +1437,68 @@ div.half-page:nth-child(2) {
     cursor: pointer;
 }
 
+/* Gallery overlay */
+.gallery-container {
+    position: fixed;
+    top: 53.8%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--page-color);
+    border: 1px solid var(--dark-brown);
+    border-radius: 3px;
+    width: 600px;
+    height: 400px; 
+    z-index: 100;
+    box-shadow: -5px 5px 5px 0px rgba(0, 0, 0, 0.25), 5px 5px 5px 0px rgba(0, 0, 0, 0.25), 0 5px 5px 0px rgba(0, 0, 0, 0.25);
+}
+.gallery-container img {
+    width:100%;
+}
+/* Next & previous buttons */
+#gallery-background .prev, #gallery-background .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    text-align: center;
+    margin-top: -25px;
+    padding: 50px 5px 50px 5px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 5px;
+    user-select: none;
+    background-color: rgba(0,0,0, 0.5);
+    transition: 0.2s ease;
+    vertical-align:middle;
+}
+#gallery-background .next {
+    right: 13px;
+}
+#gallery-background .prev {
+    left: 13px;
+}
+#gallery-background .prev:hover, #gallery-background .next:hover {
+    background-color: rgba(36, 36, 36, 1);
+}
+.exit-gallery-button {
+    color: white;
+    background-color: black;
+    position:absolute;
+    top: 0%;
+    right: 0%;
+    border-radius: 100px;
+    z-index: 100;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    transform: translate(13px, -13px);
+}
+.exit-gallery-button div {
+    transform: translateY(19%);
+}
+
 /* Review Submission */
 .your-review .review-card {
     padding: 0px 15px 0px 15px;
@@ -1482,8 +1544,6 @@ div.half-page:nth-child(2) {
     transition: 0.3s ease;
     box-shadow: 0 4px 10px 1px rgba(0, 0, 0, 0.25), inset 0 -5px 15px -5px rgba(0, 0, 0, 0.5);
 }
-
-
 
 .button-submit-review:hover {
     filter: brightness(110%);
@@ -1553,4 +1613,25 @@ div.half-page:nth-child(2) {
     left: 0;
     color: var(--yellow);
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75);
+}
+
+
+.arrow {
+    position:absolute;
+    z-index: 12;
+    background-color: none;
+    color: black;
+    cursor: default;
+    pointer-events: none;
+}
+.arrow img {
+    max-width: 30px;
+}
+.right-fold {
+    top: 00px;
+    right: 00px;
+}
+.left-fold {
+    top: 00px;
+    left: 00px;
 }
