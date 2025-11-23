@@ -359,11 +359,11 @@ div.half-page:nth-child(2) {
 }
 
 .club-button img {
-    border-radius: 10px;
+    border-radius: 100%;
     width: 75px;
     height: 75px;
     pointer-events: none;
-    box-shadow: 0 2px 1px -1px #3A2F2A;
+    box-shadow: 0 4px 2px -1px #3A2F2A;
 }
 
 .club-name {
