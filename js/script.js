@@ -28,6 +28,8 @@ window.addEventListener('load', function () {
     for (slider of document.getElementById("club-page-list").getElementsByClassName("slideshow-container")){
         slider.children[0].style.display = "block";
     }
+    document.getElementById("gallery-background").getElementsByClassName("slideshow-container")[0].children[0].style.display = "block";
+    document.getElementById("gallery-background").getElementsByClassName("slideshow-container")[0].children[0].classList.add("active");
     
     $("#book-frame").turn({ display: "single",}); // Initialize turn.js
     
@@ -43,29 +45,46 @@ window.addEventListener('load', function () {
 })
 
 // Slideshow content
-let slideIndex = [1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3];
+let slideIndex = [1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,1,2,3,4,5,6];
 /* Class the members of each slideshow group with different CSS classes */
 let slideId = ["mySlides1", "mySlides2", "mySlides3", "mySlides4", "mySlides5", "mySlides6", "mySlides7", "mySlides8", "mySlides9", "mySlides10", "mySlides11", "mySlides12", "mySlides13", "mySlides14",
                 "mySlides15", "mySlides16", "mySlides17", "mySlides18", "mySlides19", "mySlides20", "mySlides21", "mySlides22", "mySlides23", "mySlides24", "mySlides25", "mySlides26", "mySlides27", "mySlides28",
-                "mySlides29", "mySlides30", "mySlides31", "mySlides32", "mySlides33", "mySlides34", "mySlides35", "mySlides36", "mySlides37", "mySlides38", "mySlides39", "mySlides40", "mySlides41", "mySlides42"
+                "mySlides29", "mySlides30", "mySlides31", "mySlides32", "mySlides33", "mySlides34", "mySlides35", "mySlides36", "mySlides37", "mySlides38", "mySlides39", "mySlides40", "mySlides41", "mySlides42",
+                "mySlides43"
 ]
 
-function plusSlides(n, no) {
-    showSlides(slideIndex[no] += n, no);
+function plusSlides(n, no, gallery) {
+    showSlides(slideIndex[no] += n, no, gallery);
 }
 
-function showSlides(n, no) {
+function showSlides(n, no, gallery) {
     let i;
-    let activePageSlideshow = document.getElementsByClassName("book-container")[0].getElementsByClassName(slideId[no]);
-    let templatePageSlideshow = document.getElementById("club-page-list").getElementsByClassName(slideId[no]);
-    if (n > activePageSlideshow.length) {slideIndex[no] = 1}
-    if (n < 1) {slideIndex[no] = activePageSlideshow.length}
-    for (i = 0; i < activePageSlideshow.length; i++) {
-        activePageSlideshow[i].style.display = "none";
-        templatePageSlideshow[i].style.display = "none";
+    if (gallery) {
+        let gallerySlideshow = document.getElementById("gallery-background").getElementsByClassName(slideId[no]);
+        if (n > gallerySlideshow.length) {slideIndex[no] = 1}
+        if (n < 1) {slideIndex[no] = gallerySlideshow.length}
+        for (i = 0; i < gallerySlideshow.length; i++) {
+            gallerySlideshow[i].style.display = "none";
+            if (gallerySlideshow[i].classList.contains("active")) {
+                gallerySlideshow[i].classList.remove("active")
+            }
+        }
+        gallerySlideshow[slideIndex[no]-1].style.display = "block";
+        gallerySlideshow[slideIndex[no]-1].classList.add("active");
     }
-    activePageSlideshow[slideIndex[no]-1].style.display = "block";
-    templatePageSlideshow[slideIndex[no]-1].style.display = "block";
+    else {
+        let activePageSlideshow = document.getElementsByClassName("book-container")[0].getElementsByClassName(slideId[no]);
+        let templatePageSlideshow = document.getElementById("club-page-list").getElementsByClassName(slideId[no]);
+        if (n > activePageSlideshow.length) {slideIndex[no] = 1}
+        if (n < 1) {slideIndex[no] = activePageSlideshow.length}
+        for (i = 0; i < activePageSlideshow.length; i++) {
+            activePageSlideshow[i].style.display = "none";
+            templatePageSlideshow[i].style.display = "none";
+        }
+        activePageSlideshow[slideIndex[no]-1].style.display = "block";
+        templatePageSlideshow[slideIndex[no]-1].style.display = "block";
+    }
+
 } 
 
 
@@ -80,6 +99,9 @@ function overlayBoxInit() {
         event.stopPropagation();
     });
     $("#error-background").bind("hover mousedown mousemove mouseup touchstart touchmove touchend", function(event) {
+        event.stopPropagation();
+    });
+    $("#gallery-background").bind("hover mousedown mousemove mouseup touchstart touchmove touchend", function(event) {
         event.stopPropagation();
     });
 }
@@ -277,7 +299,34 @@ function clickEvent(event) {
     else if (event.target.classList[1] === "button-submit-review") {
         submitReviewButtonClick(event);
     }
+    else if (event.target.classList[1] === "photo-cell") {
+        var n;
+        switch (event.target.classList[2]){
+            case "image-1": n = 0; break;
+            case "image-2": n = 1; break;
+            case "image-3": n = 2; break;
+            case "image-4": n = 3; break;
+            case "image-5": n = 4; break;
+            case "image-6": n = 5; break;
+        }
+        document.getElementById("gallery-background").hidden = false;
+
+        console.log(document.getElementById("gallery-background").getElementsByClassName("active")[0].classList[2]);
+        console.log(event.target.classList[2]);
+        gallerySlideshow = document.getElementById("gallery-background").getElementsByClassName(slideId[42]);
+        while (!document.getElementById("gallery-background").getElementsByClassName("active")[0].classList.contains(event.target.classList[2])) {
+            console.log(document.getElementById("gallery-background").getElementsByClassName("active")[0].classList);
+            console.log(document.getElementById("gallery-background").getElementsByClassName("active")[0].classList.contains(event.target.classList[2]));
+            plusSlides(1, 42, true);
+        }
+    }
 }
+
+function exitGalleryButton() {
+    document.getElementById("gallery-background").hidden = true;
+}
+
+
 
 function submitReviewButtonClick(event) {
     var clubPage = event.target.closest(".club-page");
@@ -285,7 +334,7 @@ function submitReviewButtonClick(event) {
     var clubPageTemplate;
     fieldsFilled = true;
 
-    
+
     for (page of document.getElementById("club-page-list").children) {
         if (page.getElementsByClassName("club-name")[0].textContent === clubName) {
             clubPageTemplate = page;
@@ -304,6 +353,13 @@ function submitReviewButtonClick(event) {
     }
     clubPageTemplate.getElementsByClassName("submit-review-notice")[0].classList.add("success");
     clubPage.getElementsByClassName("submit-review-notice")[0].classList.add("success");
+    if (clubPage.getElementsByClassName("button-submit-review")[0].textContent === "Update") {
+        clubPage.getElementsByClassName("submit-review-notice")[0].classList.remove("success");
+        setTimeout(function(){ 
+            clubPage.getElementsByClassName("submit-review-notice")[0].textContent = "Review updated.";
+            clubPage.getElementsByClassName("submit-review-notice")[0].classList.add("success"); 
+        }, 30);
+    }
     for (activeStar of clubPage.getElementsByClassName("radio-btn")) {
         if (activeStar.checked) {
             for (templateStar of clubPageTemplate.getElementsByClassName("radio-btn")) {
@@ -320,8 +376,8 @@ function submitReviewButtonClick(event) {
             }
         }
     }
-    clubPageTemplate.getElementsByClassName("button-submit-review")[0].textContent = "Resend";
-    clubPage.getElementsByClassName("button-submit-review")[0].textContent = "Resend";
+    clubPageTemplate.getElementsByClassName("button-submit-review")[0].textContent = "Update";
+    clubPage.getElementsByClassName("button-submit-review")[0].textContent = "Update";
 }
 
 // joinButtonClick() 
